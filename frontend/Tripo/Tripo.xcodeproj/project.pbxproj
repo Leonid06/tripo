@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19D92A30C61200991A13 /* TripoApp.swift */; };
+		B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19DB2A30C61200991A13 /* ContentView.swift */; };
+		B3CB19DE2A30C61300991A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3CB19DD2A30C61300991A13 /* Assets.xcassets */; };
+		B3CB19E12A30C61300991A13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3CB19E02A30C61300991A13 /* Preview Assets.xcassets */; };
+		B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19E22A30C61300991A13 /* Persistence.swift */; };
+		B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19E42A30C61300991A13 /* Tripo.xcdatamodeld */; };
+		B3CB19F02A30C61300991A13 /* TripoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19EF2A30C61300991A13 /* TripoTests.swift */; };
+		B3CB19FA2A30C61300991A13 /* TripoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19F92A30C61300991A13 /* TripoUITests.swift */; };
+		B3CB19FC2A30C61300991A13 /* TripoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19FB2A30C61300991A13 /* TripoUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3CB19EC2A30C61300991A13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3CB19CE2A30C61200991A13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3CB19D52A30C61200991A13;
+			remoteInfo = Tripo;
+		};
+		B3CB19F62A30C61300991A13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3CB19CE2A30C61200991A13 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3CB19D52A30C61200991A13;
+			remoteInfo = Tripo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B3CB19D62A30C61200991A13 /* Tripo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tripo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3CB19D92A30C61200991A13 /* TripoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoApp.swift; sourceTree = "<group>"; };
+		B3CB19DB2A30C61200991A13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B3CB19DD2A30C61300991A13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3CB19E02A30C61300991A13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B3CB19E22A30C61300991A13 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		B3CB19E52A30C61300991A13 /* Tripo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tripo.xcdatamodel; sourceTree = "<group>"; };
+		B3CB19EB2A30C61300991A13 /* TripoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3CB19EF2A30C61300991A13 /* TripoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoTests.swift; sourceTree = "<group>"; };
+		B3CB19F52A30C61300991A13 /* TripoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3CB19F92A30C61300991A13 /* TripoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoUITests.swift; sourceTree = "<group>"; };
+		B3CB19FB2A30C61300991A13 /* TripoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3CB19D32A30C61200991A13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19E82A30C61300991A13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19F22A30C61300991A13 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B3CB19CD2A30C61200991A13 = {
+			isa = PBXGroup;
+			children = (
+				B3CB19D82A30C61200991A13 /* Tripo */,
+				B3CB19EE2A30C61300991A13 /* TripoTests */,
+				B3CB19F82A30C61300991A13 /* TripoUITests */,
+				B3CB19D72A30C61200991A13 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3CB19D72A30C61200991A13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB19D62A30C61200991A13 /* Tripo.app */,
+				B3CB19EB2A30C61300991A13 /* TripoTests.xctest */,
+				B3CB19F52A30C61300991A13 /* TripoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3CB19D82A30C61200991A13 /* Tripo */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB19D92A30C61200991A13 /* TripoApp.swift */,
+				B3CB19DB2A30C61200991A13 /* ContentView.swift */,
+				B3CB19DD2A30C61300991A13 /* Assets.xcassets */,
+				B3CB19E22A30C61300991A13 /* Persistence.swift */,
+				B3CB19E42A30C61300991A13 /* Tripo.xcdatamodeld */,
+				B3CB19DF2A30C61300991A13 /* Preview Content */,
+			);
+			path = Tripo;
+			sourceTree = "<group>";
+		};
+		B3CB19DF2A30C61300991A13 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB19E02A30C61300991A13 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B3CB19EE2A30C61300991A13 /* TripoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB19EF2A30C61300991A13 /* TripoTests.swift */,
+			);
+			path = TripoTests;
+			sourceTree = "<group>";
+		};
+		B3CB19F82A30C61300991A13 /* TripoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B3CB19F92A30C61300991A13 /* TripoUITests.swift */,
+				B3CB19FB2A30C61300991A13 /* TripoUITestsLaunchTests.swift */,
+			);
+			path = TripoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3CB19D52A30C61200991A13 /* Tripo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3CB19FF2A30C61300991A13 /* Build configuration list for PBXNativeTarget "Tripo" */;
+			buildPhases = (
+				B3CB19D22A30C61200991A13 /* Sources */,
+				B3CB19D32A30C61200991A13 /* Frameworks */,
+				B3CB19D42A30C61200991A13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tripo;
+			productName = Tripo;
+			productReference = B3CB19D62A30C61200991A13 /* Tripo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3CB19EA2A30C61300991A13 /* TripoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3CB1A022A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoTests" */;
+			buildPhases = (
+				B3CB19E72A30C61300991A13 /* Sources */,
+				B3CB19E82A30C61300991A13 /* Frameworks */,
+				B3CB19E92A30C61300991A13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3CB19ED2A30C61300991A13 /* PBXTargetDependency */,
+			);
+			name = TripoTests;
+			productName = TripoTests;
+			productReference = B3CB19EB2A30C61300991A13 /* TripoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B3CB19F42A30C61300991A13 /* TripoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3CB1A052A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoUITests" */;
+			buildPhases = (
+				B3CB19F12A30C61300991A13 /* Sources */,
+				B3CB19F22A30C61300991A13 /* Frameworks */,
+				B3CB19F32A30C61300991A13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3CB19F72A30C61300991A13 /* PBXTargetDependency */,
+			);
+			name = TripoUITests;
+			productName = TripoUITests;
+			productReference = B3CB19F52A30C61300991A13 /* TripoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3CB19CE2A30C61200991A13 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B3CB19D52A30C61200991A13 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					B3CB19EA2A30C61300991A13 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B3CB19D52A30C61200991A13;
+					};
+					B3CB19F42A30C61300991A13 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B3CB19D52A30C61200991A13;
+					};
+				};
+			};
+			buildConfigurationList = B3CB19D12A30C61200991A13 /* Build configuration list for PBXProject "Tripo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3CB19CD2A30C61200991A13;
+			productRefGroup = B3CB19D72A30C61200991A13 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3CB19D52A30C61200991A13 /* Tripo */,
+				B3CB19EA2A30C61300991A13 /* TripoTests */,
+				B3CB19F42A30C61300991A13 /* TripoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3CB19D42A30C61200991A13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3CB19E12A30C61300991A13 /* Preview Assets.xcassets in Resources */,
+				B3CB19DE2A30C61300991A13 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19E92A30C61300991A13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19F32A30C61300991A13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3CB19D22A30C61200991A13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
+				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
+				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,
+				B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19E72A30C61300991A13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3CB19F02A30C61300991A13 /* TripoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3CB19F12A30C61300991A13 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3CB19FA2A30C61300991A13 /* TripoUITests.swift in Sources */,
+				B3CB19FC2A30C61300991A13 /* TripoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3CB19ED2A30C61300991A13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3CB19D52A30C61200991A13 /* Tripo */;
+			targetProxy = B3CB19EC2A30C61300991A13 /* PBXContainerItemProxy */;
+		};
+		B3CB19F72A30C61300991A13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3CB19D52A30C61200991A13 /* Tripo */;
+			targetProxy = B3CB19F62A30C61300991A13 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B3CB19FD2A30C61300991A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3CB19FE2A30C61300991A13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3CB1A002A30C61300991A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Tripo/Preview Content\"";
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.Tripo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3CB1A012A30C61300991A13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Tripo/Preview Content\"";
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.Tripo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3CB1A032A30C61300991A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.TripoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tripo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Tripo";
+			};
+			name = Debug;
+		};
+		B3CB1A042A30C61300991A13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.TripoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tripo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Tripo";
+			};
+			name = Release;
+		};
+		B3CB1A062A30C61300991A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.TripoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tripo;
+			};
+			name = Debug;
+		};
+		B3CB1A072A30C61300991A13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YARMR5F2CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iskandarov.leonid.TripoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Tripo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3CB19D12A30C61200991A13 /* Build configuration list for PBXProject "Tripo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3CB19FD2A30C61300991A13 /* Debug */,
+				B3CB19FE2A30C61300991A13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3CB19FF2A30C61300991A13 /* Build configuration list for PBXNativeTarget "Tripo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3CB1A002A30C61300991A13 /* Debug */,
+				B3CB1A012A30C61300991A13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3CB1A022A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3CB1A032A30C61300991A13 /* Debug */,
+				B3CB1A042A30C61300991A13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3CB1A052A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3CB1A062A30C61300991A13 /* Debug */,
+				B3CB1A072A30C61300991A13 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B3CB19E42A30C61300991A13 /* Tripo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B3CB19E52A30C61300991A13 /* Tripo.xcdatamodel */,
+			);
+			currentVersion = B3CB19E52A30C61300991A13 /* Tripo.xcdatamodel */;
+			path = Tripo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B3CB19CE2A30C61200991A13 /* Project object */;
+}
