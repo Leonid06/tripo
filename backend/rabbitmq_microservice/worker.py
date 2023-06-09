@@ -14,7 +14,11 @@ def main():
 
     channel = connection.channel()
 
-    channel.queue_declare(queue='hello')
+    result = channel.queue_declare(queue='', exclusive= True)
+
+    channel.queue_bind(exchange='logs',
+                       queue=result.method.queue)
+
 
     channel.basic_consume(queue = 'task_queue',
                           on_message_callback= callback)
