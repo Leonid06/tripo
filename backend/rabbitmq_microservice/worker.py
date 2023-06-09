@@ -1,8 +1,10 @@
-import pika, sys, os
+import pika, time, sys, os
 
 
 def callback(ch, method, properties, body):
-    print('[x] Received %r' % body)
+    print(" [x] Received %r" % body.decode())
+    time.sleep(body.count(b'.'))
+    print(" [x] Done")
 
 
 
@@ -14,11 +16,12 @@ def main():
 
     channel.queue_declare(queue='hello')
 
-    channel.basic_consume(queue = 'hello',
-                          auto_ack= True,
+    channel.basic_consume(queue = 'task_queue',
                           on_message_callback= callback)
 
     print(' [*] Waiting for messages. To exit press CTRL+C')
+
+    channel.basic_qos(prefetch_count=1)
 
     channel.start_consuming()
 
