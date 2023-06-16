@@ -1,16 +1,16 @@
 from sqlalchemy.orm import Session
-from dependencies import get_db
+from postgresql_microservice.dependencies import get_db
 from fastapi import Depends
-from utils import get_hashed_password
-import schemas
-from models import User
+from postgresql_microservice.utils import get_hashed_password, create_access_token
+import postgresql_microservice.schemas
+from postgresql_microservice.models import User
 
 
 def get_user_by_email(email: str, db: Session = Depends(get_db)):
     return db.query(User).filter(User.email == email).first()
 
 
-def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
+def create_user(data: postgresql_microservice.schemas.UserIn, db: Session = Depends(get_db)):
     hashed_password = get_hashed_password(data.password)
     user = User(email=data.email, hashed_password=hashed_password)
     db.add(user)
@@ -18,3 +18,16 @@ def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
     db.refresh(user)
     return user
 
+
+def generate_access_token_for_user(user: User) -> str:
+    payload_data = {
+        'email': user.email,
+        'hashed_password': user.hashed_password
+    }
+    return create_access_token(data=payload_data)
+
+
+def get_user_by_inward_schema(data: postgresql_microservice.schemas.UserIn, db: Session = Depends(get_db)):
+    hashed_password = get_hashed_password(data.password)
+    user = db.query(User).filter(User.email == data.email and User.hashed_password == hashed_password)
+    return user

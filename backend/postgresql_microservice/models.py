@@ -1,4 +1,4 @@
-from .database import Base
+from postgresql_microservice.database import Base
 import os
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, DateTime
 from sqlalchemy.orm import relationship
