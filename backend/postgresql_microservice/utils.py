@@ -23,12 +23,12 @@ def verify_password(password: str, hashed_password: str) -> bool:
     return password_context.verify(password, hashed_password)
 
 
-def create_access_token(data: dict, expires_delta: int = None) -> str:
-    if expires_delta is not None:
-        expires_delta = datetime.utcnow() + expires_delta
+def create_access_token(data: dict, expires_delta:timedelta | None = None) -> str:
+    if expires_delta:
+        expires_datetime = datetime.utcnow() + expires_delta
     else:
-        expires_delta = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        expires_datetime = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
-    data_to_encode = {'expires': expires_delta, 'data': data}
+    data_to_encode = {'expires': expires_datetime.isoformat(), 'data': data}
     encoded_jwt = jwt.encode(data_to_encode, JWT_SECRET_KEY, ALGORITHM)
     return encoded_jwt

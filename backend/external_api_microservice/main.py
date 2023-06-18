@@ -1,5 +1,6 @@
 import sys
-
+from sqlalchemy.orm import Session
+from postgresql_microservice.dependencies import get_db
 from fastapi import FastAPI, status, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from postgresql_microservice import crud, models, schemas
@@ -7,16 +8,12 @@ from postgresql_microservice.database import engine
 from dotenv import load_dotenv
 from typing import Annotated
 
-
-
-
-
-
 load_dotenv()
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
 
 # producer = BaseProducer(os.getenv('RABBITMQ_TEST_QUEUE_NAME'))
 #
@@ -26,24 +23,25 @@ app = FastAPI()
 
 @app.get('/')
 def read_root():
-    return {'Hello' : 'World'}
+    return {'Hello': 'World'}
 
-@app.post('/registration', summary='Create user', response_model= schemas.UserOut)
-def create_user(data: schemas.UserIn):
-    user = crud.get_user_by_email(email= data.email)
+
+@app.post('/registration', summary='Create user', response_model=schemas.UserOut)
+def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
+    user = crud.get_user_by_email(email=data.email, db=db)
     if user is not None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail='User with this email already exist'
         )
-
-    return crud.create_user(data=data)
+    user = crud.create_user(data=data, db=db)
+    return {'email' : user.email, 'id' : user.id, 'is_active' : user.is_active}
 
 
 @app.post('/token', response_model=schemas.Token)
-def login_for_access_token(data : schemas.UserIn):
-    user = crud.get_user_by_inward_schema(data = data)
-    if not user :
+def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
+    user = crud.get_user_by_inward_schema(data=data, db=db)
+    if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail='Incorrect username or password',
@@ -51,20 +49,4 @@ def login_for_access_token(data : schemas.UserIn):
         )
 
     access_token = crud.generate_access_token_for_user(user)
-    return {'access_token' : access_token, 'token_type' : 'bearer'}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return {'access_token': access_token, 'token_type': 'bearer'}
