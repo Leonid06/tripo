@@ -7,41 +7,41 @@ load_dotenv()
 
 class BaseProducer:
     def __init__(self, queue_name = ''):
-        self.__exchange_type = ''
-        self.__host = os.getenv('RABBITMQ_HOST')
-        self.__queue_name = queue_name
-        self.__connection = None
-        self.__channel = None
+        self._exchange_type = ''
+        self._host = os.getenv('RABBITMQ_HOST')
+        self._queue_name = queue_name
+        self._connection = None
+        self._channel = None
 
     def produce(self, message):
         try:
-            self.__channel.basic_publish(
-                exchange=self.__exchange_type,
-                routing_key=self.__queue_name,
+            self._channel.basic_publish(
+                exchange=self._exchange_type,
+                routing_key=self._queue_name,
                 body=message)
         except AMQPError as amqpError:
             pass
 
     def open_connection(self):
         try:
-            self.__connection = pika.BlockingConnection(pika.ConnectionParameters(host=self.__host))
-            self.__channel = self.__connection.channel()
+            self._connection = pika.BlockingConnection(pika.ConnectionParameters(host=self._host))
+            self._channel = self._connection.channel()
         except AMQPError as amqpError:
             pass
 
     def close_connection(self):
         try:
-            self.__connection.close()
+            self._connection.close()
         except AMQPError as amqpError:
             pass
 
     @property
     def queue_name(self):
-        return self.__queue_name
+        return self._queue_name
 
     @queue_name.setter
     def queue_name(self, value):
-        self.__queue_name = value
+        self._queue_name = value
 
 class TopicProducer(BaseProducer):
 
@@ -52,8 +52,8 @@ class TopicProducer(BaseProducer):
 
     def produce(self, message):
         try:
-            self.__channel.exchange_declare(exchange=self.__exchange, exchange_type='topic')
-            self.__channel.basic_publish(
+            self._channel.exchange_declare(exchange=self.__exchange, exchange_type='topic')
+            self._channel.basic_publish(
                 exchange= self.__exchange,
                 routing_key= self.__topic,
                 body=message

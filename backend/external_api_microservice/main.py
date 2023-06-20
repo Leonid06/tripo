@@ -1,3 +1,4 @@
+import os
 import sys
 from sqlalchemy.orm import Session
 from postgresql_microservice.dependencies import get_db
@@ -5,6 +6,7 @@ from fastapi import FastAPI, status, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from postgresql_microservice import crud, models, schemas
 from postgresql_microservice.database import engine
+from celery_microservice.tasks import topic_test_task
 from dotenv import load_dotenv
 from typing import Annotated
 
@@ -14,20 +16,13 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-
-# producer = BaseProducer(os.getenv('RABBITMQ_TEST_QUEUE_NAME'))
-#
-# producer.produce('Sent message')
-#
-# producer.close_connection()
-
 @app.get('/')
-def read_root():
+async def read_root():
     return {'Hello': 'World'}
 
 
 @app.post('/registration', summary='Create user', response_model=schemas.UserOut)
-def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
+async def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
     user = crud.get_user_by_email(email=data.email, db=db)
     if user is not None:
         raise HTTPException(
@@ -39,7 +34,7 @@ def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
 
 
 @app.post('/token', response_model=schemas.Token)
-def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
+async def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
     user = crud.get_user_by_inward_schema(data=data, db=db)
     if not user:
         raise HTTPException(
@@ -50,3 +45,11 @@ def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
 
     access_token = crud.generate_access_token_for_user(user)
     return {'access_token': access_token, 'token_type': 'bearer'}
+
+@app.get('/topic-test')
+async def topic_test():
+    topic_test_task.delay()
+    return {
+        'status' : 200,
+        'data' : 'Topic test task started'
+    }

@@ -1,22 +1,29 @@
 import os
-import json
-import requests
+# import json
+# import requests
+from rabbitmq_microservice.consumers import TopicConsumer
+from rabbitmq_microservice.producers import TopicProducer
 from dotenv import load_dotenv
-from rabbitmq_microservice.consumers import BaseConsumer
+
 
 def configure():
     load_dotenv()
 
 
-def test_callback(ch, method, properties, body):
-    print(f'Received message : {body}')
+def callback(channel, method, properties, body):
+    outward_producer = TopicProducer()
+    print(f'Landmark service consumer received message with body : {body}')
+    outward_producer.topic = os.getenv('RABBITMQ_INWARD_TOPIC_NAME')
+    outward_producer.exchange = os.getenv('RABBITMQ_TEST_EXCHANGE_NAME')
+    outward_producer.produce(message='Message from landmark service producer to celery consumer')
+
 
 def main():
     configure()
 
-    consumer = BaseConsumer(os.getenv('RABBITMQ_TEST_QUEUE_NAME'))
-
-    consumer.consume(callback=test_callback)
+    # consumer = BaseConsumer(os.getenv('RABBITMQ_TEST_QUEUE_NAME'))
+    #
+    # consumer.consume(callback=test_callback)
 
     # base_url = os.getenv('BASE_URL')
     # api_key = os.getenv('TOMTOM_API_KEY')
@@ -30,5 +37,12 @@ def main():
     # deserialized_data = json.loads(response.text)
     # print(deserialized_data)
 
-if __name__ == "__main__" :
+    inward_consumer = TopicConsumer()
+    inward_consumer.topic = os.getenv('RABBITMQ_OUTWARD_TOPIC_NAME')
+    inward_consumer.exchange = os.getenv('RABBITMQ_TEST_EXCHANGE_NAME')
+    inward_consumer.open_connection()
+    inward_consumer.consume(callback=callback)
+
+
+if __name__ == "__main__":
     main()
