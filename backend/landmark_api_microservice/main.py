@@ -11,11 +11,15 @@ def configure():
 
 
 def callback(channel, method, properties, body):
-    outward_producer = TopicProducer()
     print(f'Landmark service consumer received message with body : {body}')
+    channel.basic_ack(delivery_tag=method.delivery_tag)
+
+    outward_producer = TopicProducer()
     outward_producer.topic = os.getenv('RABBITMQ_INWARD_TOPIC_NAME')
     outward_producer.exchange = os.getenv('RABBITMQ_TEST_EXCHANGE_NAME')
+    outward_producer.open_connection()
     outward_producer.produce(message='Message from landmark service producer to celery consumer')
+    outward_producer.close_connection()
 
 
 def main():

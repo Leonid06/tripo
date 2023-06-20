@@ -11,9 +11,12 @@ CELERY_BROKER_HOST = os.getenv('CELERY_BROKER_HOST')
 CELERY_BROKER_PORT = os.getenv('CELERY_BROKER_PORT')
 
 
-app = Celery(
-    CELERY_APPLICATION_NAME,
+app = Celery(main='tasks',
     broker= f'{CELERY_BROKER_PROTOCOL}://{CELERY_BROKER_HOST}:{CELERY_BROKER_PORT}')
+
+app.conf.update(
+    CELERY_IMPORTS = ('celery_microservice.tasks')
+)
 
 
 

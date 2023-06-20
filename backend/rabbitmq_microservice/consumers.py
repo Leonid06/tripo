@@ -73,6 +73,9 @@ class TopicConsumer(BaseConsumer):
         except AMQPError as amqpError :
             pass
 
+    def stop_consuming(self):
+        self._channel.stop_consuming()
+
     @property
     def topic(self):
         return self.__topic

@@ -6,7 +6,7 @@ from fastapi import FastAPI, status, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from postgresql_microservice import crud, models, schemas
 from postgresql_microservice.database import engine
-from celery_microservice.tasks import topic_test_task
+from celery_microservice.tasks import consume_test_topic_message_task, produce_test_topic_message_task
 from dotenv import load_dotenv
 from typing import Annotated
 
@@ -48,7 +48,8 @@ async def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get
 
 @app.get('/topic-test')
 async def topic_test():
-    topic_test_task.delay()
+    consume_test_topic_message_task.delay()
+    produce_test_topic_message_task.delay()
     return {
         'status' : 200,
         'data' : 'Topic test task started'
