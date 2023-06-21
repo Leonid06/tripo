@@ -10,7 +10,7 @@ def get_landmarks(query: str, latitude: str, longitude: str, radius: str) -> Dic
     response_json = requests.get(query_url).json()
     results = response_json['results']
     landmarks_data = {
-        'POIs' : []
+        'POIs': []
     }
 
     for result in results:

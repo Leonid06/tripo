@@ -1,20 +1,13 @@
-import os
-
 from sqlalchemy.orm import Session
 from postgresql_microservice.database import SessionLocal
 from typing import Annotated
 from fastapi import Depends, status, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from dotenv import load_dotenv
 from jose import jwt, JWTError
 from postgresql_microservice.models import User
+from postgresql_microservice.config import ALGORITHM, JWT_SECRET_KEY, BEARER_TOKEN_URL
 
-load_dotenv()
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl=os.getenv('BEARER_TOKEN_URL'))
-
-ALGORITHM = os.getenv('JWT_ALGORITHM')
-JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=BEARER_TOKEN_URL)
 
 
 def get_db():
@@ -25,7 +18,7 @@ def get_db():
         db.close()
 
 
-def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db : Session = Depends(SessionLocal)):
+def get_current_user(token: Annotated[str, Depends(oauth2_scheme)], db: Session = Depends(SessionLocal)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",

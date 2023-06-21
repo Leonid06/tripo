@@ -1,6 +1,4 @@
 from sqlalchemy.orm import Session
-
-from fastapi import Depends
 from postgresql_microservice.utils import get_hashed_password, create_access_token
 import postgresql_microservice.schemas
 from postgresql_microservice.models import User

@@ -4,6 +4,7 @@ from rabbitmq_microservice.consumers import TopicConsumer
 from rabbitmq_microservice.producers import TopicProducer
 from landmark_api_microservice.methods import get_landmarks
 
+
 def callback(channel, method, properties, body):
     print(f'Landmark service consumer received message with body : {body}')
     channel.basic_ack(delivery_tag=method.delivery_tag)
@@ -11,15 +12,15 @@ def callback(channel, method, properties, body):
     deserialized_body = json.loads(body)
 
     landmarks_data = get_landmarks(
-        query= deserialized_body['query'],
-        latitude= deserialized_body['latitude'],
-        longitude= deserialized_body['longitude'],
-        radius= deserialized_body['radius']
+        query=deserialized_body['query'],
+        latitude=deserialized_body['latitude'],
+        longitude=deserialized_body['longitude'],
+        radius=deserialized_body['radius']
     )
 
     message_body = {
-        'message_id' : deserialized_body['message_id'],
-        'data' : landmarks_data
+        'message_id': deserialized_body['message_id'],
+        'data': landmarks_data
     }
 
     serialized_message_body = json.dumps(message_body)
@@ -46,6 +47,7 @@ def main():
     #     radius= '30000',
     # )
     pass
+
 
 if __name__ == "__main__":
     main()

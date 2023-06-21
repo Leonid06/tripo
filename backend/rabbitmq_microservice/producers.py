@@ -1,14 +1,12 @@
 import pika
-from pika.exceptions import  AMQPError
-import os
-from dotenv import load_dotenv
+from pika.exceptions import AMQPError
+from config import RABBITMQ_HOST
 
-load_dotenv()
 
 class BaseProducer:
-    def __init__(self, queue_name = ''):
+    def __init__(self, queue_name=''):
         self._exchange_type = ''
-        self._host = os.getenv('RABBITMQ_HOST')
+        self._host = RABBITMQ_HOST
         self._queue_name = queue_name
         self._connection = None
         self._channel = None
@@ -43,9 +41,10 @@ class BaseProducer:
     def queue_name(self, value):
         self._queue_name = value
 
+
 class TopicProducer(BaseProducer):
 
-    def __init__(self, topic= None, exchange = None):
+    def __init__(self, topic=None, exchange=None):
         super().__init__()
         self.__topic = topic
         self.__exchange = exchange
@@ -54,8 +53,8 @@ class TopicProducer(BaseProducer):
         try:
             self._channel.exchange_declare(exchange=self.__exchange, exchange_type='topic')
             self._channel.basic_publish(
-                exchange= self.__exchange,
-                routing_key= self.__topic,
+                exchange=self.__exchange,
+                routing_key=self.__topic,
                 body=message
             )
         except AMQPError as amqpError:
