@@ -9,7 +9,9 @@ def get_landmarks(query: str, latitude: str, longitude: str, radius: str) -> Dic
     query_url = f'{BASE_URL}/search/2/nearbySearch/{query}.json?key={API_KEY}&lat={latitude}&lon={longitude}&radius={radius}'
     response_json = requests.get(query_url).json()
     results = response_json['results']
-    landmarks_data = {}
+    landmarks_data = {
+        'POIs' : []
+    }
 
     for result in results:
         result_data = {
@@ -19,8 +21,7 @@ def get_landmarks(query: str, latitude: str, longitude: str, radius: str) -> Dic
             #     'streetName' : result['address']['streetName']
             # }
         }
-        landmarks_data.update(result_data)
-
-    print(landmarks_data)
+        print(result_data)
+        landmarks_data['POIs'].append(result_data)
 
     return landmarks_data
