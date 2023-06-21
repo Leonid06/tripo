@@ -1,0 +1,26 @@
+import json
+import requests
+import os
+from typing import Dict
+from landmark_api_microservice.config import BASE_URL, API_KEY
+
+
+def get_landmarks(query: str, latitude: str, longitude: str, radius: str) -> Dict:
+    query_url = f'{BASE_URL}/search/2/nearbySearch/{query}.json?key={API_KEY}&lat={latitude}&lon={longitude}&radius={radius}'
+    response_json = requests.get(query_url).json()
+    results = response_json['results']
+    landmarks_data = {}
+
+    for result in results:
+        result_data = {
+            'name': result['poi']['name'],
+            # 'address' : {
+            #     'streetNumber' : result['address']['streetNumber'],
+            #     'streetName' : result['address']['streetName']
+            # }
+        }
+        landmarks_data.update(result_data)
+
+    print(landmarks_data)
+
+    return landmarks_data
