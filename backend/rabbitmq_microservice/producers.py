@@ -1,6 +1,6 @@
 import pika
 from pika.exceptions import AMQPError
-from config import RABBITMQ_HOST
+from rabbitmq_microservice.config import RABBITMQ_HOST
 
 
 class BaseProducer:
