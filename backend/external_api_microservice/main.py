@@ -5,8 +5,8 @@ from fastapi import FastAPI, status, HTTPException, Depends
 from celery.result import AsyncResult
 from postgresql_microservice import crud, models, schemas
 from postgresql_microservice.database import engine
-from celery_microservice.tasks import consume_test_topic_message_task, produce_test_topic_message_task, \
-    retrieve_test_topic_message_body_task
+from celery_microservice.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task,\
+    retrieve_get_all_landmarks_topic_message_body_task
 from external_api_microservice.utils import generate_random_uuid
 from celery import chain
 
@@ -50,10 +50,10 @@ async def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get
 async def get_all_landmarks(latitude: str, longitude: str, radius: str, query: str = ''):
     message_id = generate_random_uuid()
 
-    consume_topic_message_task_chain = chain(consume_test_topic_message_task.s(),
-                                             retrieve_test_topic_message_body_task.si(message_id=message_id))()
+    consume_topic_message_task_chain = chain(consume_get_all_landmarks_topic_task.s(),
+                                             retrieve_get_all_landmarks_topic_message_body_task.si(message_id=message_id))()
 
-    produce_test_topic_message_task.delay(
+    produce_get_all_landmarks_topic_task.delay(
         message_id=message_id,
         query=query,
         latitude=latitude,

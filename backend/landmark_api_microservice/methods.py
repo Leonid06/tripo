@@ -1,6 +1,4 @@
-import json
 import requests
-import os
 from typing import Dict
 from landmark_api_microservice.config import BASE_URL, API_KEY
 
