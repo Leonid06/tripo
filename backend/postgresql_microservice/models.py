@@ -1,7 +1,12 @@
 from postgresql_microservice.database import Base
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, DateTime
+from fastapi_users.db import SQLAlchemyBaseUserTableUUID
 from postgresql_microservice.config import LANDMARKS_TABLE_NAME, PLANS_TABLE_NAME, USERS_TABLE_NAME, \
     PLANS_TO_LANDMARKS_TABLE_NAME, PLANS_TO_USERS_TABLE_NAME
+
+
+class User(SQLAlchemyBaseUserTableUUID, Base):
+    pass
 
 
 class Landmark(Base):
@@ -18,14 +23,6 @@ class Plan(Base):
     name = Column(String, index=True)
     description = Column(Text, index=True)
     completed = Column(Boolean, index=True)
-
-
-class User(Base):
-    __tablename__ = USERS_TABLE_NAME
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
 
 
 class PlanToLandmark(Base):
