@@ -5,6 +5,7 @@ import uuid
 from fastapi_users import FastAPIUsers
 from postgresql_microservice.dependencies import get_user_manager
 from postgresql_microservice.models import User
+from postgresql_microservice.schemas import  UserRead, UserCreate
 
 cookie_transport = CookieTransport(cookie_max_age=COOKIE_MAX_AGE)
 
@@ -20,3 +21,5 @@ fastapi_users = FastAPIUsers[User, uuid.UUID](
 )
 
 authentication_router = fastapi_users.get_auth_router(authentication_backend)
+
+registration_router = fastapi_users.get_register_router(UserRead, UserCreate)
