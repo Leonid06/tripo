@@ -1,6 +1,7 @@
-from postgresql_microservice.database import Base
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, DateTime
 from fastapi_users.db import SQLAlchemyBaseUserTableUUID
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, DateTime
+
+from postgresql_microservice.database import Base
 from postgresql_microservice.config import LANDMARKS_TABLE_NAME, PLANS_TABLE_NAME, USERS_TABLE_NAME, \
     PLANS_TO_LANDMARKS_TABLE_NAME, PLANS_TO_USERS_TABLE_NAME
 

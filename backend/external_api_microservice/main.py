@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI
 from celery.result import AsyncResult
-from postgresql_microservice.auth.authentication_setup import authentication_router
+from postgresql_microservice.auth.authentication_setup import authentication_router, registration_router
 from celery_microservice.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task, \
     retrieve_get_all_landmarks_topic_message_body_task
 from external_api_microservice.utils import generate_random_uuid
@@ -10,6 +10,7 @@ from celery import chain
 app = FastAPI()
 
 app.include_router(authentication_router)
+app.include_router(registration_router)
 
 
 @app.get('/')

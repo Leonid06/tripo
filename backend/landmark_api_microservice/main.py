@@ -1,8 +1,9 @@
 import json
+
 from rabbitmq_microservice.consumers import TopicConsumer
 from rabbitmq_microservice.producers import TopicProducer
 from landmark_api_microservice.methods import get_landmarks
-from config import RABBITMQ_MAIN_EXCHANGE_NAME, RABBITMQ_GET_ALL_LANDMARKS_REQUEST_TOPIC_NAME,\
+from landmark_api_microservice.config import RABBITMQ_MAIN_EXCHANGE_NAME, RABBITMQ_GET_ALL_LANDMARKS_REQUEST_TOPIC_NAME,\
     RABBITMQ_GET_ALL_LANDMARKS_RESPONSE_TOPIC_NAME
 
 

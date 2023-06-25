@@ -1,5 +1,6 @@
 import requests
 from typing import Dict
+
 from landmark_api_microservice.config import BASE_URL, API_KEY
 
 

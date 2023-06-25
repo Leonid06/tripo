@@ -1,11 +1,12 @@
 from fastapi_users.authentication import CookieTransport, AuthenticationBackend
-from postgresql_microservice.config import COOKIE_MAX_AGE
-from postgresql_microservice.dependencies import get_jwt_strategy
-import uuid
 from fastapi_users import FastAPIUsers
+import uuid
+
 from postgresql_microservice.dependencies import get_user_manager
 from postgresql_microservice.models import User
 from postgresql_microservice.schemas import  UserRead, UserCreate
+from postgresql_microservice.config import COOKIE_MAX_AGE
+from postgresql_microservice.dependencies import get_jwt_strategy
 
 cookie_transport = CookieTransport(cookie_max_age=COOKIE_MAX_AGE)
 
