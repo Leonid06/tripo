@@ -6,9 +6,9 @@ from fastapi_users import BaseUserManager, UUIDIDMixin
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from typing import Optional, AsyncGenerator
 
-from postgresql_microservice.models import User
-from postgresql_microservice.config import JWT_SECRET_KEY, ACCESS_TOKEN_EXPIRE_SECONDS
-from postgresql_microservice.config import POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_HOST, \
+from microservices.postgresql_microservice.models import User
+from microservices.postgresql_microservice.config import JWT_SECRET_KEY, ACCESS_TOKEN_EXPIRE_SECONDS
+from microservices.postgresql_microservice.config import POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_HOST, \
     POSTGRES_PORT, POSTGRES_DATABASE_NAME
 
 DATABASE_URL = f'postgresql+asyncpg://{POSTGRES_USERNAME}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DATABASE_NAME}'

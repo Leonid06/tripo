@@ -2,10 +2,10 @@ from celery.result import AsyncResult
 from celery import chain
 from fastapi import FastAPI
 
-from celery_microservice.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task, \
+from microservices.celery_microservice.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task, \
     retrieve_get_all_landmarks_topic_message_body_task
-from postgresql_microservice.auth.authentication_setup import authentication_router, registration_router
-from external_api_microservice.utils import generate_random_uuid
+from microservices.postgresql_microservice.auth.authentication_setup import authentication_router, registration_router
+from microservices.external_api_microservice.utils import generate_random_uuid
 
 app = FastAPI()
 

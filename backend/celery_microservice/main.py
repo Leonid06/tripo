@@ -1,5 +1,5 @@
-from celery import Celery
-import redis
+from microservices.celery import Celery
+import microservices.redis
 
 from celery_microservice.config import CELERY_BROKER_PROTOCOL, \
     CELERY_BROKER_HOST, CELERY_BROKER_PORT, REDIS_HOST, REDIS_PORT, CELERY_APPLICATION_NAME
