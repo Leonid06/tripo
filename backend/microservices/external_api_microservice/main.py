@@ -1,11 +1,11 @@
-
-from fastapi import FastAPI
 from celery.result import AsyncResult
-from postgresql_microservice.auth.authentication_setup import authentication_router, registration_router
+from celery import chain
+from fastapi import FastAPI
+
 from celery_microservice.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task, \
     retrieve_get_all_landmarks_topic_message_body_task
+from postgresql_microservice.auth.authentication_setup import authentication_router, registration_router
 from external_api_microservice.utils import generate_random_uuid
-from celery import chain
 
 app = FastAPI()
 
@@ -48,7 +48,6 @@ async def get_task_status(task_id: str):
         'status': task_result.status,
         'result': task_result.result
     }
-
 
 # @app.post('/registration', summary='Create user', response_model=schemas.UserOut)
 # async def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):

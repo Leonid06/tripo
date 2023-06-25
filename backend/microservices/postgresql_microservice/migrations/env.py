@@ -3,8 +3,8 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from postgresql_microservice.database import metadata
-from postgresql_microservice.config import POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_HOST, \
+from ..database import metadata
+from ..config import POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_HOST, \
     POSTGRES_PORT, POSTGRES_DATABASE_NAME
 
 # this is the Alembic Config object, which provides
