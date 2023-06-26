@@ -22,7 +22,10 @@ struct RegistrationView: View {
                 .frame(width: 200, height: 40)
 
             Button(action: {
-                // Handle login here
+                Task {
+                    AuthenticationHTTPService.shared.sendRegisterUserRequest(email: email, password: password)
+                    
+                }
             }) {
                 Text("Register")
                     .frame(width: 100)

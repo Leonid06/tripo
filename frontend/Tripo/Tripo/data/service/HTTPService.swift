@@ -14,11 +14,10 @@ class HTTPService {
     internal func sendRequest(requestDetails :  RequestDetails) {
         let url = "\(requestDetails.head ?? "localhost")/\(requestDetails.route)/\(requestDetails.method.rawValue)"
         
-        guard let parameterEncoder = try? HTTPServiceUtil.getAlamofireEncoderForFormat(format: requestDetails.format) else {
-            return
-        }
+        let parameterEncoder = try? HTTPServiceUtil.getAlamofireEncoderForFormat(format: requestDetails.format)
+            
        
-        AF.request(url, method: requestDetails.method, parameters: requestDetails.parameters, encoder: parameterEncoder, headers: nil){ response in
+        AF.request(url, method: requestDetails.method, parameters: requestDetails.parameters, encoder: parameterEncoder ?? JSONParameterEncoder.default, headers: nil).response{ response in
             debugPrint(response)
         }
     }

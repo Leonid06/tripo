@@ -12,9 +12,9 @@ struct HTTPServiceUtil {
     static func getAlamofireEncoderForFormat(format : String) throws -> ParameterEncoder? {
         switch format {
         case "application/json":
-            return nil
+            return JSONParameterEncoder.default
         case "application/x-www-form-urlencoded" :
-            return Alamofire.URLEncodedFormParameterEncoder.default
+            return URLEncodedFormParameterEncoder.default
         default:
             throw fatalError("Invalid format provided")
         }
