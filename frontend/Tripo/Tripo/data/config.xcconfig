@@ -1,0 +1,14 @@
+//
+//  config.xcconfig
+//  Tripo
+//
+//  Created by Leonid on 26.06.2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+REST_HEAD = localhost
+REST_PORT = 8000
+
+
