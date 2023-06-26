@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B322C6C32A45ACA300845A3C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* AuthenticationService.swift */; };
+		B3B5E1562A45A30200EDD9F7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */; };
+		B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */; };
 		B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19D92A30C61200991A13 /* TripoApp.swift */; };
 		B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19DB2A30C61200991A13 /* ContentView.swift */; };
 		B3CB19DE2A30C61300991A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3CB19DD2A30C61300991A13 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B322C6C22A45ACA300845A3C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B3CB19D62A30C61200991A13 /* Tripo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tripo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CB19D92A30C61200991A13 /* TripoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoApp.swift; sourceTree = "<group>"; };
 		B3CB19DB2A30C61200991A13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +81,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B322C6C02A45AC8400845A3C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				B322C6C12A45AC8D00845A3C /* service */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		B322C6C12A45AC8D00845A3C /* service */ = {
+			isa = PBXGroup;
+			children = (
+				B322C6C22A45ACA300845A3C /* AuthenticationService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		B3B5E1532A45A2BB00EDD9F7 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5E1542A45A2DC00EDD9F7 /* view */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
+		B3B5E1542A45A2DC00EDD9F7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */,
+				B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		B3CB19CD2A30C61200991A13 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +137,8 @@
 		B3CB19D82A30C61200991A13 /* Tripo */ = {
 			isa = PBXGroup;
 			children = (
+				B322C6C02A45AC8400845A3C /* data */,
+				B3B5E1532A45A2BB00EDD9F7 /* presentation */,
 				B3CB19D92A30C61200991A13 /* TripoApp.swift */,
 				B3CB19DB2A30C61200991A13 /* ContentView.swift */,
 				B3CB19DD2A30C61300991A13 /* Assets.xcassets */,
@@ -263,10 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
+				B322C6C32A45ACA300845A3C /* AuthenticationService.swift in Sources */,
 				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,
 				B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */,
+				B3B5E1562A45A30200EDD9F7 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
