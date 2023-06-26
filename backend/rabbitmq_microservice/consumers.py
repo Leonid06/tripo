@@ -1,3 +1,5 @@
+import logging
+
 import pika
 from pika.exceptions import AMQPError
 from rabbitmq_microservice.config import RABBITMQ_HOST

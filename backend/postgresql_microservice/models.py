@@ -1,13 +1,13 @@
-from fastapi_users.db import SQLAlchemyBaseUserTableUUID
+from fastapi_users.db import SQLAlchemyBaseUserTable
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, DateTime
 
-from microservices.postgresql_microservice.database import Base
-from microservices.postgresql_microservice.config import LANDMARKS_TABLE_NAME, PLANS_TABLE_NAME, USERS_TABLE_NAME, \
+from postgresql_microservice.database import Base
+from postgresql_microservice.config import LANDMARKS_TABLE_NAME, PLANS_TABLE_NAME, USERS_TABLE_NAME, \
     PLANS_TO_LANDMARKS_TABLE_NAME, PLANS_TO_USERS_TABLE_NAME
 
 
-class User(SQLAlchemyBaseUserTableUUID, Base):
-    pass
+class User(SQLAlchemyBaseUserTable[int], Base):
+    id = Column("id", Integer, primary_key=True)
 
 
 class Landmark(Base):
