@@ -16,6 +16,7 @@ enum RequestDetailsProvider {
     var head : String? {
         switch self {
         case .login, .register, .logout:
+            print(EnvironmentVariables.REST_HEAD)
             return EnvironmentVariables.REST_HEAD as? String
         }
     }

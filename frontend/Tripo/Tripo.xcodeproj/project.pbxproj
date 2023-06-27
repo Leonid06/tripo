@@ -18,6 +18,7 @@
 		B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9DB2A49D5410073934A /* RequestDetailsProvider.swift */; };
 		B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9DE2A49E9690073934A /* HTTPServiceUtil.swift */; };
 		B3BED9E12A49FBCB0073934A /* AuthenticationHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */; };
+		B3BED9E32A4AF8540073934A /* RequestParametersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E22A4AF8540073934A /* RequestParametersModels.swift */; };
 		B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19D92A30C61200991A13 /* TripoApp.swift */; };
 		B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19DB2A30C61200991A13 /* ContentView.swift */; };
 		B3CB19DE2A30C61300991A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3CB19DD2A30C61300991A13 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		B3BED9DB2A49D5410073934A /* RequestDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailsProvider.swift; sourceTree = "<group>"; };
 		B3BED9DE2A49E9690073934A /* HTTPServiceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServiceUtil.swift; sourceTree = "<group>"; };
 		B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHTTPService.swift; sourceTree = "<group>"; };
+		B3BED9E22A4AF8540073934A /* RequestParametersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParametersModels.swift; sourceTree = "<group>"; };
 		B3CB19D62A30C61200991A13 /* Tripo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tripo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CB19D92A30C61200991A13 /* TripoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoApp.swift; sourceTree = "<group>"; };
 		B3CB19DB2A30C61200991A13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B3BED9D92A49D3840073934A /* RequestDetails.swift */,
+				B3BED9E22A4AF8540073934A /* RequestParametersModels.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
 				B3BED9D62A49CE170073934A /* EnvironmentVariables.swift in Sources */,
 				B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */,
+				B3BED9E32A4AF8540073934A /* RequestParametersModels.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
 				B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */,
 				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,

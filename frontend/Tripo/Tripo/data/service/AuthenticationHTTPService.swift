@@ -11,17 +11,17 @@ import Foundation
 class AuthenticationHTTPService : HTTPService {
     static let shared = AuthenticationHTTPService()
     func sendloginUserRequest(email: String, password: String){
-        let requestDetailsDispatcher = RequestDetailsProvider.login
+        let requestDetailsProvider = RequestDetailsProvider.login
         
-        let parameters = [
-            "username" : [email],
-            "password" : [password]
-        ]
+        let parameters = LoginUserRequestParameters(
+            username: email.lowercased(),
+            password: password)
+        
         let requestDetails = RequestDetails(
-            method: requestDetailsDispatcher.method,
-            route : requestDetailsDispatcher.route,
-            format : requestDetailsDispatcher.format,
-            head : requestDetailsDispatcher.head,
+            method: requestDetailsProvider.method,
+            route : requestDetailsProvider.route,
+            format : requestDetailsProvider.format,
+            head : requestDetailsProvider.head,
             parameters: parameters,
             headers: nil
         )
@@ -29,17 +29,20 @@ class AuthenticationHTTPService : HTTPService {
         sendRequest(requestDetails: requestDetails)
     }
     func sendRegisterUserRequest(email: String, password : String){
-        let requestDetailsDispatcher = RequestDetailsProvider.register
+        let requestDetailsProvider = RequestDetailsProvider.register
         
-        let parameters = [
-            "username" : [email],
-            "password" : [password]
-        ]
+        let parameters = RegisterUserRequestParameters(
+            email: email.lowercased(),
+            password: password,
+            is_active: true,
+            is_superuser: false,
+            is_verified: false)
+        
         let requestDetails = RequestDetails(
-            method: requestDetailsDispatcher.method,
-            route : requestDetailsDispatcher.route,
-            format : requestDetailsDispatcher.format,
-            head : requestDetailsDispatcher.head,
+            method: requestDetailsProvider.method,
+            route : requestDetailsProvider.route,
+            format : requestDetailsProvider.format,
+            head : requestDetailsProvider.head,
             parameters: parameters,
             headers: nil
         )
@@ -47,14 +50,15 @@ class AuthenticationHTTPService : HTTPService {
     }
     
     func sendLogoutUserRequest(){
-        let requestDetailsDispatcher = RequestDetailsProvider.register
+        let requestDetailsProvider = RequestDetailsProvider.register
+        let parameters = LogoutUserRequestParameters()
         
         let requestDetails = RequestDetails(
-            method: requestDetailsDispatcher.method,
-            route : requestDetailsDispatcher.route,
-            format : requestDetailsDispatcher.format,
-            head : requestDetailsDispatcher.head,
-            parameters: nil,
+            method: requestDetailsProvider.method,
+            route : requestDetailsProvider.route,
+            format : requestDetailsProvider.format,
+            head : requestDetailsProvider.head,
+            parameters: parameters,
             headers: nil
         )
         sendRequest(requestDetails: requestDetails)

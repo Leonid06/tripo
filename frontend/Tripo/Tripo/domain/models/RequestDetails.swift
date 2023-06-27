@@ -14,6 +14,6 @@ struct RequestDetails {
     var format : String
     var head : String?
     var port : String?
-    var parameters : [String : [String]]?
+    var parameters : RequestParameters
     var headers : HTTPHeaders?
 }
