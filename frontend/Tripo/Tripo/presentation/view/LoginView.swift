@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct LoginView: View {
+
     @State private var email = ""
     @State private var password = ""
+    
+    let viewModel = LoginViewModel()
 
     var body: some View {
         VStack(spacing: 20) {
@@ -22,10 +25,7 @@ struct LoginView: View {
                 .frame(width: 200, height: 40)
 
             Button(action: {
-                Task {
-                    AuthenticationHTTPService.shared.sendloginUserRequest(email: email, password: password)
-                    
-                }
+                viewModel.sendlogInUserRequest(email: email, password: password)
             }) {
                 Text("Login")
                     .frame(width: 100)

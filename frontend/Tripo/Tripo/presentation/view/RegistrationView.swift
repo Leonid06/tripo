@@ -10,6 +10,8 @@ import SwiftUI
 struct RegistrationView: View {
     @State private var email = ""
     @State private var password = ""
+    
+    let viewModel = RegisterViewModel()
 
     var body: some View {
         VStack(spacing: 20) {
@@ -22,10 +24,7 @@ struct RegistrationView: View {
                 .frame(width: 200, height: 40)
 
             Button(action: {
-                Task {
-                    AuthenticationHTTPService.shared.sendRegisterUserRequest(email: email, password: password)
-                    
-                }
+                    viewModel.sendRegisterUserRequest(email: email, password: password)
             }) {
                 Text("Register")
                     .frame(width: 100)

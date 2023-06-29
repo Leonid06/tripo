@@ -10,7 +10,8 @@ import Foundation
 
 class AuthenticationHTTPService : HTTPService {
     static let shared = AuthenticationHTTPService()
-    func sendloginUserRequest(email: String, password: String){
+    
+    func sendLoginUserRequest(email: String, password: String, callback : @escaping (LogInUserRequestResponse) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.login
         
         let parameters = LoginUserRequestParameters(
@@ -26,9 +27,9 @@ class AuthenticationHTTPService : HTTPService {
             headers: nil
         )
         
-        sendRequest(requestDetails: requestDetails)
+        sendRequest(requestDetails: requestDetails, callback: callback)
     }
-    func sendRegisterUserRequest(email: String, password : String){
+    func sendRegisterUserRequest(email: String, password : String, callback : @escaping (RegisterUserRequestResponse) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.register
         
         let parameters = RegisterUserRequestParameters(
@@ -46,10 +47,10 @@ class AuthenticationHTTPService : HTTPService {
             parameters: parameters,
             headers: nil
         )
-        sendRequest(requestDetails: requestDetails)
+        sendRequest(requestDetails: requestDetails, callback: callback)
     }
     
-    func sendLogoutUserRequest(){
+    func sendLogoutUserRequest(callback: @escaping (LogOutUserRequestResponse) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.register
         let parameters = LogoutUserRequestParameters()
         
@@ -61,6 +62,6 @@ class AuthenticationHTTPService : HTTPService {
             parameters: parameters,
             headers: nil
         )
-        sendRequest(requestDetails: requestDetails)
+        sendRequest(requestDetails: requestDetails, callback: callback)
     }
 }
