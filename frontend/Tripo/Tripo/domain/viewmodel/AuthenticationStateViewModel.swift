@@ -24,6 +24,12 @@ class AuthenticationStateViewModel : ObservableObject {
         defaultsService.subscribeToKeyStateUpdateNotifications(key: jwtKeychainKey, in: &currentSubscriptions, callback: onJWTKeyStateUpdate)
     }
     
+    deinit {
+        currentSubscriptions.forEach {
+            subscription in subscription.cancel()
+        }
+    }
+    
   
     
     private func onJWTKeyStateUpdate(keyState: KeyState){

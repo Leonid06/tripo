@@ -21,6 +21,6 @@ class LoginViewModel : ObservableObject {
         guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
             return
         }
-        DefaultsService.shared.setValueForKey(key, value: response.jwtToken)
+        DefaultsService.shared.setValueForKey(key, value: response.access_token)
     }
 }

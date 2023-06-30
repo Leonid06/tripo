@@ -15,13 +15,20 @@ class DefaultsService {
     static let shared = DefaultsService()
     
     private let notificationStream = PassthroughSubject<KeyState, Never>()
+    private let userDefaults =  UserDefaults.standard
     
     private func getDefaultsValueByKey(key : String) -> String? {
-        return UserDefaults.standard.value(forKey: key) as? String
+        return userDefaults.value(forKey: key) as? String
     }
     
     func setValueForKey(_ key : String, value: String){
-        UserDefaults.standard.set(value, forKey: key)
+        userDefaults.set(value, forKey: key)
+        notificationStream.send(.hasValue)
+    }
+    
+    func resetValueForKey(key: String){
+        userDefaults.removeObject(forKey: key)
+        notificationStream.send(.empty)
     }
     
     func getKeyState(key: String) -> KeyState {

@@ -11,7 +11,7 @@ struct RegistrationView: View {
     @State private var email = ""
     @State private var password = ""
     
-    let viewModel = RegisterViewModel()
+    @StateObject private var viewModel = RegisterViewModel()
 
     var body: some View {
         VStack(spacing: 20) {

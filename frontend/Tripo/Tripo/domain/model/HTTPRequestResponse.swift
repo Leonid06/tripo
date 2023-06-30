@@ -10,19 +10,15 @@ import Foundation
 
 
 protocol HTTPRequestResponse : Decodable {
-    var statusCode : String { get set }
 }
 
 struct LogInUserRequestResponse : HTTPRequestResponse {
-    var statusCode: String
     
-    var jwtToken : String
+    var access_token : String
 }
 
 struct RegisterUserRequestResponse : HTTPRequestResponse {
-    var statusCode: String
-    
-    
+
 }
 
 struct LogOutUserRequestResponse : HTTPRequestResponse {

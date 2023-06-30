@@ -12,7 +12,7 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
-    let viewModel = LoginViewModel()
+    @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
         VStack(spacing: 20) {

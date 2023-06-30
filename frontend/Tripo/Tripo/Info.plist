@@ -4,6 +4,8 @@
 <dict>
 	<key>REST_HEAD</key>
 	<string>$(REST_HEAD)</string>
+	<key>JWT_KEYCHAIN_KEY</key>
+	<string>$(JWT_KEYCHAIN_KEY)</string>
 	<key>REST_PORT</key>
 	<string>$(REST_PORT)</string>
 </dict>
