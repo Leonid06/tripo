@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 class AuthenticationHTTPService : HTTPService {
@@ -51,8 +52,20 @@ class AuthenticationHTTPService : HTTPService {
     }
     
     func sendLogoutUserRequest(callback: @escaping (LogOutUserRequestResponse) -> () ){
-        let requestDetailsProvider = RequestDetailsProvider.register
+        let requestDetailsProvider = RequestDetailsProvider.logout
         let parameters = LogoutUserRequestParameters()
+        
+        guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
+            return
+        }
+        guard let jwtToken = DefaultsService.shared.getValueForKey(key) as? String else {
+            return
+        }
+        
+        let headers : HTTPHeaders = [
+            .authorization(bearerToken: jwtToken)
+        ]
+        
         
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,
@@ -60,7 +73,7 @@ class AuthenticationHTTPService : HTTPService {
             format : requestDetailsProvider.format,
             head : requestDetailsProvider.head,
             parameters: parameters,
-            headers: nil
+            headers: headers
         )
         sendRequest(requestDetails: requestDetails, callback: callback)
     }

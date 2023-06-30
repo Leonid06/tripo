@@ -42,6 +42,7 @@ class AuthenticationStateViewModel : ObservableObject {
 fileprivate extension AuthenticationStateViewModel {
     func mapKeyStateToAuthenticationState(keyState : KeyState){
         guard keyState == .hasValue else {
+            self.state = .loggedOut
             return
         }
         self.state = .authenticated

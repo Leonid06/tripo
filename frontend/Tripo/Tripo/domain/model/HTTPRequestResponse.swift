@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 
@@ -13,16 +14,16 @@ protocol HTTPRequestResponse : Decodable {
 }
 
 struct LogInUserRequestResponse : HTTPRequestResponse {
-    
     var access_token : String
 }
 
 struct RegisterUserRequestResponse : HTTPRequestResponse {
-
 }
 
-struct LogOutUserRequestResponse : HTTPRequestResponse {
-    var statusCode: String
+struct LogOutUserRequestResponse : HTTPRequestResponse, EmptyResponse {
+    static func emptyValue() -> LogOutUserRequestResponse {
+        return LogOutUserRequestResponse.init()
+    }
     
     
 }

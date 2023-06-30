@@ -21,14 +21,18 @@ class DefaultsService {
         return userDefaults.value(forKey: key) as? String
     }
     
-    func setValueForKey(_ key : String, value: String){
+    func setValueForKey(_ key : String, value: Any){
         userDefaults.set(value, forKey: key)
         notificationStream.send(.hasValue)
     }
     
-    func resetValueForKey(key: String){
+    func resetValueForKey(_ key : String){
         userDefaults.removeObject(forKey: key)
         notificationStream.send(.empty)
+    }
+    
+    func getValueForKey(_ key : String) -> Any? {
+        return userDefaults.value(forKey: key)
     }
     
     func getKeyState(key: String) -> KeyState {
