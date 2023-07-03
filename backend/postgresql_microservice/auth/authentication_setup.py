@@ -3,7 +3,7 @@ from fastapi_users import FastAPIUsers
 
 from postgresql_microservice.dependencies import get_user_manager
 from postgresql_microservice.models import User
-from postgresql_microservice.schemas import  UserRead, UserCreate
+from postgresql_microservice.schemas.auth.schemas import  UserRead, UserCreate
 from postgresql_microservice.dependencies import get_jwt_strategy
 
 bearer_transport = BearerTransport(tokenUrl='auth/jwt/login')
