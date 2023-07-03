@@ -23,7 +23,7 @@ class Plan(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(Text, index=True)
-    completed = Column(Boolean, index=True)
+    completed = Column(Boolean, index=True, default= False)
 
 
 class PlanToLandmark(Base):
