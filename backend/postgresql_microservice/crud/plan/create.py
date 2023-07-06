@@ -1,5 +1,3 @@
-from postgresql_microservice.dependencies import get_async_session
-from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from postgresql_microservice.schemas.plan.create import PlanManualCreateIn
 from postgresql_microservice.models import Plan, PlanToLandmark
