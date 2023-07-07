@@ -9,19 +9,19 @@ class SearchNetworkingClient(BaseNetworkingClient):
         self._limit = limit
         self._mapper = SearchResponseMapper()
 
-    def _compose_url_with_empty_query(self, latitude, longitude, radius):
+    def _compose_fuzzy_search_url_with_empty_query(self, latitude, longitude, radius):
         return  f'{self._base_url}/search/2/search/{latitude},{longitude}.json' \
                 f'?key={self._api_key}' \
                 f'&lat={latitude}&lon={longitude}&radius={radius}&idxSet=POI'
 
-    def _compose_url_with_query_text(self, query, latitude, longitude, radius):
+    def _compose_fuzzy_search_url_with_query_text(self, query, latitude, longitude, radius):
         return  f'{self._base_url}/search/2/search/{query}.json' \
                 f'?key={self._api_key}' \
                 f'&lat={latitude}&lon={longitude}&radius={radius}&idxSet=POI'
 
     def make_fuzzy_search_request(self, query, latitude, longitude, radius):
-        query_url = self._compose_url_with_query_text(query, latitude, longitude, radius) \
-            if query is not None else self._compose_url_with_empty_query(latitude, longitude, radius)
+        query_url = self._compose_fuzzy_search_url_with_query_text(query, latitude, longitude, radius) \
+            if query is not None else self._compose_fuzzy_search_url_with_empty_query(latitude, longitude, radius)
 
         response = requests.get(query_url)
         return self._mapper.map_fuzzy_search_result(response)

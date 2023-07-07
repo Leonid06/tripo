@@ -12,7 +12,8 @@ class SearchResponseMapper(BaseResponseMapper):
         for landmark_data in landmarks_data:
             print(landmark_data)
             response_unit = FuzzySearchMappedResponseUnit(
-                name=landmark_data['poi']['name']
+                name=landmark_data['poi']['name'],
+                id = landmark_data['id']
             )
             mapped_response.append(response_unit)
 
