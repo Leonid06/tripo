@@ -1,7 +1,4 @@
-import requests
-from typing import Dict
 
-from landmark_api_microservice.config import BASE_URL, API_KEY
 
 
 def get_landmarks(query: str, latitude: str, longitude: str, radius: str) -> Dict:
