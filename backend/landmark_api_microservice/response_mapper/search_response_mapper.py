@@ -10,6 +10,7 @@ class SearchResponseMapper(BaseResponseMapper):
         mapped_response = []
 
         for landmark_data in landmarks_data:
+            print(landmark_data)
             response_unit = FuzzySearchMappedResponseUnit(
                 name=landmark_data['poi']['name']
             )
