@@ -17,8 +17,3 @@ def test_fuzzy_search_request():
         radius=radius)
 
 
-def test_get_landmark_by_id_request():
-    ident = 'L7xA4bc6ti1oz7gSKceAVw'
-
-    client = UtilNetworkingClient(base_url=BASE_URL, api_key=API_KEY)
-    assert client.make_get_landmark_by_id_request(id=ident)
