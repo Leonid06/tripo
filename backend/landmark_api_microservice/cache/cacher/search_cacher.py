@@ -9,5 +9,11 @@ class SearchCacher(BaseCacher):
         for unit in units:
             cache_fuzzy_search_response_unit(unit=unit,redis=self._redis)
 
-    def get_fuzzy_search_response_unit_by_id(self, id : str):
-        get_cached_fuzzy_search_response_unit_by_id(id=id, redis=self._redis)
+    def get_fuzzy_search_response_units_by_identification(self, identifications : List[str]) -> List[FuzzySearchMappedResponseUnit]:
+        units = []
+
+        for identification in identifications:
+            unit = get_cached_fuzzy_search_response_unit_by_id(id=identification, redis= self._redis)
+            units.append(unit)
+
+        return units
