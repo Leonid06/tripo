@@ -1,3 +1,8 @@
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
+RABBITMQ_MAIN_EXCHANGE_NAME = os.getenv('RABBITMQ_MAIN_EXCHANGE_NAME')
+RABBITMQ_LANDMARK_GET_REQUEST_TOPIC_NAME = os.getenv('RABBITMQ_LANDMARK_GET_REQUEST_TOPIC_NAME')
