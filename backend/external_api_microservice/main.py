@@ -64,7 +64,7 @@ async def get_task_status(task_id: str):
     }
 
 # @app.post('/registration', summary='Create user', response_model=schemas.UserOut)
-# async def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
+# async_consumer def create_user(data: schemas.UserIn, db: Session = Depends(get_db)):
 #     user = crud.get_user_by_email(email=data.email, db=db)
 #     if user is not None:
 #         raise HTTPException(
@@ -76,7 +76,7 @@ async def get_task_status(task_id: str):
 #
 #
 # @app.post('/token', response_model=schemas.Token)
-# async def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
+# async_consumer def login_for_access_token(data: schemas.UserIn, db: Session = Depends(get_db)):
 #     user = crud.get_user_by_inward_schema(data=data, db=db)
 #     if not user:
 #         raise HTTPException(
