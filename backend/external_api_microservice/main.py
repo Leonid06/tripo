@@ -8,6 +8,7 @@ from postgresql_microservice.auth.authentication_setup import authentication_rou
 from external_api_microservice.utils import generate_random_uuid
 from external_api_microservice.routers.plan.create import plan_create_router
 from external_api_microservice.routers.plan.get import plan_get_router
+from external_api_microservice.routers.landmark.get import landmark_get_router
 
 app = FastAPI()
 
@@ -25,6 +26,7 @@ app.include_router(
 
 app.include_router(plan_create_router)
 app.include_router(plan_get_router)
+app.include_router(landmark_get_router)
 
 
 @app.get('/')

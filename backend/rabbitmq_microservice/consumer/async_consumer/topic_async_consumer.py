@@ -5,7 +5,7 @@ from aio_pika.abc import AbstractIncomingMessage
 
 class TopicAsyncConsumer(BaseAsyncConsumer):
 
-    async def consume(self, topic, exchange_name, callback):
+    async def consume(self, topic, exchange_name, asyncio_queue, callback):
         exchange = await self._channel.declare_exchange(
             exchange_name, ExchangeType.TOPIC
         )
@@ -17,4 +17,4 @@ class TopicAsyncConsumer(BaseAsyncConsumer):
             message: AbstractIncomingMessage
             async for message in iterator:
                 async with message.process():
-                    callback(queue, message.body)
+                    callback(queue, message.body, asyncio_queue)
