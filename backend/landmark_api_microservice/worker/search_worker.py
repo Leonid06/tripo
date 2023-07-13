@@ -25,6 +25,8 @@ class SearchWorker(BaseWorker):
         identification_list = map_landmark_get_request_message_body_to_identification_list(body=message_body)
         units = self._cacher.get_fuzzy_search_units_by_identification(identifications=identification_list)
         serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(units=units)
+
+        await self._producer.open_connection()
         await self._producer.produce(
             topic=response_topic_name,
             exchange_name=response_exchange_name,
@@ -37,6 +39,7 @@ class SearchWorker(BaseWorker):
                                           request_topic_name,
                                           response_topic_name):
         callback_queue = Queue()
+        await self._consumer.open_connection()
         await self._consumer.consume(
             topic=request_topic_name,
             exchange_name=request_exchange_name,
