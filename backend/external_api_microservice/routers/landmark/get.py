@@ -10,6 +10,8 @@ from rabbitmq_microservice.producer.async_producer.topic_async_producer import T
 from external_api_microservice.config import RABBITMQ_MAIN_EXCHANGE_NAME, \
     RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME, RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME
 from external_api_microservice.routers.landmark.callback import get_landmark_by_id_broker_request_callback
+from external_api_microservice.routers.landmark.util.get_util import map_get_landmark_inward_schema_to_message_body, \
+    map_get_landmark_message_body_to_outward_schema
 
 landmark_get_router = APIRouter(
     prefix='/landmark/get',
@@ -19,10 +21,7 @@ landmark_get_router = APIRouter(
 
 @landmark_get_router.post('by-id')
 async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(get_async_session)) -> GetLandmarkOut:
-
-    body = {
-        'id' : payload.id
-    }
+    body = map_get_landmark_inward_schema_to_message_body(payload)
     producer = TopicAsyncProducer()
     await producer.open_connection()
     await producer.produce(topic=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
@@ -38,10 +37,9 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
                            callback_asyncio_queue= consumption_queue)
 
     deserialized_message_body = await consumption_queue.get()
+    outward_schema = map_get_landmark_message_body_to_outward_schema(deserialized_message_body)
 
-    return GetLandmarkOut(
-        name=deserialized_message_body['name']
-    )
+    return outward_schema
 
 
 
