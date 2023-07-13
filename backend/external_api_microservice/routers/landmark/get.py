@@ -35,7 +35,7 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
     await consumer.consume(topic=RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME,
                            exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
                            callback=get_landmark_by_id_broker_request_callback,
-                           asyncio_queue= consumption_queue)
+                           callback_asyncio_queue= consumption_queue)
 
     deserialized_message_body = await consumption_queue.get()
 
