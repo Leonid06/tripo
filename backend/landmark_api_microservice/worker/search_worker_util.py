@@ -1,10 +1,10 @@
 import json
 
 
-def landmark_get_request_topic_consume_callback(message_queue, message_body, callback_asyncio_queue):
-    message_queue.cancel()
-    deserialized_message_body = json.loads(message_body)
-    callback_asyncio_queue.put(deserialized_message_body)
+async def landmark_get_request_topic_consume_callback(message, callback_asyncio_queue):
+    print('Received message')
+    deserialized_message_body = json.loads(message.body)
+    await callback_asyncio_queue.put(deserialized_message_body)
 
 
 def map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(units):

@@ -1,5 +1,5 @@
-from landmark_api_microservice.client.search_networking_client import SearchNetworkingClient
-from landmark_api_microservice.client.util_networking_client import UtilNetworkingClient
+from landmark_api_microservice.networking_client.search_networking_client import SearchNetworkingClient
+from landmark_api_microservice.networking_client.util_networking_client import UtilNetworkingClient
 from landmark_api_microservice.config import BASE_URL, API_KEY
 
 

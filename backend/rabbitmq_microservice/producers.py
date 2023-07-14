@@ -16,7 +16,7 @@ class BaseProducer:
             self._channel.basic_publish(
                 exchange=self._exchange_type,
                 routing_key=self._queue_name,
-                body=message)
+                body=bytes(message))
         except AMQPError as amqpError:
             pass
 

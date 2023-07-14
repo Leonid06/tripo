@@ -1,5 +1,5 @@
 import requests
-from landmark_api_microservice.client.base_networking_client import BaseNetworkingClient
+from landmark_api_microservice.networking_client.base_networking_client import BaseNetworkingClient
 from landmark_api_microservice.response_mapper.search_response_mapper import SearchResponseMapper
 
 

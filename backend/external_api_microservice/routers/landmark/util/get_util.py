@@ -1,28 +1,33 @@
-from postgresql_microservice.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut, GetLandmarkOutUnit
-from typing import Dict
+import json
 
-def map_get_landmark_inward_schema_to_message_body(schema : GetLandmarkIn) -> Dict:
+from postgresql_microservice.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut, GetLandmarkOutUnit
+
+
+def map_get_landmark_inward_schema_to_message_body(schema: GetLandmarkIn) -> str:
     message_body = {
-        'landmark' : []
+        'landmark': []
     }
     landmark_list = message_body['landmark']
     landmarks = schema.landmark
 
     for landmark in landmarks:
         landmark_list.append({
-            'id' : landmark.id
+            'id': landmark.id
         })
 
-    return message_body
+    return json.dumps(message_body)
 
-def map_get_landmark_message_body_to_outward_schema(body :Dict) -> GetLandmarkOut :
+
+def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut:
+    deserialized_body = json.loads(body)
+
     unit_list = []
-    landmarks = body['landmark']
+    landmarks = deserialized_body['landmark']
 
     for landmark in landmarks:
         unit = GetLandmarkOutUnit(
-            name = landmark['name'],
-            id = landmark['id']
+            name=landmark['name'],
+            id=landmark['id']
         )
         unit_list.append(unit)
 
