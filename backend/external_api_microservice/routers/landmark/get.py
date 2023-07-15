@@ -1,4 +1,6 @@
 import asyncio
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,10 +14,13 @@ from external_api_microservice.exception import MappingError, NetworkClientDataE
 
 from postgresql_microservice.dependencies import get_async_session
 from postgresql_microservice.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut
+
 landmark_get_router = APIRouter(
     prefix='/landmark/get',
     tags=['/landmark/get']
 )
+
+logger = logging.getLogger(__name__)
 
 
 @landmark_get_router.post('by-id')
@@ -23,6 +28,7 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
     try:
         message_body = map_get_landmark_inward_schema_to_message_body(payload)
     except MappingError as error:
+        logger.exception(error)
         raise HTTPException(status_code=400, detail = 'Incorrect payload schema') from error
 
     try:
@@ -42,12 +48,15 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
             timeout= LANDMARK_GET_BY_ID_REQUEST_TIMEOUT)
 
     except TypeError as error:
+        logger.exception(error)
         raise HTTPException(status_code=500) from error
     except (asyncio.TimeoutError, NetworkClientBrokerError, NetworkClientDataError) as error:
+        logger.exception(error)
         raise HTTPException(status_code=504) from error
     try:
         outward_schema = map_get_landmark_message_body_to_outward_schema(message_body)
     except MappingError as error:
+        logger.exception(error)
         raise HTTPException(status_code=500) from error
 
     return outward_schema
