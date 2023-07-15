@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+LANDMARK_GET_BY_ID_REQUEST_TIMEOUT = os.getenv('LANDMARK_GET_BY_ID_REQUEST_TIMEOUT')
+
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST')
 RABBITMQ_USER = os.getenv('RABBITMQ_USER')
 RABBITMQ_PASSWORD = os.getenv('RABBITMQ_PASSWORD')
