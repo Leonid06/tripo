@@ -22,12 +22,8 @@ def map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_
                 'name': unit.name
             })
         message_body = json.dumps(body)
-    except KeyError:
-        raise MappingError
-    except TypeError:
-        raise MappingError
-    except json.JSONDecodeError:
-        raise MappingError
+    except (KeyError, TypeError, json.JSONDecodeError) as error:
+        raise MappingError from error
 
     return message_body
 
@@ -38,9 +34,7 @@ def map_landmark_get_request_message_body_to_identification_list(body):
         identifications = []
         for landmark in landmarks:
             identifications.append(landmark['id'])
-    except TypeError:
-        raise MappingError
-    except KeyError:
+    except (TypeError, KeyError):
         raise MappingError
 
     return identifications

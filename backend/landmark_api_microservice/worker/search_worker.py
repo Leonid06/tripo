@@ -1,4 +1,5 @@
 import asyncio
+import logging
 
 from landmark_api_microservice.worker.base_worker import BaseWorker
 from landmark_api_microservice.networking_client.search_networking_client import SearchNetworkingClient
@@ -10,6 +11,8 @@ from landmark_api_microservice.worker.search_worker_util import landmark_get_req
 from landmark_api_microservice.models.response.search import FuzzySearchMappedResponseUnit
 from landmark_api_microservice.exception import MappingError, DataError, CacheError, WorkerResponseError
 from rabbitmq_microservice.broker_client.base_broker_client import BaseBrokerClient
+
+logger = logging.getLogger(__name__)
 
 
 class SearchWorker(BaseWorker):
@@ -45,8 +48,9 @@ class SearchWorker(BaseWorker):
             # ]
             serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(
                 units=units)
-        except (MappingError, DataError, CacheError):
-            raise WorkerResponseError
+        except (MappingError, DataError, CacheError) as error:
+            logger.exception(error)
+            raise WorkerResponseError from error
 
         return serialized_body
 
@@ -63,7 +67,8 @@ class SearchWorker(BaseWorker):
                 response_message_body = self.__produce_response_message_to_landmark_get_request(
                     request_message_body=request_message_body)
 
-            except WorkerResponseError:
+            except WorkerResponseError as error:
+                logger.exception(error)
                 response_message_body = compose_error_landmark_get_response_body()
 
             await self._broker_client.send_message(
