@@ -45,7 +45,7 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
                 request_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
                 response_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME
             ),
-            timeout= LANDMARK_GET_BY_ID_REQUEST_TIMEOUT)
+            timeout= int(LANDMARK_GET_BY_ID_REQUEST_TIMEOUT))
 
     except TypeError as error:
         logger.exception(error)

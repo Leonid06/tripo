@@ -61,7 +61,7 @@ class SearchWorker(BaseWorker):
                                                         consumption_queue
                                                         ):
         try:
-            self._broker_client.consume_message(
+            await self._broker_client.consume_message(
                 topic_name=request_topic_name,
                 exchange_name=request_exchange_name,
                 callback=landmark_get_request_topic_consume_callback,
