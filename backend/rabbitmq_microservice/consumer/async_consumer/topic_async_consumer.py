@@ -25,6 +25,5 @@ class TopicAsyncConsumer(BaseAsyncConsumer):
                     if consumption_mode == ConsumptionMode.CANCEL_ON_FIRST_MESSAGE:
                         break
 
-        print('here')
 
 

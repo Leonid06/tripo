@@ -6,8 +6,8 @@ async def landmark_get_request_topic_consume_callback(message, callback_asyncio_
     try:
         deserialized_message_body = json.loads(message.body)
         await callback_asyncio_queue.put(deserialized_message_body)
-    except json.JSONDecodeError:
-        raise MappingError
+    except json.JSONDecodeError as error:
+        raise MappingError from error
 
 
 def map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(units):
@@ -34,8 +34,8 @@ def map_landmark_get_request_message_body_to_identification_list(body):
         identifications = []
         for landmark in landmarks:
             identifications.append(landmark['id'])
-    except (TypeError, KeyError):
-        raise MappingError
+    except (TypeError, KeyError) as error:
+        raise MappingError from error
 
     return identifications
 

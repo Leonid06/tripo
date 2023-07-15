@@ -1,6 +1,9 @@
 import asyncio
 import logging
 
+from rabbitmq_microservice.broker_client.base_broker_client import BaseBrokerClient
+from rabbitmq_microservice.exception import BrokerClientDataError, BrokerClientConnectionError
+
 from landmark_api_microservice.worker.base_worker import BaseWorker
 from landmark_api_microservice.networking_client.search_networking_client import SearchNetworkingClient
 from landmark_api_microservice.cache.cacher.search_cacher import SearchCacher
@@ -10,7 +13,6 @@ from landmark_api_microservice.worker.search_worker_util import landmark_get_req
     compose_error_landmark_get_response_body
 from landmark_api_microservice.models.response.search import FuzzySearchMappedResponseUnit
 from landmark_api_microservice.exception import MappingError, DataError, CacheError, WorkerResponseError
-from rabbitmq_microservice.broker_client.base_broker_client import BaseBrokerClient
 
 logger = logging.getLogger(__name__)
 
@@ -49,10 +51,24 @@ class SearchWorker(BaseWorker):
             serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(
                 units=units)
         except (MappingError, DataError, CacheError) as error:
-            logger.exception(error)
             raise WorkerResponseError from error
 
         return serialized_body
+
+    async def __subscribe_to_landmark_get_request_topic(self,
+                                                        request_topic_name,
+                                                        request_exchange_name,
+                                                        consumption_queue
+                                                        ):
+        try:
+            self._broker_client.consume_message(
+                topic_name=request_topic_name,
+                exchange_name=request_exchange_name,
+                callback=landmark_get_request_topic_consume_callback,
+                consumption_queue=consumption_queue
+            )
+        except (BrokerClientDataError, BrokerClientConnectionError) as error:
+            logger.exception(error)
 
     async def __process_landmark_get_request(self,
                                              response_exchange_name,
@@ -71,11 +87,14 @@ class SearchWorker(BaseWorker):
                 logger.exception(error)
                 response_message_body = compose_error_landmark_get_response_body()
 
-            await self._broker_client.send_message(
-                topic_name=response_topic_name,
-                exchange_name=response_exchange_name,
-                message_body=response_message_body
-            )
+            try:
+                await self._broker_client.send_message(
+                    topic_name=response_topic_name,
+                    exchange_name=response_exchange_name,
+                    message_body=response_message_body
+                )
+            except (BrokerClientDataError, BrokerClientConnectionError) as error:
+                logger.exception(error)
 
     async def subscribe_to_landmark_get_request(self,
                                                 request_exchange_name,
@@ -85,10 +104,9 @@ class SearchWorker(BaseWorker):
         consumption_queue = asyncio.Queue()
 
         await asyncio.gather(
-            self._broker_client.consume_message(
-                topic_name=request_topic_name,
-                exchange_name=request_exchange_name,
-                callback=landmark_get_request_topic_consume_callback,
+            self.__subscribe_to_landmark_get_request_topic(
+                request_exchange_name=request_exchange_name,
+                request_topic_name=request_topic_name,
                 consumption_queue=consumption_queue
             ),
             self.__process_landmark_get_request(

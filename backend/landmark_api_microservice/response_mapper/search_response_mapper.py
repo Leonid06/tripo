@@ -1,5 +1,4 @@
 from requests import RequestException
-import logging
 
 from landmark_api_microservice.response_mapper.base_response_mapper import BaseResponseMapper
 from landmark_api_microservice.models.response.search import FuzzySearchMappedResponseUnit
@@ -13,7 +12,6 @@ class SearchResponseMapper(BaseResponseMapper):
             deserialized_response = response.json()
             landmarks_data = deserialized_response['results']
         except (RequestException, KeyError) as error:
-            logging.exception(error)
             raise MappingError from error
 
         mapped_response = []
@@ -26,7 +24,6 @@ class SearchResponseMapper(BaseResponseMapper):
                 )
                 mapped_response.append(response_unit)
         except (TypeError, KeyError) as error:
-            logging.exception(error)
             raise MappingError from error
 
         return mapped_response
