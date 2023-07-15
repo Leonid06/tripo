@@ -1,20 +1,32 @@
+from requests import RequestException
+
 from landmark_api_microservice.response_mapper.base_response_mapper import BaseResponseMapper
 from landmark_api_microservice.models.response.search import FuzzySearchMappedResponseUnit
-
+from landmark_api_microservice.exception import MappingError
 
 class SearchResponseMapper(BaseResponseMapper):
 
     def map_fuzzy_search_result(self, response):
-        deserialized_response = response.json()
-        landmarks_data = deserialized_response['results']
+        try:
+            deserialized_response = response.json()
+            landmarks_data = deserialized_response['results']
+        except RequestException:
+            raise MappingError
+        except KeyError:
+            raise MappingError
+
         mapped_response = []
 
-        for landmark_data in landmarks_data:
-            print(landmark_data)
-            response_unit = FuzzySearchMappedResponseUnit(
-                name=landmark_data['poi']['name'],
-                id = landmark_data['id']
-            )
-            mapped_response.append(response_unit)
+        try:
+            for landmark_data in landmarks_data:
+                response_unit = FuzzySearchMappedResponseUnit(
+                    name=landmark_data['poi']['name'],
+                    id = landmark_data['id']
+                )
+                mapped_response.append(response_unit)
+        except TypeError:
+            raise MappingError
+        except KeyError:
+            raise MappingError
 
         return mapped_response

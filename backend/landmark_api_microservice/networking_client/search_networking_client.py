@@ -1,7 +1,7 @@
 import requests
 from landmark_api_microservice.networking_client.base_networking_client import BaseNetworkingClient
 from landmark_api_microservice.response_mapper.search_response_mapper import SearchResponseMapper
-
+from landmark_api_microservice.exception import MappingError, NetworkError, DataError
 
 class SearchNetworkingClient(BaseNetworkingClient):
     def __init__(self, base_url, api_key, limit=50):
@@ -23,8 +23,16 @@ class SearchNetworkingClient(BaseNetworkingClient):
         query_url = self._compose_fuzzy_search_url_with_query_text(query, latitude, longitude, radius) \
             if query is not None else self._compose_fuzzy_search_url_with_empty_query(latitude, longitude, radius)
 
-        response = requests.get(query_url)
-        return self._mapper.map_fuzzy_search_result(response)
+        try:
+            response = requests.get(query_url)
+            mapped_request = self._mapper.map_fuzzy_search_result(response)
+        except requests.RequestException:
+            raise NetworkError
+        except MappingError:
+            raise DataError
+
+        return mapped_request
+
 
     @property
     def limit(self):

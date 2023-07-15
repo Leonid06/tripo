@@ -5,10 +5,11 @@ from landmark_api_microservice.networking_client.search_networking_client import
 from landmark_api_microservice.cache.cacher.search_cacher import SearchCacher
 from landmark_api_microservice.worker.search_worker_util import landmark_get_request_topic_consume_callback, \
     map_landmark_get_request_message_body_to_identification_list, \
-    map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body
+    map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body, \
+    compose_error_landmark_get_response_body
 from landmark_api_microservice.models.response.search import FuzzySearchMappedResponseUnit
+from landmark_api_microservice.exception import MappingError, DataError, CacheError, WorkerResponseError
 from rabbitmq_microservice.broker_client.base_broker_client import BaseBrokerClient
-
 
 
 class SearchWorker(BaseWorker):
@@ -33,14 +34,20 @@ class SearchWorker(BaseWorker):
                          cacher=cacher)
 
     def __produce_response_message_to_landmark_get_request(self, request_message_body):
-        identification_list = map_landmark_get_request_message_body_to_identification_list(body=request_message_body)
-        # units = self._cacher.get_fuzzy_search_response_units_by_identification(identifications=identification_list)
-        units = [
-            FuzzySearchMappedResponseUnit(
-                id='123',
-                name='string')
-        ]
-        serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(units=units)
+        try:
+            identification_list = map_landmark_get_request_message_body_to_identification_list(
+                body=request_message_body)
+            units = self._cacher.get_fuzzy_search_response_units_by_identification(identifications=identification_list)
+            # units = [
+            #     FuzzySearchMappedResponseUnit(
+            #         id='123',
+            #         name='string')
+            # ]
+            serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(
+                units=units)
+        except (MappingError, DataError, CacheError):
+            raise WorkerResponseError
+
         return serialized_body
 
     async def __process_landmark_get_request(self,
@@ -50,10 +57,14 @@ class SearchWorker(BaseWorker):
                                              ):
 
         while True:
-            request_message_body = await consumption_queue.get()
+            try:
+                request_message_body = await consumption_queue.get()
 
-            response_message_body = self.__produce_response_message_to_landmark_get_request(
-                request_message_body=request_message_body)
+                response_message_body = self.__produce_response_message_to_landmark_get_request(
+                    request_message_body=request_message_body)
+
+            except WorkerResponseError:
+                response_message_body = compose_error_landmark_get_response_body()
 
             await self._broker_client.send_message(
                 topic_name=response_topic_name,

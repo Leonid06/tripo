@@ -29,6 +29,8 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
     )
     consumption_queue = asyncio.Queue()
 
+    print(RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME)
+
     await asyncio.gather(
         broker_client.send_message(
             topic_name=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
@@ -44,6 +46,7 @@ async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(
         )
     )
     message_body = await consumption_queue.get()
+
     outward_schema = map_get_landmark_message_body_to_outward_schema(message_body)
 
     return outward_schema
