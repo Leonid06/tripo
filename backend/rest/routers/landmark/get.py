@@ -23,7 +23,7 @@ landmark_get_router = APIRouter(
 logger = logging.getLogger(__name__)
 
 
-@landmark_get_router.post('by-id')
+@landmark_get_router.post('/by-id')
 async def get_landmark_by_id(payload: GetLandmarkIn, db: AsyncSession = Depends(get_async_session)) -> GetLandmarkOut:
     try:
         message_body = map_get_landmark_inward_schema_to_message_body(payload)
