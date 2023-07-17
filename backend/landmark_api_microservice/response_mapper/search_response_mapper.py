@@ -11,7 +11,7 @@ class SearchResponseMapper(BaseResponseMapper):
         try:
             deserialized_response = response.json()
             landmarks_data = deserialized_response['results']
-        except (RequestException, KeyError) as error:
+        except (RequestException, KeyError, AttributeError) as error:
             raise MappingError from error
 
         mapped_response = []

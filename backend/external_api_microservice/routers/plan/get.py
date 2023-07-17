@@ -22,7 +22,7 @@ async def get_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession = Depends(get_
         raise HTTPException(status_code=504) from error
     except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError) as error:
         raise HTTPException(status_code=502) from error
-    except DatabaseNoResultFoundError as error:
+    except DatabaseNoResultFoundError:
         plan = PlanGetByIdOut()
 
     return plan

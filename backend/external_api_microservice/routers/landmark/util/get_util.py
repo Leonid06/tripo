@@ -25,11 +25,11 @@ def map_get_landmark_inward_schema_to_message_body(schema: GetLandmarkIn) -> str
 
 
 def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut:
-    deserialized_body = json.loads(body)
 
     unit_list = []
 
     try:
+        deserialized_body = json.loads(body)
         landmarks = deserialized_body['landmark']
 
         for landmark in landmarks:
@@ -42,7 +42,7 @@ def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut
         schema = GetLandmarkOut(
             landmark=unit_list
         )
-    except (KeyError, TypeError) as error:
+    except (KeyError, TypeError, AttributeError) as error:
         raise MappingError from error
 
     return schema

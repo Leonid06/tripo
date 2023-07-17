@@ -9,7 +9,7 @@ def cache_fuzzy_search_response_unit(unit: FuzzySearchMappedResponseUnit, redis:
             'name': unit.name
         }
         redis.hset(unit.id, mapping=data)
-    except (RedisError, TypeError) as error:
+    except (RedisError, TypeError, AttributeError) as error:
         raise CacheError from error
 
 
@@ -21,5 +21,5 @@ def get_cached_fuzzy_search_response_unit_by_id(id: str, redis: Redis) -> FuzzyS
             name=data['name']
         )
 
-    except (RedisError, KeyError) as error:
+    except (RedisError, KeyError, AttributeError) as error:
         raise CacheError from error

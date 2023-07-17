@@ -26,7 +26,7 @@ async def save_plan_created_manually(payload: PlanManualCreateIn, db: AsyncSessi
                 db.add(plan_to_landmark)
 
             await db.commit()
-    except TypeError as error:
+    except (TypeError, AttributeError) as error:
         raise DatabaseDataError from error
     except DisconnectionError as error:
         raise DatabaseDisconnectionError from error
