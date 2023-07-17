@@ -43,7 +43,7 @@ class SearchWorker(BaseWorker):
                 identifications=identification_list)
             serialized_message_body = map_fuzzy_search_response_units_to_response_message_body(
                 units=fuzzy_search_response_units)
-        except (MappingError, DataError, CacheError) as error:
+        except (MappingError, DataError, CacheError, AttributeError, TypeError) as error:
             raise WorkerResponseError from error
 
         return serialized_message_body
@@ -51,14 +51,15 @@ class SearchWorker(BaseWorker):
     def __produce_response_message_to_landmark_search_by_radius_request(self, request_message_body):
         try:
             fuzzy_search_response_units = self._networking_client.make_fuzzy_search_request(
-                query='',
+                query=None,
                 latitude=request_message_body['latitude'],
-                longitude=request_message_body['longitude']
+                longitude=request_message_body['longitude'],
+                radius=request_message_body['radius']
             )
             serialized_message_body = map_fuzzy_search_response_units_to_response_message_body(
                 units=fuzzy_search_response_units
             )
-        except (MappingError, NetworkError, DataError, KeyError) as error:
+        except (MappingError, NetworkError, DataError, KeyError, AttributeError, TypeError) as error:
             raise WorkerResponseError from error
         return serialized_message_body
 
