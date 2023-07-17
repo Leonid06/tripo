@@ -30,6 +30,7 @@ def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut
 
     try:
         deserialized_body = json.loads(body)
+        print(deserialized_body)
         landmarks = deserialized_body['landmark']
 
         for landmark in landmarks:

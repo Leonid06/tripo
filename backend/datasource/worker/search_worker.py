@@ -43,11 +43,6 @@ class SearchWorker(BaseWorker):
             identification_list = map_landmark_get_request_message_body_to_identification_list(
                 body=request_message_body)
             units = self._cacher.get_fuzzy_search_response_units_by_identification(identifications=identification_list)
-            # units = [
-            #     FuzzySearchMappedResponseUnit(
-            #         id='123',
-            #         name='string')
-            # ]
             serialized_body = map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body(
                 units=units)
         except (MappingError, DataError, CacheError) as error:
