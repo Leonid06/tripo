@@ -13,7 +13,7 @@ class PlanGetByIdIn(BaseModel):
 
 
 class PlanGetByIdOut(BaseModel):
-    plan_id: int
-    name: str
-    description: str
-    locations: List[PlanToLandmarkOut]
+    plan_id: int | None
+    name: str | None
+    description: str | None
+    locations: List[PlanToLandmarkOut] | None
