@@ -1,6 +1,6 @@
 import json
 
-from rest.exception import MappingError
+from rest.exception import MappingError, CallbackDataError
 
 from db.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut, GetLandmarkOutUnit
 
@@ -18,14 +18,13 @@ def map_get_landmark_inward_schema_to_message_body(schema: GetLandmarkIn) -> str
                 'id': landmark.id
             })
         message_body = json.dumps(message_body)
-    except (KeyError, TypeError) as error:
+    except (KeyError, AttributeError, TypeError) as error:
         raise MappingError from error
 
     return message_body
 
 
 def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut:
-
     unit_list = []
 
     try:
@@ -47,3 +46,10 @@ def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut
         raise MappingError from error
 
     return schema
+
+
+async def get_landmark_by_id_broker_request_callback(message, asyncio_queue):
+    try:
+        await asyncio_queue.put(message.body)
+    except (TypeError, AttributeError) as error:
+        raise CallbackDataError from error

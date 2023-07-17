@@ -11,7 +11,6 @@ from datasource.worker.search_worker_util import landmark_get_request_topic_cons
     map_landmark_get_request_message_body_to_identification_list, \
     map_fuzzy_search_response_units_to_serialized_landmark_get_response_message_body, \
     compose_error_landmark_get_response_body
-from datasource.models.response.search import FuzzySearchMappedResponseUnit
 from datasource.exception import MappingError, DataError, CacheError, WorkerResponseError
 
 logger = logging.getLogger(__name__)

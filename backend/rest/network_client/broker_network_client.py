@@ -1,6 +1,5 @@
 import asyncio
 
-from rest.routers.landmark.callback import get_landmark_by_id_broker_request_callback
 from rest.exception import CallbackDataError, NetworkClientDataError, NetworkClientBrokerError
 
 from broker.broker_client.base_broker_client import BaseBrokerClient
@@ -14,12 +13,12 @@ class BrokerNetworkClient:
         self.__broker_user = broker_user
         self.__broker_password = broker_password
 
-    async def delegate_get_landmark_by_id_request_to_broker(self, message_body,
-                                                            request_topic_name,
-                                                            response_topic_name,
-                                                            request_exchange_name,
-                                                            response_exchange_name
-                                                            ):
+    async def delegate_request_to_broker(self, message_body,
+                                         request_topic_name,
+                                         response_topic_name,
+                                         request_exchange_name,
+                                         response_exchange_name,
+                                         callback):
         response_consumption_queue = asyncio.Queue()
 
         try:
@@ -41,7 +40,7 @@ class BrokerNetworkClient:
                 broker_client.consume_message(
                     topic_name=response_topic_name,
                     exchange_name='rabbitmq_main_exchange_name',
-                    callback=get_landmark_by_id_broker_request_callback,
+                    callback= callback,
                     consumption_queue=response_consumption_queue,
                     consumption_mode=ConsumptionMode.CANCEL_ON_FIRST_MESSAGE
                 )
