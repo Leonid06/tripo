@@ -15,20 +15,20 @@ async def main():
                           broker_password=RABBITMQ_PASSWORD
                           )
 
-    await worker.subscribe_to_landmark_get_request(
-        request_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
-        response_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
-        request_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
-        response_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME
+    await asyncio.gather(
+        worker.subscribe_to_landmark_get_request(
+            request_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
+            response_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
+            request_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
+            response_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME
+        ),
+        worker.subscribe_to_landmark_search_by_radius_request(
+            request_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
+            response_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
+            request_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
+            response_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME
+        )
     )
-
-    await worker.subscribe_to_landmark_search_by_radius_request(
-        request_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
-        response_exchange_name=RABBITMQ_MAIN_EXCHANGE_NAME,
-        request_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME,
-        response_topic_name=RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME
-    )
-
 
 if __name__ == '__main__':
     asyncio.run(main())
