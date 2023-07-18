@@ -24,6 +24,8 @@ struct LogOutUserRequestResponse : HTTPRequestResponse, EmptyResponse {
     static func emptyValue() -> LogOutUserRequestResponse {
         return LogOutUserRequestResponse.init()
     }
-    
-    
+}
+
+struct PlanManualCreateRequestResponse : HTTPRequestResponse {
+    var message : String 
 }

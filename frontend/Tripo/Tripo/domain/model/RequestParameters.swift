@@ -30,4 +30,15 @@ struct LoginUserRequestParameters : RequestParameters {
     var password : String
 }
 
+struct ManualPlanCreateRequestParameters : RequestParameters {
+    var name : String
+    var description : String
+    var plan_to_landmark : Array<ManualPlanCreateRequestParametersUnit>
+}
+
+struct ManualPlanCreateRequestParametersUnit : RequestParameters {
+    var landmark_id : String
+    var visit_date : String
+}
+
 
