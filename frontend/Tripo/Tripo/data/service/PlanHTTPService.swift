@@ -18,5 +18,4 @@ class PlanHTTPService : HTTPService {
         
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
-    
 }

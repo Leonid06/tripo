@@ -17,7 +17,7 @@ class HTTPService {
         let parameterEncoder = try? HTTPServiceUtil.getAlamofireEncoderForFormat(format: requestDetails.format)
         
         AF.request(url, method: requestDetails.method, parameters: requestDetails.parameters, encoder: parameterEncoder ?? JSONParameterEncoder.default, headers: requestDetails.headers).responseDecodable(of: T.self){ response in
-            debugPrint(response)
+            
             if let value = response.value {
                 callback(value)
             }else {
