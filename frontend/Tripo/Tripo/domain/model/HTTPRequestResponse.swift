@@ -13,6 +13,9 @@ import Alamofire
 protocol HTTPRequestResponse : Decodable {
 }
 
+protocol HTTPRequestResponseUnit : Decodable {
+}
+
 struct LogInUserRequestResponse : HTTPRequestResponse {
     var access_token : String
 }
@@ -28,4 +31,18 @@ struct LogOutUserRequestResponse : HTTPRequestResponse, EmptyResponse {
 
 struct PlanManualCreateRequestResponse : HTTPRequestResponse {
     var message : String 
+}
+
+struct LandmarkSearchByRadiusRequestResponse  : HTTPRequestResponse {
+    var landmark : Array<LandmarkSearchByRadiusRequestResponseUnit>
+}
+
+struct LandmarkSearchByRadiusRequestResponseUnit : HTTPRequestResponseUnit {
+    var id : String
+    var name : String
+}
+
+struct LandmarkGetByIdRequestResponse : HTTPRequestResponse {
+    var id : String
+    var name : String 
 }

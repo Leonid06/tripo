@@ -41,4 +41,14 @@ struct ManualPlanCreateRequestParametersUnit : RequestParameters {
     var visit_date : String
 }
 
+struct LandmarkSearchByRadiusParameters : RequestParameters {
+    var latitude : String
+    var longitude : String
+    var radius : String
+}
+
+struct LandmarkGetByIdParameters : RequestParameters {
+    var id : String
+}
+
 

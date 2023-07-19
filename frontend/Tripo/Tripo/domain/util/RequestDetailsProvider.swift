@@ -13,10 +13,20 @@ enum RequestDetailsProvider {
     case register
     case logout
     case planManualCreate
+    case landmarkSearchByRadius
+    case landmarkGetById
     
     var head : String? {
         switch self {
-        case .login, .register, .logout, .planManualCreate:
+        case
+                .login,
+                .register,
+                .logout,
+                .planManualCreate,
+                .landmarkSearchByRadius,
+                .landmarkGetById
+                
+            :
             return EnvironmentVariables.REST_HEAD as? String
         }
     }
@@ -31,19 +41,32 @@ enum RequestDetailsProvider {
             return "auth/logout"
         case .planManualCreate:
             return "plan/create"
+        case .landmarkSearchByRadius:
+            return "landmark/search/by-radius"
+        case .landmarkGetById:
+            return "landmak/get/by-id"
         }
     }
     
     var method : HTTPMethod {
         switch self {
-        case .login, .register, .logout, .planManualCreate:
+        case    .login,
+                .register,
+                .logout,
+                .planManualCreate,
+                .landmarkSearchByRadius,
+                .landmarkGetById:
             return .post
         }
     }
     
     var format : String {
         switch self {
-        case  .register, .logout, .planManualCreate:
+        case    .register,
+                .logout,
+                .planManualCreate,
+                .landmarkSearchByRadius,
+                .landmarkGetById:
             return "application/json"
         case .login:
             return "application/x-www-form-urlencoded"
