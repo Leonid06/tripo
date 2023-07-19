@@ -25,17 +25,19 @@ class HTTPService {
                 }
             case .failure(let error):
                 switch error {
-                case .createURLRequestFailed(let error):
+                case .createURLRequestFailed:
                     return
-                case .responseSerializationFailed(let reason):
+                case .responseSerializationFailed:
                     return
-                case .requestAdaptationFailed(let error):
+                case .requestAdaptationFailed:
                     return
                 default:
                     return
+                }
             }
         }
     }
 }
+
 
 

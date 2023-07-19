@@ -11,7 +11,6 @@
 		93DEB5B132BDB8E33EC3DBEF /* Pods_Tripo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BF4580FBBD426892B9BFB /* Pods_Tripo.framework */; };
 		AEDC61C64C726CA9F35605A2 /* Pods_TripoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4F8CBD954ABC6717E806C72 /* Pods_TripoTests.framework */; };
 		B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2872A66E353000F0563 /* PlanHTTPService.swift */; };
-		B319F28A2A680BEA000F0563 /* HTTPServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2892A680BEA000F0563 /* HTTPServiceError.swift */; };
 		B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* HTTPService.swift */; };
 		B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */; };
 		B3B5E1562A45A30200EDD9F7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */; };
@@ -66,7 +65,6 @@
 		8AE4410F748C5C0C0872995B /* Pods-TripoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.release.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.release.xcconfig"; sourceTree = "<group>"; };
 		971D0C2F3770EE55286BB053 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B319F2872A66E353000F0563 /* PlanHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPService.swift; sourceTree = "<group>"; };
-		B319F2892A680BEA000F0563 /* HTTPServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServiceError.swift; sourceTree = "<group>"; };
 		B322C6C22A45ACA300845A3C /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */,
 				B3BED9ED2A4D99990073934A /* DefaultsService .swift */,
 				B319F2872A66E353000F0563 /* PlanHTTPService.swift */,
-				B319F2892A680BEA000F0563 /* HTTPServiceError.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -545,7 +542,6 @@
 				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
 				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
-				B319F28A2A680BEA000F0563 /* HTTPServiceError.swift in Sources */,
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
 				B3BED9F42A4DCB7C0073934A /* KeyState.swift in Sources */,
 				B3BED9D62A49CE170073934A /* EnvironmentVariables.swift in Sources */,
