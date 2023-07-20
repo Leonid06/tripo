@@ -51,4 +51,8 @@ struct LandmarkGetByIdParameters : RequestParameters {
     var id : String
 }
 
+struct PlanGetByIdParameters : RequestParameters {
+    var plan_id : String 
+}
+
 

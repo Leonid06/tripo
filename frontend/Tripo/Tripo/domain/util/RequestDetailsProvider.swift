@@ -15,6 +15,7 @@ enum RequestDetailsProvider {
     case planManualCreate
     case landmarkSearchByRadius
     case landmarkGetById
+    case planGetById
     
     var head : String? {
         switch self {
@@ -24,7 +25,8 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById
+                .landmarkGetById,
+                .planGetById
                 
             :
             return EnvironmentVariables.REST_HEAD as? String
@@ -45,6 +47,8 @@ enum RequestDetailsProvider {
             return "landmark/search/by-radius"
         case .landmarkGetById:
             return "landmark/get/by-id"
+        case .planGetById:
+            return "plan/get/by-id"
         }
     }
     
@@ -55,7 +59,9 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById:
+                .landmarkGetById,
+                .planGetById
+            :
             return .post
         }
     }
@@ -66,7 +72,9 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById:
+                .landmarkGetById,
+                .planGetById
+            :
             return "application/json"
         case .login:
             return "application/x-www-form-urlencoded"

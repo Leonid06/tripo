@@ -19,7 +19,7 @@ final class PlanHTTPClientTests : XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         let serializedDate = dateFormatter.string(from: date)
-        print(serializedDate)
+        
         let parameterUnits = [
             ManualPlanCreateRequestParametersUnit(
                 landmark_id: "1", visit_date: serializedDate)
@@ -32,6 +32,23 @@ final class PlanHTTPClientTests : XCTestCase {
         let service = PlanHTTPService()
         
         service.sendManualPlanCreateRequest(parameters: parameters){
+            response, error in
+            print(error)
+            XCTAssert(error == nil)
+            XCTAssert(response != nil)
+            callbackExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testMakeGetPlanByIdRequest() {
+        let callbackExpectation = expectation(description: "received valid response")
+
+        let parameters = PlanGetByIdParameters(plan_id: "2")
+        
+        let service = PlanHTTPService()
+        
+        service.sendPlanGetByIdRequest(parameters: parameters){
             response, error in
             print(error)
             XCTAssert(error == nil)

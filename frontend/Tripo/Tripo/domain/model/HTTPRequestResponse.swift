@@ -46,3 +46,15 @@ struct LandmarkGetByIdRequestResponse : HTTPRequestResponse {
     var id : String
     var name : String 
 }
+
+struct PlanGetByIdRequestResponse : HTTPRequestResponse {
+    var plan_id : String
+    var name : String
+    var description : String
+    var locations : Array<PlanGetByIdRequestResponseUnit>
+}
+
+struct PlanGetByIdRequestResponseUnit : HTTPRequestResponseUnit {
+    var landmark_id : String
+    var visit_data : String?
+}
