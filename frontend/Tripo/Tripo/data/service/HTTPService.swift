@@ -11,7 +11,7 @@ import Alamofire
 
 class HTTPService {
     
-    internal func sendRequest<T : HTTPRequestResponse>(requestDetails :  RequestDetails, callback : @escaping (T) -> () ) {
+    internal func sendRequest<T : HTTPRequestResponse>(requestDetails :  RequestDetails, callback : @escaping (T?, AFError?) -> () ) {
         let url =  "http://localhost:8000/\(requestDetails.route)"
         
         let parameterEncoder = try? HTTPServiceUtil.getAlamofireEncoderForFormat(format: requestDetails.format)
@@ -20,19 +20,14 @@ class HTTPService {
             
             switch response.result {
             case .success:
-                if let value = response.value {
-                    callback(value)
-                }
+                callback(response.value, nil)
             case .failure(let error):
                 switch error {
-                case .createURLRequestFailed:
-                    return
-                case .responseSerializationFailed:
-                    return
-                case .requestAdaptationFailed:
-                    return
+                case .createURLRequestFailed, .responseSerializationFailed, .requestAdaptationFailed:
+                    print(response.debugDescription)
+                    callback(nil, error)
                 default:
-                    return
+                    callback(nil, error)
                 }
             }
         }

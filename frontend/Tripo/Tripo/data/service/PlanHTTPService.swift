@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
 class PlanHTTPService : HTTPService {
-    func sendManualPlanCreateRequest(parameters: ManualPlanCreateRequestParameters, callback : @escaping (PlanManualCreateRequestResponse)-> () ){
+    func sendManualPlanCreateRequest(parameters: ManualPlanCreateRequestParameters, callback : @escaping (PlanManualCreateRequestResponse?, AFError?)-> () ){
         let requestDetailsProvider = RequestDetailsProvider.planManualCreate
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,

@@ -18,6 +18,7 @@ struct AuthenticationView: View {
         case .loggedOut:
             LoginView()
         }
+//        RegistrationView()
     }
 }
 

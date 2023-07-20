@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 class HomeViewModel : ObservableObject {
@@ -13,15 +14,22 @@ class HomeViewModel : ObservableObject {
     
     func sendLogoutUserRequest(){
         Task {
-            AuthenticationHTTPService.shared.sendLogoutUserRequest(callback: onSuccessfullLogOutUserRequestResponse)
+            AuthenticationHTTPService.shared.sendLogoutUserRequest(callback: onLogOutUserRequestResponse)
         }
        
     }
     
-    private func onSuccessfullLogOutUserRequestResponse(response : LogOutUserRequestResponse){
-        guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
+    private func onLogOutUserRequestResponse(response : LogOutUserRequestResponse?, error: AFError?){
+        if let error = error {
+            print(error)
             return
         }
-        DefaultsService.shared.resetValueForKey(key)
+        if response != nil {
+            guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
+                return
+            }
+            DefaultsService.shared.resetValueForKey(key)
+        }
+  
     }
 }

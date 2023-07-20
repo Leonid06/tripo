@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 
@@ -13,14 +14,23 @@ class LoginViewModel : ObservableObject {
     
     func sendlogInUserRequest(email : String, password: String){
         Task {
-            AuthenticationHTTPService.shared.sendLoginUserRequest(email: email, password: password, callback: onSuccessfullLogInUserRequestResponse)
+            AuthenticationHTTPService.shared.sendLoginUserRequest(email: email, password: password, callback: onLogInUserRequestResponse)
         }
     }
     
-    private func onSuccessfullLogInUserRequestResponse(response : LogInUserRequestResponse){
-        guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
+    private func onLogInUserRequestResponse(response : LogInUserRequestResponse?, error : AFError?){
+        
+        if let error = error {
+            print(error)
             return
         }
-        DefaultsService.shared.setValueForKey(key, value: response.access_token)
+        
+        if let response = response {
+            guard let key = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
+                return
+            }
+            DefaultsService.shared.setValueForKey(key, value: response.access_token)
+        }
+        
     }
 }

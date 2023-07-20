@@ -12,7 +12,7 @@ import Alamofire
 class AuthenticationHTTPService : HTTPService {
     static let shared = AuthenticationHTTPService()
     
-    func sendLoginUserRequest(email: String, password: String, callback : @escaping (LogInUserRequestResponse) -> () ){
+    func sendLoginUserRequest(email: String, password: String, callback : @escaping (LogInUserRequestResponse?, AFError?) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.login
         
         let parameters = LoginUserRequestParameters(
@@ -30,7 +30,7 @@ class AuthenticationHTTPService : HTTPService {
         
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
-    func sendRegisterUserRequest(email: String, password : String, callback : @escaping (RegisterUserRequestResponse) -> () ){
+    func sendRegisterUserRequest(email: String, password : String, callback : @escaping (RegisterUserRequestResponse?, AFError?) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.register
         
         let parameters = RegisterUserRequestParameters(
@@ -51,7 +51,7 @@ class AuthenticationHTTPService : HTTPService {
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
     
-    func sendLogoutUserRequest(callback: @escaping (LogOutUserRequestResponse) -> () ){
+    func sendLogoutUserRequest(callback: @escaping (LogOutUserRequestResponse?, AFError?) -> () ){
         let requestDetailsProvider = RequestDetailsProvider.logout
         let parameters = LogoutUserRequestParameters()
         

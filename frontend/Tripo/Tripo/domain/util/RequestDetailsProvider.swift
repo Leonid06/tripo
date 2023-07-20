@@ -40,11 +40,11 @@ enum RequestDetailsProvider {
         case .logout:
             return "auth/logout"
         case .planManualCreate:
-            return "plan/create"
+            return "plan/create/manual"
         case .landmarkSearchByRadius:
             return "landmark/search/by-radius"
         case .landmarkGetById:
-            return "landmak/get/by-id"
+            return "landmark/get/by-id"
         }
     }
     

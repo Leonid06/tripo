@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
 class LandmarkHTTPService : HTTPService {
-    func sendSearchLandmarkByRadiusRequest(parameters: LandmarkSearchByRadiusParameters, callback : @escaping (LandmarkSearchByRadiusRequestResponse) -> ()){
+    func sendSearchLandmarkByRadiusRequest(parameters: LandmarkSearchByRadiusParameters, callback : @escaping (LandmarkSearchByRadiusRequestResponse?, AFError?) -> ()){
         let requestDetailsProvider = RequestDetailsProvider.landmarkSearchByRadius
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,
@@ -19,7 +20,7 @@ class LandmarkHTTPService : HTTPService {
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
     
-    func sendGetLandmarkByIdRequest(parameters: LandmarkGetByIdParameters, callback : @escaping (LandmarkGetByIdRequestResponse) -> ()){
+    func sendGetLandmarkByIdRequest(parameters: LandmarkGetByIdParameters, callback : @escaping (LandmarkGetByIdRequestResponse?, AFError?) -> ()){
         let requestDetailsProvider = RequestDetailsProvider.landmarkGetById
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,
