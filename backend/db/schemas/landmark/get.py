@@ -2,18 +2,18 @@ from pydantic import BaseModel
 from typing import List
 
 
-class GetLandmarkInUnit(BaseModel):
+class GetCachedLandmarkInUnit(BaseModel):
     id: str
 
 
-class GetLandmarkIn(BaseModel):
-    landmark: List[GetLandmarkInUnit]
+class GetCachedLandmarkIn(BaseModel):
+    landmark: List[GetCachedLandmarkInUnit]
 
 
-class GetLandmarkOutUnit(BaseModel):
+class GetCachedLandmarkOutUnit(BaseModel):
     id: str
     name: str
 
 
-class GetLandmarkOut(BaseModel):
-    landmark: List[GetLandmarkOutUnit]
+class GetCachedLandmarkOut(BaseModel):
+    landmark: List[GetCachedLandmarkOutUnit]

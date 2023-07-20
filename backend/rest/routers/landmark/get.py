@@ -3,7 +3,7 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from db.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut
+from db.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut
 from rest.network_client.broker_network_client import BrokerNetworkClient
 from rest.config import LANDMARK_GET_BY_ID_REQUEST_TIMEOUT, RABBITMQ_MAIN_EXCHANGE_NAME, \
     RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME, RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME, \
@@ -13,15 +13,15 @@ from rest.routers.landmark.util.get_util import map_get_landmark_inward_schema_t
 from rest.exception import MappingError, NetworkClientDataError, NetworkClientBrokerError
 
 landmark_get_router = APIRouter(
-    prefix='/landmark/get',
-    tags=['/landmark/get']
+    prefix='/landmark/cached/get',
+    tags=['/landmark/cached/get']
 )
 
 logger = logging.getLogger(__name__)
 
 
 @landmark_get_router.post('/by-id')
-async def get_landmark_by_id(payload: GetLandmarkIn) -> GetLandmarkOut:
+async def get_cached_landmark_by_id(payload: GetCachedLandmarkIn) -> GetCachedLandmarkOut:
     try:
         request_message_body = map_get_landmark_inward_schema_to_message_body(payload)
     except MappingError as error:

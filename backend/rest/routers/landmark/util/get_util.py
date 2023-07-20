@@ -2,10 +2,10 @@ import json
 
 from rest.exception import MappingError, CallbackDataError
 
-from db.schemas.landmark.get import GetLandmarkIn, GetLandmarkOut, GetLandmarkOutUnit
+from db.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut, GetCachedLandmarkOutUnit
 
 
-def map_get_landmark_inward_schema_to_message_body(schema: GetLandmarkIn) -> str:
+def map_get_landmark_inward_schema_to_message_body(schema: GetCachedLandmarkIn) -> str:
     message_body = {
         'landmark': []
     }
@@ -24,7 +24,7 @@ def map_get_landmark_inward_schema_to_message_body(schema: GetLandmarkIn) -> str
     return message_body
 
 
-def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut:
+def map_get_landmark_message_body_to_outward_schema(body: str) -> GetCachedLandmarkOut:
     unit_list = []
 
     try:
@@ -33,13 +33,13 @@ def map_get_landmark_message_body_to_outward_schema(body: str) -> GetLandmarkOut
         landmarks = deserialized_body['landmark']
 
         for landmark in landmarks:
-            unit = GetLandmarkOutUnit(
+            unit = GetCachedLandmarkOutUnit(
                 name=landmark['name'],
                 id=landmark['id']
             )
             unit_list.append(unit)
 
-        schema = GetLandmarkOut(
+        schema = GetCachedLandmarkOut(
             landmark=unit_list
         )
     except (KeyError, TypeError, AttributeError) as error:
