@@ -7,7 +7,7 @@ from db.schemas.plan.create import PlanManualCreateIn, PlanManualCreateOut
 from db.crud.plan.create import save_plan_created_manually
 from db.dependencies import get_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \
-    DatabaseDisconnectionError, DatabaseResourceInvalidatedError
+    DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseDriverError
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ async def create_plan_manually(payload : PlanManualCreateIn, db : AsyncSession =
     except DatabaseTimeoutError as error:
         logger.exception(error)
         raise HTTPException(status_code=504) from error
-    except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError) as error:
+    except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseDriverError) as error:
         logger.exception(error)
         raise HTTPException(status_code=502) from error
 

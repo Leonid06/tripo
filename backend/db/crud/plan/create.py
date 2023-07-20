@@ -1,9 +1,9 @@
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError
+from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, DBAPIError
 from db.schemas.plan.create import PlanManualCreateIn
 from db.models import Plan, PlanToLandmark
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
-    DatabaseTimeoutError, DatabaseResourceInvalidatedError
+    DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseDriverError
 
 
 async def save_plan_created_manually(payload: PlanManualCreateIn, db: AsyncSession):
@@ -34,4 +34,6 @@ async def save_plan_created_manually(payload: PlanManualCreateIn, db: AsyncSessi
         raise DatabaseTimeoutError from error
     except ResourceClosedError as error:
         raise DatabaseResourceInvalidatedError from error
+    except DBAPIError as error:
+        raise DatabaseDriverError from error
 

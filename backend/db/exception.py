@@ -20,3 +20,6 @@ class DatabaseResourceInvalidatedError(DatabaseError):
 
 class DatabaseNoResultFoundError(DatabaseError):
     pass
+
+class DatabaseDriverError(DatabaseError):
+    pass
