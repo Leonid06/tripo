@@ -20,8 +20,8 @@ class LandmarkHTTPService : HTTPService {
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
     
-    func sendGetLandmarkByIdRequest(parameters: LandmarkGetByIdParameters, callback : @escaping (LandmarkGetByIdRequestResponse?, AFError?) -> ()){
-        let requestDetailsProvider = RequestDetailsProvider.landmarkGetById
+    func sendGetCachedLandmarkByIdRequest(parameters: CachedLandmarkGetByIdParameters, callback : @escaping (CachedLandmarkGetByIdRequestResponse?, AFError?) -> ()){
+        let requestDetailsProvider = RequestDetailsProvider.cachedLandmarkGetById
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,
             route: requestDetailsProvider.route,

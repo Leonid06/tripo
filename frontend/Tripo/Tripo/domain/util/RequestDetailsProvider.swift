@@ -14,7 +14,7 @@ enum RequestDetailsProvider {
     case logout
     case planManualCreate
     case landmarkSearchByRadius
-    case landmarkGetById
+    case cachedLandmarkGetById
     case planGetById
     
     var head : String? {
@@ -25,7 +25,7 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById,
+                .cachedLandmarkGetById,
                 .planGetById
                 
             :
@@ -45,7 +45,7 @@ enum RequestDetailsProvider {
             return "plan/create/manual"
         case .landmarkSearchByRadius:
             return "landmark/search/by-radius"
-        case .landmarkGetById:
+        case .cachedLandmarkGetById:
             return "landmark/get/by-id"
         case .planGetById:
             return "plan/get/by-id"
@@ -59,7 +59,7 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById,
+                .cachedLandmarkGetById,
                 .planGetById
             :
             return .post
@@ -72,7 +72,7 @@ enum RequestDetailsProvider {
                 .logout,
                 .planManualCreate,
                 .landmarkSearchByRadius,
-                .landmarkGetById,
+                .cachedLandmarkGetById,
                 .planGetById
             :
             return "application/json"

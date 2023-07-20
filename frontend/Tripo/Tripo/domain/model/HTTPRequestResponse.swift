@@ -42,7 +42,7 @@ struct LandmarkSearchByRadiusRequestResponseUnit : HTTPRequestResponseUnit {
     var name : String
 }
 
-struct LandmarkGetByIdRequestResponse : HTTPRequestResponse {
+struct CachedLandmarkGetByIdRequestResponse : HTTPRequestResponse {
     var id : String
     var name : String 
 }

@@ -47,7 +47,7 @@ struct LandmarkSearchByRadiusParameters : RequestParameters {
     var radius : String
 }
 
-struct LandmarkGetByIdParameters : RequestParameters {
+struct CachedLandmarkGetByIdParameters : RequestParameters {
     var id : String
 }
 
