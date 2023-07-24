@@ -50,4 +50,17 @@ class PlanDatabaseClient : BaseDatabaseClient {
             }
         }, async_callback_closure: callback)
     }
+    
+    func deletePlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                try transaction.deleteAll(
+                    From<Plan>().where(\.$remoteId == remoteId)
+                )
+            } catch CoreStoreError(let error) {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
 }
