@@ -89,8 +89,8 @@ extension Request {
     /// - Returns:                   The `StreamOf<String>`.
     public func cURLDescriptions(bufferingPolicy: StreamOf<String>.BufferingPolicy = .unbounded) -> StreamOf<String> {
         stream(bufferingPolicy: bufferingPolicy) { [unowned self] continuation in
-            cURLDescription(on: .singleEventQueue) { description in
-                continuation.yield(description)
+            cURLDescription(on: .singleEventQueue) { landmarkDescription in
+                continuation.yield(landmarkDescription)
             }
         }
     }
