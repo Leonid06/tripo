@@ -9,7 +9,7 @@ import CoreStore
 
 class BaseDatabaseClient {
     
-    let databaseInterface = CoreStoreDefaults.dataStack
+    private let databaseInterface = CoreStoreDefaults.dataStack
     
     init() throws {
         do {
@@ -19,7 +19,7 @@ class BaseDatabaseClient {
         }
     }
     
-    func makeAsyncTransaction<T>(async_db_interaction_closure: @escaping  (AsynchronousDataTransaction)-> (T), async_callback_closure : @escaping (AsynchronousDataTransaction.Result<T>) -> ()){
+    internal func makeAsyncTransaction<T>(async_db_interaction_closure: @escaping  (AsynchronousDataTransaction)-> (T), async_callback_closure : @escaping (AsynchronousDataTransaction.Result<T>) -> ()){
         databaseInterface.perform(asynchronous: async_db_interaction_closure, completion: async_callback_closure)
     }
 }
