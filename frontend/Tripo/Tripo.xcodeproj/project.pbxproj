@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		811377FF1FCD73A011C5F1CB /* Pods_Tripo_TripoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5A543008A7245BF08F263 /* Pods_Tripo_TripoUITests.framework */; };
+		2AB7A39AEB5E54FA4D15067E /* Pods_Tripo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE54B8D84D24C2018FE04840 /* Pods_Tripo.framework */; };
+		3CAD386CD2B60309062C9B3B /* Pods_Tripo_TripoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A211ABDA3B57E07CD55B82 /* Pods_Tripo_TripoUITests.framework */; };
 		B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2872A66E353000F0563 /* PlanHTTPService.swift */; };
 		B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */; };
 		B319F28F2A683922000F0563 /* PlanHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */; };
@@ -51,8 +52,7 @@
 		B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9952A6EB0F20020C884 /* PlanToUserDatabaseClient.swift */; };
 		B3CFD9982A6EB5650020C884 /* DatabaseClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9972A6EB5650020C884 /* DatabaseClientError.swift */; };
 		B3CFD99B2A6EB9C70020C884 /* PlanDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD99A2A6EB9C70020C884 /* PlanDatabaseClientTests.swift */; };
-		C061831F00E2A2C719F5EB24 /* Pods_Tripo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29EDF838010E572D4B96FF2 /* Pods_Tripo.framework */; };
-		D1A9BB203E86A8102638F361 /* Pods_TripoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A81166528A6119A6B479972 /* Pods_TripoTests.framework */; };
+		F70959AD01646E302C8B6C5D /* Pods_TripoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F05DA267DB6F4919DF01AC /* Pods_TripoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A81166528A6119A6B479972 /* Pods_TripoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		696DE0E8D510DECCF1BC482E /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		83D594A0457C761CD8EA5A56 /* Pods-Tripo-TripoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.release.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B2096EF2A2FA1DD36B0845F3 /* Pods-TripoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.release.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.release.xcconfig"; sourceTree = "<group>"; };
+		1D97C0BD112716137811743D /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4477040AFA4FDFFF048CE55C /* Pods-TripoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.release.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.release.xcconfig"; sourceTree = "<group>"; };
+		4B88D6BDA255F93A2C7BA32C /* Pods-Tripo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.release.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.release.xcconfig"; sourceTree = "<group>"; };
+		52A211ABDA3B57E07CD55B82 /* Pods_Tripo_TripoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo_TripoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88F6EA22974E96124A7224B5 /* Pods-Tripo-TripoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.release.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AE54B8D84D24C2018FE04840 /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B319F2872A66E353000F0563 /* PlanHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPService.swift; sourceTree = "<group>"; };
 		B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPService.swift; sourceTree = "<group>"; };
 		B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPClientTests.swift; sourceTree = "<group>"; };
@@ -125,11 +127,9 @@
 		B3CFD9952A6EB0F20020C884 /* PlanToUserDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToUserDatabaseClient.swift; sourceTree = "<group>"; };
 		B3CFD9972A6EB5650020C884 /* DatabaseClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClientError.swift; sourceTree = "<group>"; };
 		B3CFD99A2A6EB9C70020C884 /* PlanDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDatabaseClientTests.swift; sourceTree = "<group>"; };
-		B64153DC4D06A8F009E992A6 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C29EDF838010E572D4B96FF2 /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3C4EA7A6DDE69DF0559F7CB /* Pods-Tripo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.release.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.release.xcconfig"; sourceTree = "<group>"; };
-		DDB5A543008A7245BF08F263 /* Pods_Tripo_TripoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo_TripoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7A09EEF62CD43ECD157A80B /* Pods-Tripo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.debug.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.debug.xcconfig"; sourceTree = "<group>"; };
+		D5BC27274B56030C5A594BCB /* Pods-Tripo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.debug.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.debug.xcconfig"; sourceTree = "<group>"; };
+		E0F05DA267DB6F4919DF01AC /* Pods_TripoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCEA6AA4968980D775759C9 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C061831F00E2A2C719F5EB24 /* Pods_Tripo.framework in Frameworks */,
+				2AB7A39AEB5E54FA4D15067E /* Pods_Tripo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1A9BB203E86A8102638F361 /* Pods_TripoTests.framework in Frameworks */,
+				F70959AD01646E302C8B6C5D /* Pods_TripoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				811377FF1FCD73A011C5F1CB /* Pods_Tripo_TripoUITests.framework in Frameworks */,
+				3CAD386CD2B60309062C9B3B /* Pods_Tripo_TripoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,22 +163,22 @@
 		2F58E404F1FCBD8150990263 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F7A09EEF62CD43ECD157A80B /* Pods-Tripo.debug.xcconfig */,
-				C3C4EA7A6DDE69DF0559F7CB /* Pods-Tripo.release.xcconfig */,
-				B64153DC4D06A8F009E992A6 /* Pods-Tripo-TripoUITests.debug.xcconfig */,
-				83D594A0457C761CD8EA5A56 /* Pods-Tripo-TripoUITests.release.xcconfig */,
-				696DE0E8D510DECCF1BC482E /* Pods-TripoTests.debug.xcconfig */,
-				B2096EF2A2FA1DD36B0845F3 /* Pods-TripoTests.release.xcconfig */,
+				D5BC27274B56030C5A594BCB /* Pods-Tripo.debug.xcconfig */,
+				4B88D6BDA255F93A2C7BA32C /* Pods-Tripo.release.xcconfig */,
+				1D97C0BD112716137811743D /* Pods-Tripo-TripoUITests.debug.xcconfig */,
+				88F6EA22974E96124A7224B5 /* Pods-Tripo-TripoUITests.release.xcconfig */,
+				FBCEA6AA4968980D775759C9 /* Pods-TripoTests.debug.xcconfig */,
+				4477040AFA4FDFFF048CE55C /* Pods-TripoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		9655FA5A932D54C1A560014D /* Frameworks */ = {
+		64F2B1A885E2C077146332B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C29EDF838010E572D4B96FF2 /* Pods_Tripo.framework */,
-				DDB5A543008A7245BF08F263 /* Pods_Tripo_TripoUITests.framework */,
-				0A81166528A6119A6B479972 /* Pods_TripoTests.framework */,
+				AE54B8D84D24C2018FE04840 /* Pods_Tripo.framework */,
+				52A211ABDA3B57E07CD55B82 /* Pods_Tripo_TripoUITests.framework */,
+				E0F05DA267DB6F4919DF01AC /* Pods_TripoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -292,7 +292,7 @@
 				B3CB19F82A30C61300991A13 /* TripoUITests */,
 				B3CB19D72A30C61200991A13 /* Products */,
 				2F58E404F1FCBD8150990263 /* Pods */,
-				9655FA5A932D54C1A560014D /* Frameworks */,
+				64F2B1A885E2C077146332B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -382,11 +382,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB19FF2A30C61300991A13 /* Build configuration list for PBXNativeTarget "Tripo" */;
 			buildPhases = (
-				2DA357F21861D9A88FE2EC16 /* [CP] Check Pods Manifest.lock */,
+				132C5888893864E28EB54657 /* [CP] Check Pods Manifest.lock */,
 				B3CB19D22A30C61200991A13 /* Sources */,
 				B3CB19D32A30C61200991A13 /* Frameworks */,
 				B3CB19D42A30C61200991A13 /* Resources */,
-				7C43B4AF3CB3ED06E2B61156 /* [CP] Embed Pods Frameworks */,
+				30DDE4243B9B90F4B16F88A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,7 +401,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB1A022A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoTests" */;
 			buildPhases = (
-				215DC24C4E290C241DCA8A45 /* [CP] Check Pods Manifest.lock */,
+				B3992943D60CE95ACAE4229A /* [CP] Check Pods Manifest.lock */,
 				B3CB19E72A30C61300991A13 /* Sources */,
 				B3CB19E82A30C61300991A13 /* Frameworks */,
 				B3CB19E92A30C61300991A13 /* Resources */,
@@ -420,11 +420,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB1A052A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoUITests" */;
 			buildPhases = (
-				5CE5BAC799FC9BF8CF421B40 /* [CP] Check Pods Manifest.lock */,
+				B508B094364E635F3E3A1171 /* [CP] Check Pods Manifest.lock */,
 				B3CB19F12A30C61300991A13 /* Sources */,
 				B3CB19F22A30C61300991A13 /* Frameworks */,
 				B3CB19F32A30C61300991A13 /* Resources */,
-				9B7CF980C9BB95BF181250EA /* [CP] Embed Pods Frameworks */,
+				C9D60CD71004919A3D74BF4C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -506,29 +506,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		215DC24C4E290C241DCA8A45 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TripoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2DA357F21861D9A88FE2EC16 /* [CP] Check Pods Manifest.lock */ = {
+		132C5888893864E28EB54657 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -550,7 +528,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5CE5BAC799FC9BF8CF421B40 /* [CP] Check Pods Manifest.lock */ = {
+		30DDE4243B9B90F4B16F88A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3992943D60CE95ACAE4229A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TripoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B508B094364E635F3E3A1171 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -572,24 +589,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C43B4AF3CB3ED06E2B61156 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9B7CF980C9BB95BF181250EA /* [CP] Embed Pods Frameworks */ = {
+		C9D60CD71004919A3D74BF4C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -803,7 +803,7 @@
 		};
 		B3CB1A002A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7A09EEF62CD43ECD157A80B /* Pods-Tripo.debug.xcconfig */;
+			baseConfigurationReference = D5BC27274B56030C5A594BCB /* Pods-Tripo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -835,7 +835,7 @@
 		};
 		B3CB1A012A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3C4EA7A6DDE69DF0559F7CB /* Pods-Tripo.release.xcconfig */;
+			baseConfigurationReference = 4B88D6BDA255F93A2C7BA32C /* Pods-Tripo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -867,7 +867,7 @@
 		};
 		B3CB1A032A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 696DE0E8D510DECCF1BC482E /* Pods-TripoTests.debug.xcconfig */;
+			baseConfigurationReference = FBCEA6AA4968980D775759C9 /* Pods-TripoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -888,7 +888,7 @@
 		};
 		B3CB1A042A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2096EF2A2FA1DD36B0845F3 /* Pods-TripoTests.release.xcconfig */;
+			baseConfigurationReference = 4477040AFA4FDFFF048CE55C /* Pods-TripoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -909,7 +909,7 @@
 		};
 		B3CB1A062A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B64153DC4D06A8F009E992A6 /* Pods-Tripo-TripoUITests.debug.xcconfig */;
+			baseConfigurationReference = 1D97C0BD112716137811743D /* Pods-Tripo-TripoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -928,7 +928,7 @@
 		};
 		B3CB1A072A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83D594A0457C761CD8EA5A56 /* Pods-Tripo-TripoUITests.release.xcconfig */;
+			baseConfigurationReference = 88F6EA22974E96124A7224B5 /* Pods-Tripo-TripoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
