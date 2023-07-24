@@ -1,0 +1,59 @@
+//
+//  PlanToLandmarkDatabaseClient.swift
+//  Tripo
+//
+//  Created by Leonid on 24.07.2023.
+//
+
+import CoreStore
+
+
+class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
+    func createPlanToLandmarkRelationshipByRemoteIds(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                var plan = try transaction.fetchOne(
+                    From<Plan>().where(\.$remoteId == planRemoteId)
+                )
+                var landmark = try transaction.fetchOne(
+                    From<Landmark>().where(\.$remoteId == landmarkRemoteId)
+                )
+                if let plan = plan, landmark = landmark {
+                    var planToLandmark = transaction.create(Into<PlanToLandmark>())
+                    plan.planToLandmark.insert(planToLandmark)
+                    landmark.planToLandmark.insert(planToLandmark)
+                }
+        
+            } catch CoreStoreError(let error){
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
+    func deletePlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String,
+                                          callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                var plan = try transaction.fetchOne(
+                    From<Plan>().where(\.$remoteId == planRemoteId)
+                )
+                var landmark = try transaction.fetchOne(
+                    From<Landmark>().where(\.$remoteId == landmarkRemoteId)
+                )
+                if let plan = plan, landmark = landmark {
+                    var planToLandmark = try transaction.fetchOne(
+                        From<Plan>().where(\.$plan == plan && \.$landmark == landmark)
+                    )
+                    plan.planToLandmark.remove(planToLandmark)
+                    landmark.planToLandmark.remove(planToLandmark)
+                }
+        
+            } catch CoreStoreError(let error){
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+        
+    }
+}

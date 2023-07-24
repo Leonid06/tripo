@@ -20,8 +20,8 @@ class Landmark : CoreStoreObject {
     @Field.Stored("type")
     var type : String = ""
     
-    @Field.Relationship("plans")
-    var plans : Set<Plan>
+    @Field.Relationship("plan_to_landmark", inverse: \.$landmark)
+    var planToLandmark : Set<PlanToLandmark>
 }
 
 class Plan : CoreStoreObject {
@@ -37,11 +37,26 @@ class Plan : CoreStoreObject {
     @Field.Stored("type")
     var completed : Bool = false
     
-    @Field.Relationship("landmarks", inverse: \.$plans)
-    var landmarks : Set<Landmark>
+    @Field.Relationship("plan_to_landmark", inverse: \.$plan)
+    var planToLandmark : Set<PlanToLandmark>
     
     @Field.Relationship("users")
     var users : Set<User>
+}
+
+class PlanToLandmark : CoreStoreObject {
+    
+    @Field.Relationship("plan")
+    var plan : Plan?
+    
+    @Field.Relationship("landmark")
+    var landmark : Landmark?
+    
+    @Field.Stored("visited")
+    var visited : Bool = false
+    
+    @Field.Stored("visit_date", dynamicInitialValue: {Date()})
+    var visitDate : Date
 }
 
 class User : CoreStoreObject {
