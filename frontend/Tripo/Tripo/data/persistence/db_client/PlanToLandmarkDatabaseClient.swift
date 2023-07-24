@@ -25,7 +25,7 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                     landmark.planToLandmark.insert(planToLandmark)
                 }
         
-            } catch CoreStoreError(let error){
+            } catch {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
@@ -46,11 +46,14 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                     var planToLandmark = try transaction.fetchOne(
                         From<PlanToLandmark>().where(\.$plan == plan && \.$landmark == landmark)
                     )
-                    plan.planToLandmark.remove(planToLandmark)
-                    landmark.planToLandmark.remove(planToLandmark)
+                    
+                    if let planToLandmark = planToLandmark {
+                        plan.planToLandmark.remove(planToLandmark)
+                        landmark.planToLandmark.remove(planToLandmark)
+                    }
                 }
         
-            } catch CoreStoreError(let error){
+            } catch {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)

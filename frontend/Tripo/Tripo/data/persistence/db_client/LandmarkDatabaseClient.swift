@@ -14,7 +14,7 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
             let landmark = transaction.create(Into<Landmark>())
             landmark.remoteId = remoteId
             landmark.name = name
-            landmark.description = description
+            landmark.landmarkDescription = description
             landmark.type = type
             
         }, async_callback_closure: callback)
@@ -29,8 +29,8 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
                     From<Landmark>().where(\.$remoteId == remoteId)
                 )
                 return landmark
-            } catch CoreStoreError(let error) {
-                throw CoreStoreError(error: error)
+            } catch  {
+                throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
     }
@@ -46,8 +46,8 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
                 if let landmark = landmark {
                     landmark.remoteId = newRemoteId
                 }
-            } catch CoreStoreError(let error) {
-                throw CoreStoreError(error: error)
+            } catch {
+                throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
     }
@@ -59,7 +59,7 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
                 try transaction.deleteAll(
                     From<Landmark>().where(\.$remoteId == remoteId)
                 )
-            } catch CoreStoreError(let error) {
+            } catch  {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)

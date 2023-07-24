@@ -9,7 +9,7 @@ import XCTest
 import Alamofire
 @testable import Tripo
 
-final class LandmarkHTTPClientTests : XCTestCase {
+final class LandmarkHTTPClientTests : TripoTests {
 //    func testGetlandmarkByIdHTTPRequest(){
 //        let callbackExpectation = expectation(description: "received valid response")
 //        let parameters = LandmarkGetByIdParameters(id: "1")

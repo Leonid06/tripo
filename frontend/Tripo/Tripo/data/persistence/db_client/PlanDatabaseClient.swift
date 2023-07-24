@@ -15,7 +15,7 @@ class PlanDatabaseClient : BaseDatabaseClient {
             let plan = transaction.create(Into<Plan>())
             plan.remoteId = remoteId
             plan.name = name
-            plan.description = description
+            plan.planDescription = description
             plan.completed = completed
             
         }, async_callback_closure: callback)
@@ -23,15 +23,15 @@ class PlanDatabaseClient : BaseDatabaseClient {
     
     func getPlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Plan?>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> Plan? in
+            transaction  -> Plan? in
             
             do {
                 let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$remoteId == remoteId)
                 )
                 return plan
-            } catch CoreStoreError(let error) {
-                throw CoreStoreError(error: error)
+            } catch {
+                throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
     }
@@ -47,8 +47,8 @@ class PlanDatabaseClient : BaseDatabaseClient {
                 if let plan = plan {
                     plan.remoteId = newRemoteId
                 }
-            } catch CoreStoreError(let error) {
-                throw CoreStoreError(error: error)
+            } catch  {
+                throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
     }
@@ -60,7 +60,7 @@ class PlanDatabaseClient : BaseDatabaseClient {
                 try transaction.deleteAll(
                     From<Plan>().where(\.$remoteId == remoteId)
                 )
-            } catch CoreStoreError(let error) {
+            } catch {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)

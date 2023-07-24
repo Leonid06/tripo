@@ -30,8 +30,8 @@ class UserDatabaseClient : BaseDatabaseClient {
                     user.currentToken = newToken
                 }
                 
-            } catch CoreStoreError(let error) {
-                throw CoreStoreError(error: error)
+            } catch  {
+                throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
     }
@@ -43,7 +43,7 @@ class UserDatabaseClient : BaseDatabaseClient {
                 try transaction.deleteAll(
                     From<User>().where(\.$currentToken == currentToken)
                 )
-            } catch CoreStoreError(let error) {
+            } catch  {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)

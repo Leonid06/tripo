@@ -10,7 +10,7 @@ import Alamofire
 @testable import Tripo
 
 
-final class PlanHTTPClientTests : XCTestCase {
+final class PlanHTTPClientTests : TripoTests {
     
     func testMakeCreatePlanHTTPRequest() {
         let callbackExpectation = expectation(description: "received valid response")

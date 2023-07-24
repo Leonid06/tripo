@@ -9,17 +9,20 @@ import CoreStore
 
 class BaseDatabaseClient {
     
-    private let databaseInterface = CoreStoreDefaults.dataStack
+    private var databaseInterface = CoreStoreDefaults.dataStack
+    internal var version : Version.Type?
     
-    init() throws {
+    init(version : Version.Type, localDbFileName : String? = nil) throws {
         do {
+            databaseInterface = version.dataStack
             try databaseInterface.addStorageAndWait()
+        
         } catch {
             throw DatabaseClientError(error)
         }
     }
     
-    internal func makeAsyncTransaction<T>(async_db_interaction_closure: @escaping  (AsynchronousDataTransaction)-> (T), async_callback_closure : @escaping (AsynchronousDataTransaction.Result<T>) -> ()){
+    internal func makeAsyncTransaction<T>(async_db_interaction_closure: @escaping (AsynchronousDataTransaction) throws -> (T), async_callback_closure : @escaping (AsynchronousDataTransaction.Result<T>) -> ()){
         databaseInterface.perform(asynchronous: async_db_interaction_closure, completion: async_callback_closure)
     }
 }
