@@ -13,10 +13,10 @@ class PlanDatabaseClient : BaseDatabaseClient {
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             let plan = transaction.create(Into<Plan>())
-            plan.$remoteId = remoteId
-            plan.$name = name
-            plan.$description = description
-            plan.$completed = completed
+            plan.remoteId = remoteId
+            plan.name = name
+            plan.description = description
+            plan.completed = completed
             
         }, async_callback_closure: callback)
     }
@@ -44,7 +44,9 @@ class PlanDatabaseClient : BaseDatabaseClient {
                 let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$remoteId == oldRemoteId)
                 )
-                plan.$remoteId = newRemoteId
+                if let plan = plan {
+                    plan.remoteId = newRemoteId
+                }
             } catch CoreStoreError(let error) {
                 throw CoreStoreError(error: error)
             }

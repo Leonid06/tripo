@@ -9,7 +9,7 @@ import CoreStore
 
 
 class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
-    func createPlanToLandmarkRelationshipByRemoteIds(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func createPlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             do {
@@ -19,7 +19,7 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                 var landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$remoteId == landmarkRemoteId)
                 )
-                if let plan = plan, landmark = landmark {
+                if let plan = plan, let landmark = landmark {
                     var planToLandmark = transaction.create(Into<PlanToLandmark>())
                     plan.planToLandmark.insert(planToLandmark)
                     landmark.planToLandmark.insert(planToLandmark)
@@ -42,9 +42,9 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                 var landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$remoteId == landmarkRemoteId)
                 )
-                if let plan = plan, landmark = landmark {
+                if let plan = plan, let landmark = landmark {
                     var planToLandmark = try transaction.fetchOne(
-                        From<Plan>().where(\.$plan == plan && \.$landmark == landmark)
+                        From<PlanToLandmark>().where(\.$plan == plan && \.$landmark == landmark)
                     )
                     plan.planToLandmark.remove(planToLandmark)
                     landmark.planToLandmark.remove(planToLandmark)

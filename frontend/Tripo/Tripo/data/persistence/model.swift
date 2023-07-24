@@ -40,8 +40,8 @@ class Plan : CoreStoreObject {
     @Field.Relationship("plan_to_landmark", inverse: \.$plan)
     var planToLandmark : Set<PlanToLandmark>
     
-    @Field.Relationship("users")
-    var users : Set<User>
+    @Field.Relationship("plan_to_user", inverse: \.$plan)
+    var planToUser : Set<PlanToUser>
 }
 
 class PlanToLandmark : CoreStoreObject {
@@ -59,10 +59,18 @@ class PlanToLandmark : CoreStoreObject {
     var visitDate : Date
 }
 
+class PlanToUser : CoreStoreObject {
+    @Field.Relationship("plan")
+    var plan : Plan?
+    
+    @Field.Relationship("user")
+    var user : User? 
+}
+
 class User : CoreStoreObject {
     @Field.Stored("current_token")
-    var current_token : String = ""
+    var currentToken : String = ""
     
-    @Field.Relationship("plans", inverse : \.$users)
-    var plans : Set<Plan>
+    @Field.Relationship("planToUser", inverse: \.$user)
+    var planToUser : Set<PlanToUser>
 }

@@ -12,10 +12,10 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             let landmark = transaction.create(Into<Landmark>())
-            landmark.$remoteId = remoteId
-            landmark.$name = name
-            landmark.$description = description
-            landmark.$type = type
+            landmark.remoteId = remoteId
+            landmark.name = name
+            landmark.description = description
+            landmark.type = type
             
         }, async_callback_closure: callback)
     }
@@ -43,7 +43,9 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
                 let landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$remoteId == oldRemoteId)
                 )
-                landmark.$remoteId = newRemoteId
+                if let landmark = landmark {
+                    landmark.remoteId = newRemoteId
+                }
             } catch CoreStoreError(let error) {
                 throw CoreStoreError(error: error)
             }
