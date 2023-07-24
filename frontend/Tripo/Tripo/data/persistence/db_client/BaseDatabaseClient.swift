@@ -15,7 +15,7 @@ class BaseDatabaseClient {
         do {
             try databaseInterface.addStorageAndWait()
         } catch {
-            
+            throw DatabaseClientError(error)
         }
     }
     
