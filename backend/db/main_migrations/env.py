@@ -6,7 +6,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from db.config import POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_HOST, \
-    POSTGRES_PORT, POSTGRES_DATABASE_NAME
+    POSTGRES_PORT, POSTGRES_DATABASE_NAME, POSTGRES_TEST_HOST, POSTGRES_TEST_PORT, \
+    POSTGRES_TEST_DATABASE_NAME
 from db.database import metadata
 
 
@@ -21,6 +22,10 @@ config.set_section_option(section, 'POSTGRES_PASSWORD', POSTGRES_PASSWORD)
 config.set_section_option(section, 'POSTGRES_HOST', POSTGRES_HOST)
 config.set_section_option(section, 'POSTGRES_PORT', POSTGRES_PORT)
 config.set_section_option(section, 'POSTGRES_DATABASE_NAME', POSTGRES_DATABASE_NAME)
+
+config.set_section_option(section, 'POSTGRES_TEST_HOST', POSTGRES_TEST_HOST)
+config.set_section_option(section, 'POSTGRES_TEST_PORT', POSTGRES_TEST_PORT)
+config.set_section_option(section, 'POSTGRES_TEST_DATABASE_NAME', POSTGRES_TEST_DATABASE_NAME)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -40,7 +45,7 @@ target_metadata = metadata
 
 
 def run_migrations_offline() -> None:
-    """Run migrations in 'offline' mode.
+    """Run main_migrations in 'offline' mode.
 
     This configures the context with just a URL
     and not an Engine, though an Engine is acceptable
@@ -89,7 +94,7 @@ async def run_async_migrations() -> None:
 
 
 def run_migrations_online() -> None:
-    """Run migrations in 'online' mode."""
+    """Run main_migrations in 'online' mode."""
 
     asyncio.run(run_async_migrations())
 

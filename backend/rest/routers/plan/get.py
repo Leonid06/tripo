@@ -1,8 +1,10 @@
+import asyncio
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from rest.schemas.plan.get import PlanGetByIdIn, PlanGetByIdOut
 from db.crud.plan.get import select_plan_by_id
-from db.dependencies import get_async_session
+from db.dependencies import get_main_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \
     DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError
 
@@ -13,7 +15,7 @@ plan_get_router = APIRouter(
 
 
 @plan_get_router.post('/by-id')
-async def get_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession = Depends(get_async_session)) -> PlanGetByIdOut:
+async def get_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession = Depends(get_main_async_session)) -> PlanGetByIdOut:
     try:
         plan = await select_plan_by_id(payload=payload, db=db)
     except DatabaseDataError as error:

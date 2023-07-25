@@ -11,9 +11,14 @@ from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
 
 async def select_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession) -> PlanGetByIdOut:
     try:
-        plan = await db.get(Plan, {'id': int(payload.plan_id)})
-        plan_to_landmark_data_query_result = await db.execute(
-            select(PlanToLandmark).where(PlanToLandmark.plan_id == plan.id))
+        async with db.begin():
+            plan_query_result = await db.execute(
+                select(Plan).where(Plan.public_id == payload.plan_id)
+            )
+            plan = plan_query_result.scalar()
+            plan_to_landmark_data_query_result = await db.execute(
+                select(PlanToLandmark).where(PlanToLandmark.plan_id == plan.id))
+            await db.commit()
     except (TypeError, AttributeError) as error:
         raise DatabaseDataError from error
     except NoResultFound as error:

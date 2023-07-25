@@ -1,11 +1,5 @@
-from celery.result import AsyncResult
-from celery import chain
 from fastapi import FastAPI
-
-from task_queue.tasks import consume_get_all_landmarks_topic_task, produce_get_all_landmarks_topic_task, \
-    retrieve_get_all_landmarks_topic_message_body_task
 from db.auth.authentication_setup import authentication_router, registration_router
-from rest.utils import generate_random_uuid
 from rest.routers.plan.create import plan_create_router
 from rest.routers.plan.get import plan_get_router
 from rest.routers.landmark.get import landmark_get_router

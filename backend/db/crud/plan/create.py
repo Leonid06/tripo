@@ -6,7 +6,7 @@ from db.models import Plan, Landmark, PlanToLandmark
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
     DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseDriverError,\
     DatabaseNoResultFoundError
-from db.crud.util import generate_random_uuid_string
+from db.util import generate_random_uuid_string
 
 
 async def save_plan_created_manually(payload: PlanManualCreateIn, db: AsyncSession):
@@ -23,7 +23,12 @@ async def save_plan_created_manually(payload: PlanManualCreateIn, db: AsyncSessi
             db.add(plan)
 
             for plan_to_landmark_entity_data in plan_to_landmark_entities_data:
-                landmark = await db.get(Landmark, {'public_id': plan_to_landmark_entity_data.landmark_id})
+                landmark = Landmark(
+                    name=plan_to_landmark_entity_data.name,
+                    description = plan_to_landmark_entity_data.description,
+                    public_id=plan_to_landmark_entity_data.landmark_id
+                )
+                db.add(landmark)
                 plan_to_landmark = PlanToLandmark(
                     plan_id=plan.id,
                     landmark_id=landmark.id,

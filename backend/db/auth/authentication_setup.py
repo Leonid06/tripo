@@ -1,7 +1,7 @@
 from fastapi_users.authentication import BearerTransport, AuthenticationBackend
 from fastapi_users import FastAPIUsers
 
-from db.dependencies import get_user_manager
+from db.dependencies import get_main_user_manager
 from db.models import User
 from rest.schemas.auth.schemas import  UserRead, UserCreate
 from db.dependencies import get_jwt_strategy
@@ -15,7 +15,7 @@ authentication_backend = AuthenticationBackend(
 )
 
 fastapi_users = FastAPIUsers[User, int](
-    get_user_manager,
+    get_main_user_manager,
     [authentication_backend]
 )
 

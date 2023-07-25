@@ -4,6 +4,8 @@ from typing import List, Optional
 
 
 class PlanToLandmarkIn(BaseModel):
+    name : str
+    description : str
     landmark_id: str
     visit_date: Optional[datetime] = None
 
