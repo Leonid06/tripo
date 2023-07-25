@@ -19,6 +19,7 @@ final class PlanHTTPClientTests : TripoTests {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
         let serializedDate = dateFormatter.string(from: date)
+        print(serializedDate)
         
         let parameterUnits = [
             ManualPlanCreateRequestParametersUnit(
@@ -44,7 +45,7 @@ final class PlanHTTPClientTests : TripoTests {
     func testMakeGetPlanByIdRequest() {
         let callbackExpectation = expectation(description: "received valid response")
 
-        let parameters = PlanGetByIdParameters(plan_id: "2")
+        let parameters = PlanGetByIdParameters(id: "2")
         
         let service = PlanHTTPService()
         

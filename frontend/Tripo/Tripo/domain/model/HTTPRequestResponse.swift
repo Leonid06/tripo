@@ -48,7 +48,7 @@ struct CachedLandmarkGetByIdRequestResponse : HTTPRequestResponse {
 }
 
 struct PlanGetByIdRequestResponse : HTTPRequestResponse {
-    var plan_id : String
+    var id : String
     var name : String
     var description : String
     var locations : Array<PlanGetByIdRequestResponseUnit>

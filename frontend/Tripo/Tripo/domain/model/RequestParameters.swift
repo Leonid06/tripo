@@ -52,7 +52,7 @@ struct CachedLandmarkGetByIdParameters : RequestParameters {
 }
 
 struct PlanGetByIdParameters : RequestParameters {
-    var plan_id : String 
+    var id : String 
 }
 
 
