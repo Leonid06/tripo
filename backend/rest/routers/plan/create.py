@@ -20,7 +20,7 @@ plan_create_router = APIRouter(
 @plan_create_router.post('/manual')
 async def create_plan_manually(payload : PlanManualCreateIn, db : AsyncSession = Depends(get_async_session)) -> PlanManualCreateOut:
     try:
-        await save_plan_created_manually(payload=payload, db = db)
+        outward_schema = await save_plan_created_manually(payload=payload, db = db)
     except DatabaseDataError as error:
         logger.exception(error)
         raise HTTPException(status_code=400, detail= 'Invalid request format') from error
@@ -31,6 +31,6 @@ async def create_plan_manually(payload : PlanManualCreateIn, db : AsyncSession =
         logger.exception(error)
         raise HTTPException(status_code=502) from error
 
-    return PlanManualCreateOut(message='Plan was successfully created')
+    return outward_schema
 
 

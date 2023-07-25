@@ -15,4 +15,4 @@ class PlanManualCreateIn(BaseModel):
 
 
 class PlanManualCreateOut(BaseModel):
-    message : str
+    id : str
