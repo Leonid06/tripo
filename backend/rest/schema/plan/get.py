@@ -9,11 +9,11 @@ class PlanToLandmarkOut(BaseModel):
 
 
 class PlanGetByIdIn(BaseModel):
-    plan_id: str
+    id: str
 
 
 class PlanGetByIdOut(BaseModel):
-    plan_id: str | None
+    id: str | None
     name: str | None
     description: str | None
     locations: List[PlanToLandmarkOut] | None

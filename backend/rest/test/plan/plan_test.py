@@ -52,7 +52,7 @@ def test_plan_get_by_id(client, create_test_plan_data):
     create_response_data = json.loads(create_response.text)
 
     get_request_data = {
-        'plan_id': create_response_data['id']
+        'id': create_response_data['id']
     }
 
     get_response = client.post('/plan/get/by-id', json=get_request_data)

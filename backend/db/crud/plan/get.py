@@ -13,7 +13,7 @@ async def select_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession) -> PlanGet
     try:
         async with db.begin():
             plan_query_result = await db.execute(
-                select(Plan).where(Plan.public_id == payload.plan_id)
+                select(Plan).where(Plan.public_id == payload.id)
             )
             plan = plan_query_result.scalar()
             plan_to_landmark_data_query_result = await db.execute(
@@ -35,12 +35,12 @@ async def select_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession) -> PlanGet
 
     for plan_to_landmark in plan_to_landmark_data:
         plan_to_landmark_response_object = PlanToLandmarkOut(
-            landmark_id= str(plan_to_landmark.landmark_id),
+            landmark_id= plan_to_landmark.landmark_id,
             visit_date=plan_to_landmark.visit_date)
         locations.append(plan_to_landmark_response_object)
 
     response_object = PlanGetByIdOut(
-        plan_id= str(plan.id),
+        id= plan.public_id,
         name=plan.name,
         description=plan.description,
         locations=locations
