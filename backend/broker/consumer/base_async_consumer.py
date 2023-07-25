@@ -1,5 +1,5 @@
 from aio_pika import connect
-from broker.consumer.async_consumer.base_async_consumer_util import ConsumptionMode
+
 
 class BaseAsyncConsumer:
     def __init__(self):

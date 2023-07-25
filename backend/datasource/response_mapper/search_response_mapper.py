@@ -1,7 +1,7 @@
 from requests import RequestException
 
 from datasource.response_mapper.base_response_mapper import BaseResponseMapper
-from datasource.models.response.search import FuzzySearchMappedResponseUnit
+from datasource.model.response.search import FuzzySearchMappedResponseUnit
 from datasource.exception import MappingError
 
 

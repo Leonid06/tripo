@@ -1,5 +1,5 @@
-from broker.consumer.async_consumer.base_async_consumer import BaseAsyncConsumer
-from broker.consumer.async_consumer.base_async_consumer_util import ConsumptionMode
+from broker.consumer.base_async_consumer import BaseAsyncConsumer
+from broker.consumer.base_async_consumer_util import ConsumptionMode
 from aio_pika import ExchangeType
 from aio_pika.abc import AbstractIncomingMessage
 

@@ -1,5 +1,5 @@
 from datasource.cache.cacher.search_cacher import SearchCacher
-from datasource.models.response.search import FuzzySearchMappedResponseUnit
+from datasource.model.response.search import FuzzySearchMappedResponseUnit
 from datasource.config import REDIS_HOST, REDIS_PORT
 from uuid import uuid4
 

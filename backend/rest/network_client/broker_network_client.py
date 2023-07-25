@@ -3,7 +3,7 @@ import asyncio
 from rest.exception import CallbackDataError, NetworkClientDataError, NetworkClientBrokerError
 
 from broker.broker_client.base_broker_client import BaseBrokerClient
-from broker.consumer.async_consumer.base_async_consumer_util import ConsumptionMode
+from broker.consumer.base_async_consumer_util import ConsumptionMode
 from broker.exception import BrokerClientDataError, BrokerClientConnectionError
 
 

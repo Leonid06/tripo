@@ -1,6 +1,5 @@
 import pika
 from pika.exceptions import AMQPError
-from broker.config import RABBITMQ_HOST
 
 
 class BaseProducer:

@@ -1,4 +1,4 @@
-from broker.producer.async_producer.base_async_producer import BaseAsyncProducer
+from broker.producer.base_async_producer import BaseAsyncProducer
 from aio_pika import ExchangeType, Message, DeliveryMode
 
 

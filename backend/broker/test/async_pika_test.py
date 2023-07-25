@@ -1,7 +1,7 @@
 import asyncio
 
-from broker.producer.async_producer.topic_async_producer import TopicAsyncProducer
-from broker.consumer.async_consumer.topic_async_consumer import TopicAsyncConsumer
+from broker.producer.topic_async_producer import TopicAsyncProducer
+from broker.consumer.topic_async_consumer import TopicAsyncConsumer
 
 
 def test_topic_async_producer():

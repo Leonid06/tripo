@@ -1,5 +1,5 @@
 from redis import Redis, RedisError
-from datasource.models.response.search import FuzzySearchMappedResponseUnit
+from datasource.model.response.search import FuzzySearchMappedResponseUnit
 from datasource.exception import CacheError
 
 

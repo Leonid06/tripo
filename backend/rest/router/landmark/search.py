@@ -3,12 +3,12 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from rest.schemas.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut
+from rest.schema.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut
 from rest.config import RABBITMQ_USER, RABBITMQ_PASSWORD, RABBITMQ_HOST, \
     RABBITMQ_SEARCH_LANDMARK_BY_RADIUS_RESPONSE_TOPIC_NAME, RABBITMQ_SEARCH_LANDMARK_BY_RADIUS_REQUEST_TOPIC_NAME, \
     RABBITMQ_MAIN_EXCHANGE_NAME, SEARCH_LANDMARK_BY_ID_REQUEST_TIMEOUT
 from rest.network_client.broker_network_client import BrokerNetworkClient
-from rest.routers.landmark.util.search_util import map_search_landmark_by_radius_inward_schema_to_message_body, \
+from rest.router.landmark.util.search_util import map_search_landmark_by_radius_inward_schema_to_message_body, \
     map_search_landmark_message_body_to_outward_schema, search_landmark_request_callback
 from rest.exception import MappingError, NetworkClientDataError, NetworkClientBrokerError
 

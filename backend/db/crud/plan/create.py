@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, \
     DBAPIError, NoResultFound
-from rest.schemas.plan.create import PlanManualCreateIn, PlanManualCreateOut
+from rest.schema.plan.create import PlanManualCreateIn, PlanManualCreateOut
 from db.models import Plan, Landmark, PlanToLandmark
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
     DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseDriverError,\

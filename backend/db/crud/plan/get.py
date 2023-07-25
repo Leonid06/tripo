@@ -3,7 +3,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, \
     NoResultFound
 
-from rest.schemas.plan.get import PlanGetByIdIn, PlanGetByIdOut, PlanToLandmarkOut
+from rest.schema.plan.get import PlanGetByIdIn, PlanGetByIdOut, PlanToLandmarkOut
 from db.models import Plan, PlanToLandmark
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
     DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError

@@ -1,8 +1,8 @@
 from aio_pika.exceptions import AMQPConnectionError
 
-from broker.producer.async_producer.topic_async_producer import TopicAsyncProducer
-from broker.consumer.async_consumer.topic_async_consumer import TopicAsyncConsumer
-from broker.consumer.async_consumer.base_async_consumer_util import ConsumptionMode
+from broker.producer.topic_async_producer import TopicAsyncProducer
+from broker.consumer.topic_async_consumer import TopicAsyncConsumer
+from broker.consumer.base_async_consumer_util import ConsumptionMode
 from broker.exception import BrokerClientConnectionError, BrokerClientDataError
 
 
