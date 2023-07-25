@@ -31,7 +31,6 @@ class Plan(Base):
 class PlanToLandmark(Base):
     __tablename__ = PLANS_TO_LANDMARKS_TABLE_NAME
     id = Column(Integer, primary_key=True, index=True)
-    public_id = Column(String, index=True)
     plan_id = Column(Integer, ForeignKey(f'{PLANS_TABLE_NAME}.id'))
     landmark_id = Column(Integer, ForeignKey(f'{LANDMARKS_TABLE_NAME}.id'))
     visited = Column(Boolean, default=False)
@@ -41,6 +40,5 @@ class PlanToLandmark(Base):
 class PlanToUser(Base):
     __tablename__ = PLANS_TO_USERS_TABLE_NAME
     id = Column(Integer, primary_key=True, index=True)
-    public_id = Column(String, index=True)
     plan_id = Column(Integer, ForeignKey(f'{PLANS_TABLE_NAME}.id'))
     user_id = Column(Integer, ForeignKey(f'{USERS_TABLE_NAME}.id'))
