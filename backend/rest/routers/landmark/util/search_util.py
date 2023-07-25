@@ -1,6 +1,6 @@
 import json
 
-from db.schemas.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut, SearchLandmarkOutUnit
+from rest.schemas.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut, SearchLandmarkOutUnit
 
 from rest.exception import MappingError, CallbackDataError
 

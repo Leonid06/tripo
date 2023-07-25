@@ -3,7 +3,7 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from db.schemas.plan.create import PlanManualCreateIn, PlanManualCreateOut
+from rest.schemas.plan.create import PlanManualCreateIn, PlanManualCreateOut
 from db.crud.plan.create import save_plan_created_manually
 from db.dependencies import get_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \

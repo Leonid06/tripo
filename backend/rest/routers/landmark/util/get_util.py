@@ -2,7 +2,7 @@ import json
 
 from rest.exception import MappingError, CallbackDataError
 
-from db.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut, GetCachedLandmarkOutUnit
+from rest.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut, GetCachedLandmarkOutUnit
 
 
 def map_get_landmark_inward_schema_to_message_body(schema: GetCachedLandmarkIn) -> str:

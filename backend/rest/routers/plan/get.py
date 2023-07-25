@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from db.schemas.plan.get import PlanGetByIdIn, PlanGetByIdOut
+from rest.schemas.plan.get import PlanGetByIdIn, PlanGetByIdOut
 from db.crud.plan.get import select_plan_by_id
 from db.dependencies import get_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \

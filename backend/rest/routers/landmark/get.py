@@ -3,7 +3,7 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from db.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut
+from rest.schemas.landmark.get import GetCachedLandmarkIn, GetCachedLandmarkOut
 from rest.network_client.broker_network_client import BrokerNetworkClient
 from rest.config import LANDMARK_GET_BY_ID_REQUEST_TIMEOUT, RABBITMQ_MAIN_EXCHANGE_NAME, \
     RABBITMQ_LANDMARK_GET_BY_ID_REQUEST_TOPIC_NAME, RABBITMQ_LANDMARK_GET_BY_ID_RESPONSE_TOPIC_NAME, \

@@ -3,7 +3,7 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from db.schemas.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut
+from rest.schemas.landmark.search import SearchLandmarkByRadiusIn, SearchLandmarkOut
 from rest.config import RABBITMQ_USER, RABBITMQ_PASSWORD, RABBITMQ_HOST, \
     RABBITMQ_SEARCH_LANDMARK_BY_RADIUS_RESPONSE_TOPIC_NAME, RABBITMQ_SEARCH_LANDMARK_BY_RADIUS_REQUEST_TOPIC_NAME, \
     RABBITMQ_MAIN_EXCHANGE_NAME, SEARCH_LANDMARK_BY_ID_REQUEST_TIMEOUT

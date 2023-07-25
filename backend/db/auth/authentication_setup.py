@@ -3,7 +3,7 @@ from fastapi_users import FastAPIUsers
 
 from db.dependencies import get_user_manager
 from db.models import User
-from db.schemas.auth.schemas import  UserRead, UserCreate
+from rest.schemas.auth import  UserRead, UserCreate
 from db.dependencies import get_jwt_strategy
 
 bearer_transport = BearerTransport(tokenUrl='auth/jwt/login')
