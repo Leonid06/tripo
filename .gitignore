@@ -1,6 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/django,swift,visualstudiocode,xcode,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,swift,visualstudiocode,xcode,pycharm
-
+Pods
 ### Django ###
 *.log
 *.pot
@@ -336,10 +336,8 @@ playground.xcworkspace
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-*/Pods
-# Add this line if you want to avoid checking in source code from the Xcode workspace
+ Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
-
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
