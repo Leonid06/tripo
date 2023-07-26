@@ -2,7 +2,7 @@ from fastapi.testclient import TestClient
 from redis import Redis
 from uuid import uuid4
 
-from rest.main import app
+from rest.main_app import app
 from rest.config import REDIS_HOST, REDIS_PORT
 
 client = TestClient(app)

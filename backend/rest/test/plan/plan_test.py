@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 
 from db.dependencies import get_main_async_session, get_test_async_session
 from db.util import generate_random_uuid_string
-from rest.main import app
+from rest.main_app import app
 
 
 @pytest.fixture
