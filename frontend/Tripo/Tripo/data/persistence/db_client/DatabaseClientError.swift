@@ -9,8 +9,8 @@ import CoreStore
 
 
 enum DatabaseClientError : Error {
-    case internalError
-    case differentStorageExistsAtUrl
+    case internalError(_ error : NSError)
+    case differentStorageExistsAtUrl(_ url : URL)
     case unknownError
     
     init(_ error: Error?){
@@ -20,9 +20,9 @@ enum DatabaseClientError : Error {
         }
         switch error {
         case let error as NSError:
-            self = .internalError
+            self = .internalError(error)
         case CoreStoreError.differentStorageExistsAtURL(let existingStorage):
-            self = .differentStorageExistsAtUrl
+            self = .differentStorageExistsAtUrl(existingStorage)
         default:
             self = .unknownError
         }

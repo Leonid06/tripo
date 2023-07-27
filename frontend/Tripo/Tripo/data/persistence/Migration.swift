@@ -8,6 +8,9 @@
 import CoreStore
 
 
+struct MigrationUtil {
+    static let currentVersion = V1.self
+}
 
 protocol Version {
     static var dataStack : DataStack { get }
