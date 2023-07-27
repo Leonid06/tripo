@@ -10,17 +10,11 @@ import CoreStore
 
 
 
-struct PlanViewModelState {
-    enum DatabaseClientState {
-        case instantiationSucceded
-        case instantiationFailed
-        case instantiationInProgress
-    }
-}
-
 class PlanViewModel : ObservableObject {
     @Published var plan : Plan?
-    @Published var databaseClientState : PlanViewModelState.DatabaseClientState = .instantiationInProgress
+    @Published var databaseClientInstantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
+    @Published var fetchPlanByIdRequestState :
+    ViewModelState.fetchRequestState = .fetchInProgress
     private let id : String
     private var databaseClient : PlanDatabaseClient?
     
@@ -29,22 +23,25 @@ class PlanViewModel : ObservableObject {
         self.id = id
         do {
             databaseClient = try PlanDatabaseClient(version: MigrationUtil.currentVersion)
+            databaseClientInstantiationState = .instantiationSucceded
         }catch DatabaseClientError.differentStorageExistsAtUrl(let url) {
             print("Different storage exists at URL : \(url)")
-            databaseClientState = .instantiationFailed
+            databaseClientInstantiationState = .instantiationFailed
         }catch DatabaseClientError.internalError(let error) {
             print("Internal database client error happened : \(error)")
-            databaseClientState = .instantiationFailed
+            databaseClientInstantiationState = .instantiationFailed
         }catch DatabaseClientError.unknownError {
             print("unknown database client error happened")
-            databaseClientState = .instantiationFailed
+            databaseClientInstantiationState = .instantiationFailed
         }catch {
             print("unknown error happened")
-            databaseClientState = .instantiationFailed
+            databaseClientInstantiationState = .instantiationFailed
         }
     }
     
     func fetchPlanById(id: String){
+        fetchPlanByIdRequestState = .fetchInProgress
+        
         if let databaseClient = databaseClient {
             databaseClient.getPlanObjectByRemoteId(remoteId: id){
                 result -> () in
@@ -52,16 +49,22 @@ class PlanViewModel : ObservableObject {
                 case .success(let plan):
                     if let plan = plan {
                         self.plan = plan
+                        self.fetchPlanByIdRequestState = .fetchSucceded
                     }
+                    self.fetchPlanByIdRequestState = .fetchFailed
                 case .failure(let error):
                     switch error {
                     case CoreStoreError.unknown:
+                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("unknown database client error happened")
                     case CoreStoreError.persistentStoreNotFound(let entity):
+                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("Persistent store featuring entity : \(entity) was not found")
                     case CoreStoreError.internalError(let error):
+                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("internal database client error happened : \(error)")
                     default:
+                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("unknown error happened")
                     }
                 }
