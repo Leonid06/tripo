@@ -56,6 +56,7 @@
 		B3DD82892A72B77400F7F588 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82882A72B77400F7F588 /* PlanViewModel.swift */; };
 		B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */; };
 		B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */; };
+		B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		B3DD82882A72B77400F7F588 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
 		B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreateViewModel.swift; sourceTree = "<group>"; };
 		B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
+		B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 				B3DD82882A72B77400F7F588 /* PlanViewModel.swift */,
 				B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */,
 				B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */,
+				B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				B3BED9EE2A4D99990073934A /* DefaultsService .swift in Sources */,
 				B3CFD9942A6EAC660020C884 /* UserDatabaseClient.swift in Sources */,
 				B3BED9EC2A4D8FD70073934A /* AuthenticationView.swift in Sources */,
+				B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */,
 				B3BED9F82A4DDECB0073934A /* RegisterViewModel.swift in Sources */,
 				B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */,
 				B3DD82892A72B77400F7F588 /* PlanViewModel.swift in Sources */,
