@@ -9,12 +9,13 @@ import Foundation
 import Combine
 
 
-class AuthenticationStateViewModel : ObservableObject {
+class AuthenticationStateViewModel : BaseViewModel {
     @Published var state : AuthenticationState = .loggedOut
     private var currentSubscriptions = Set<AnyCancellable>()
     private let defaultsService = DefaultsService.shared
     
-    init() {
+    override init() {
+        super.init()
         guard let jwtKeychainKey = EnvironmentVariables.JWT_KEYCHAIN_KEY as? String else {
             return
         }

@@ -10,7 +10,7 @@ import Alamofire
 
 
 
-class LoginViewModel : ObservableObject {
+class LoginViewModel : BaseViewModel {
     
     func sendlogInUserRequest(email : String, password: String){
         Task {

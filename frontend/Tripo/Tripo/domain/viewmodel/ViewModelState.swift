@@ -17,7 +17,7 @@ class ViewModelState {
     
     enum fetchRequestState {
         case fetchInProgress
-        case fetchSucceded
         case fetchFailed
+        case fetchNotRequested
     }
 }

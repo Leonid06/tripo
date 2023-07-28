@@ -10,7 +10,7 @@ import CoreStore
 
 
 
-class PlanViewModel : ObservableObject {
+class PlanViewModel : BaseViewModel {
     @Published var plan : Plan?
     @Published var databaseClientInstantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanByIdRequestState :
@@ -49,22 +49,19 @@ class PlanViewModel : ObservableObject {
                 case .success(let plan):
                     if let plan = plan {
                         self.plan = plan
-                        self.fetchPlanByIdRequestState = .fetchSucceded
+                        self.fetchPlanByIdRequestState = .fetchNotRequested
                     }
                     self.fetchPlanByIdRequestState = .fetchFailed
                 case .failure(let error):
+                    self.fetchPlanByIdRequestState = .fetchFailed
                     switch error {
                     case CoreStoreError.unknown:
-                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("unknown database client error happened")
                     case CoreStoreError.persistentStoreNotFound(let entity):
-                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("Persistent store featuring entity : \(entity) was not found")
                     case CoreStoreError.internalError(let error):
-                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("internal database client error happened : \(error)")
                     default:
-                        self.fetchPlanByIdRequestState = .fetchFailed
                         print("unknown error happened")
                     }
                 }

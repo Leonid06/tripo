@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 
-class HomeViewModel : ObservableObject {
+class HomeViewModel : BaseViewModel {
     
     
     func sendLogoutUserRequest(){

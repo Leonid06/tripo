@@ -57,6 +57,9 @@
 		B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */; };
 		B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */; };
 		B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */; };
+		B3DD82922A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */; };
+		B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */; };
+		B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +136,9 @@
 		B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreateViewModel.swift; sourceTree = "<group>"; };
 		B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanCreateViewModel+Mapping.swift"; sourceTree = "<group>"; };
+		B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkPresentationModel.swift; sourceTree = "<group>"; };
+		B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresentationModel.swift; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +240,7 @@
 		B3B5E1532A45A2BB00EDD9F7 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B3DD82962A73FAD800F7F588 /* model */,
 				B3B5E1542A45A2DC00EDD9F7 /* view */,
 			);
 			path = presentation;
@@ -284,6 +291,7 @@
 		B3BED9E42A4B27760073934A /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				B3DD82902A73F54600F7F588 /* extension */,
 				B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */,
 				B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */,
 				B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */,
@@ -385,6 +393,23 @@
 				B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */,
 			);
 			path = db_client;
+			sourceTree = "<group>";
+		};
+		B3DD82902A73F54600F7F588 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		B3DD82962A73FAD800F7F588 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */,
+				B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
+				B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */,
 				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
 				B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
@@ -640,8 +666,10 @@
 				B3BED9E82A4CD1170073934A /* AuthenticationState.swift in Sources */,
 				B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */,
 				B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */,
+				B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */,
 				B3BED9E32A4AF8540073934A /* RequestParameters.swift in Sources */,
 				B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */,
+				B3DD82922A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,

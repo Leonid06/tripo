@@ -8,7 +8,7 @@
 import Foundation
 
 
-class RegisterViewModel : ObservableObject {
+class RegisterViewModel : BaseViewModel {
     func sendRegisterUserRequest(email: String, password: String){
         Task {
             AuthenticationHTTPService.shared.sendRegisterUserRequest(email: email, password: password, callback: {_, _ in })

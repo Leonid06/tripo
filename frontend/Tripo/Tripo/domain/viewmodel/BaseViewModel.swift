@@ -9,5 +9,5 @@ import Foundation
 
 
 class BaseViewModel : ObservableObject {
-    internal func instantiateDatabaseService()
+    
 }

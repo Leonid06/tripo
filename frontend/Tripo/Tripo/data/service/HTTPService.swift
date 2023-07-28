@@ -24,7 +24,6 @@ class HTTPService {
             case .failure(let error):
                 switch error {
                 case .createURLRequestFailed, .responseSerializationFailed, .requestAdaptationFailed:
-                    print(response.debugDescription)
                     callback(nil, error)
                 default:
                     callback(nil, error)
