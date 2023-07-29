@@ -14,7 +14,7 @@ class PlanViewModel : BaseViewModel {
     @Published var plan : Plan?
     @Published var databaseClientInstantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanByIdRequestState :
-    ViewModelState.fetchRequestState = .fetchInProgress
+    ViewModelState.RequestState = .requestSucceeded
     private let id : String
     private var databaseClient : PlanDatabaseClient?
     
@@ -39,8 +39,8 @@ class PlanViewModel : BaseViewModel {
         }
     }
     
-    func fetchPlanById(id: String){
-        fetchPlanByIdRequestState = .fetchInProgress
+    func fetchPlanByRemoteId(id: String){
+        fetchPlanByIdRequestState = .requestInProgress
         
         if let databaseClient = databaseClient {
             databaseClient.getPlanObjectByRemoteId(remoteId: id){
@@ -49,11 +49,11 @@ class PlanViewModel : BaseViewModel {
                 case .success(let plan):
                     if let plan = plan {
                         self.plan = plan
-                        self.fetchPlanByIdRequestState = .fetchNotRequested
+                        self.fetchPlanByIdRequestState = .requestSucceeded
                     }
-                    self.fetchPlanByIdRequestState = .fetchFailed
+                    self.fetchPlanByIdRequestState = .requestFailed
                 case .failure(let error):
-                    self.fetchPlanByIdRequestState = .fetchFailed
+                    self.fetchPlanByIdRequestState = .requestFailed
                     switch error {
                     case CoreStoreError.unknown:
                         print("unknown database client error happened")
@@ -66,6 +66,8 @@ class PlanViewModel : BaseViewModel {
                     }
                 }
             }
+        } else {
+            fetchPlanByIdRequestState = .requestFailed
         }
     }
 }

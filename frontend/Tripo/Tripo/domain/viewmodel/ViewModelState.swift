@@ -15,9 +15,9 @@ class ViewModelState {
         case instantiationInProgress
     }
     
-    enum fetchRequestState {
-        case fetchInProgress
-        case fetchFailed
-        case fetchNotRequested
+    enum RequestState {
+        case requestInProgress
+        case requestFailed
+        case requestSucceeded
     }
 }

@@ -17,6 +17,11 @@
 		B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* HTTPService.swift */; };
 		B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */; };
 		B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */; };
+		B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */; };
+		B3464D802A752E8300895EBC /* PlanCreatePipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7F2A752E8300895EBC /* PlanCreatePipelineExecutor.swift */; };
+		B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D812A75303100895EBC /* PipelineSchema.swift */; };
+		B3464D842A75312900895EBC /* PipelineExecutor+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */; };
+		B3464D872A7564AB00895EBC /* PipelineExecutorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D862A7564AB00895EBC /* PipelineExecutorError.swift */; };
 		B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A65B7E2A6EEE8B00AED659 /* Migration.swift */; };
 		B3B598762A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */; };
 		B3B598782A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */; };
@@ -57,9 +62,10 @@
 		B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */; };
 		B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */; };
 		B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */; };
-		B3DD82922A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */; };
+		B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */; };
 		B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */; };
 		B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */; };
+		B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD829B2A74152100F7F588 /* ViewModelError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,11 @@
 		B322C6C22A45ACA300845A3C /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseClient.swift; sourceTree = "<group>"; };
 		B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePipelineExecutor.swift; sourceTree = "<group>"; };
+		B3464D7F2A752E8300895EBC /* PlanCreatePipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatePipelineExecutor.swift; sourceTree = "<group>"; };
+		B3464D812A75303100895EBC /* PipelineSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSchema.swift; sourceTree = "<group>"; };
+		B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Mapping.swift"; sourceTree = "<group>"; };
+		B3464D862A7564AB00895EBC /* PipelineExecutorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineExecutorError.swift; sourceTree = "<group>"; };
 		B3A65B7E2A6EEE8B00AED659 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
 		B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToLandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
@@ -136,9 +147,10 @@
 		B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreateViewModel.swift; sourceTree = "<group>"; };
 		B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanCreateViewModel+Mapping.swift"; sourceTree = "<group>"; };
+		B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Mapping.swift"; sourceTree = "<group>"; };
 		B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkPresentationModel.swift; sourceTree = "<group>"; };
 		B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresentationModel.swift; sourceTree = "<group>"; };
+		B3DD829B2A74152100F7F588 /* ViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelError.swift; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +249,26 @@
 			path = persistence;
 			sourceTree = "<group>";
 		};
+		B3464D7C2A752D4E00895EBC /* pipeline_executor */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D852A75315300895EBC /* extension */,
+				B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */,
+				B3464D7F2A752E8300895EBC /* PlanCreatePipelineExecutor.swift */,
+				B3464D812A75303100895EBC /* PipelineSchema.swift */,
+				B3464D862A7564AB00895EBC /* PipelineExecutorError.swift */,
+			);
+			path = pipeline_executor;
+			sourceTree = "<group>";
+		};
+		B3464D852A75315300895EBC /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		B3B5E1532A45A2BB00EDD9F7 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +292,7 @@
 		B3BED9D72A49D35E0073934A /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				B3464D7C2A752D4E00895EBC /* pipeline_executor */,
 				B3BED9E42A4B27760073934A /* viewmodel */,
 				B3BED9DD2A49D55D0073934A /* util */,
 				B3BED9D82A49D3780073934A /* model */,
@@ -300,6 +333,7 @@
 				B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */,
 				B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */,
 				B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */,
+				B3DD829B2A74152100F7F588 /* ViewModelError.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -398,7 +432,7 @@
 		B3DD82902A73F54600F7F588 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				B3DD82912A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift */,
+				B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -652,8 +686,11 @@
 			files = (
 				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
 				B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */,
+				B3464D802A752E8300895EBC /* PlanCreatePipelineExecutor.swift in Sources */,
+				B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */,
 				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
 				B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */,
+				B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
 				B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */,
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
@@ -663,13 +700,16 @@
 				B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */,
 				B3BED9FC2A4DE91B0073934A /* HomeView.swift in Sources */,
 				B3CFD9902A6E8EAE0020C884 /* LandmarkDatabaseClient.swift in Sources */,
+				B3464D842A75312900895EBC /* PipelineExecutor+Mapping.swift in Sources */,
+				B3464D872A7564AB00895EBC /* PipelineExecutorError.swift in Sources */,
 				B3BED9E82A4CD1170073934A /* AuthenticationState.swift in Sources */,
 				B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */,
+				B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */,
 				B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */,
 				B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */,
 				B3BED9E32A4AF8540073934A /* RequestParameters.swift in Sources */,
 				B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */,
-				B3DD82922A73F59A00F7F588 /* PlanCreateViewModel+Mapping.swift in Sources */,
+				B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,

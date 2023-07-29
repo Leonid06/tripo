@@ -9,14 +9,17 @@ import CoreStore
 
 
 class PlanDatabaseClient : BaseDatabaseClient {
-    func createPlanObject(remoteId : String, name : String, description : String, completed : Bool, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func createPlanObject(remoteId : String? = nil, name : String, description : String, completed : Bool, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             let plan = transaction.create(Into<Plan>())
-            plan.remoteId = remoteId
+            if let remoteId = remoteId {
+                plan.remoteId = remoteId
+            }
             plan.name = name
             plan.planDescription = description
             plan.completed = completed
+            
             
         }, async_callback_closure: callback)
     }

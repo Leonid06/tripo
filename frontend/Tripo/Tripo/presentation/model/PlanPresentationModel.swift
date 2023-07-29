@@ -8,12 +8,14 @@
 import Foundation
 
 
-struct PlanPresentationUnit {
-    var name : String?
-    var description : String?
-    var completed : Bool?
-    var remoteId : String?
+protocol PlanPresentationUnitProtocol {
+    var name : String? {get set}
 }
 
+
+struct PlanCreatePresentationUnit : PlanPresentationUnitProtocol {
+    var name : String?
+    var description : String?
+}
 
 
