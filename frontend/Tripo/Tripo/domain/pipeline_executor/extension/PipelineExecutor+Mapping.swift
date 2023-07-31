@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension PlanCreatePipelineExecutor {
+extension PlanPipelineExecutor {
     static func mapPlanCreatePresentationDataToPipelineSchema(
         planPresentationUnit : PlanCreatePresentationUnit, landmarkUnits : Array<LandmarkSearchShortPresentationUnit>
     ) -> PlanCreatePipelineSchema {

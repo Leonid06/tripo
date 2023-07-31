@@ -17,17 +17,22 @@ class PlanCreateViewModel : BaseViewModel {
     @Published var createPlanRequestState : ViewModelState.RequestState =
         .requestSucceeded
     
-    private var planCreatePipelineExecutor : PlanCreatePipelineExecutor?
+    private var planCreatePipelineExecutor : PlanPipelineExecutor?
     
     override init() {
         super.init()
         do {
-            planCreatePipelineExecutor = try PlanCreatePipelineExecutor()
+            planCreatePipelineExecutor = try PlanPipelineExecutor()
             databaseClientInstantiationState = .instantiationSucceded
-        } catch PipelineExecutorError.DatabaseClientInitializationFailed {
-            print("plan create pipeline executor instantiation failed due to ab error in database client instantiation")
+        } catch PipelineDatabaseError.PipelineDatabaseInstantiationError.InternalDatabaseErrorHappened(let error) {
+            print("Internal database client error happened : \(error)")
             databaseClientInstantiationState = .instantiationFailed
-        } catch {
+        } catch PipelineDatabaseError.PipelineDatabaseInstantiationError.InvalidDatabaseStorageProvided(let url){
+            print("Different storage exists at URL : \(url)")
+        } catch PipelineDatabaseError.PipelineDatabaseInstantiationError.UnknownDatabaseErrorHappened {
+            print("unknown database client error happened")
+        }
+        catch {
             print("plan create pipeline executor instantiation failed due to unknown error")
         }
         
@@ -69,7 +74,7 @@ class PlanCreateViewModel : BaseViewModel {
             return
         }
         do {
-            let pipelineSchema = PlanCreatePipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
+            let pipelineSchema = PlanPipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
             try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
                 product in
             }
