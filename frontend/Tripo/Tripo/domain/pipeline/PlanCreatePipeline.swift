@@ -14,11 +14,16 @@ class PlanCreatePipeline : BasePipeline {
     private let landmarkHTTPService = LandmarkHTTPService()
     private var planDatabaseClient : PlanDatabaseClient?
     private var landmarkDatabaseClient : LandmarkDatabaseClient?
+    private var planToLandmarkDatabaseClient : PlanToLandmarkDatabaseClient?
+    private var planToUserDatabaseClient : PlanToUserDatabaseClient?
     
     override init() throws  {
         do {
             try super.init()
             planDatabaseClient = try PlanDatabaseClient(version: MigrationUtil.currentVersion)
+            landmarkDatabaseClient = try LandmarkDatabaseClient(version: MigrationUtil.currentVersion)
+            planToLandmarkDatabaseClient = try PlanToLandmarkDatabaseClient(version: MigrationUtil.currentVersion)
+            planToUserDatabaseClient = try PlanToUserDatabaseClient(version: MigrationUtil.currentVersion)
         }catch DatabaseClientError.differentStorageExistsAtUrl(let url) {
             print("Different storage exists at URL : \(url)")
             throw PipelineDatabaseError.PipelineDatabaseInstantiationError.InvalidDatabaseStorageProvided(url: url)
@@ -44,24 +49,41 @@ class PlanCreatePipeline : BasePipeline {
         }.eraseToAnyPublisher()
     }
     
-    func getPlanCreateDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<Void, PipelineWrapperError> {
-        return Future<Void, PipelineDatabaseError>(){promise in
+    func getPlanCreateDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<UUID, PipelineWrapperError> {
+        return Future<UUID, PipelineDatabaseError>(){promise in
                 self.doSavePlanObjectInDatabaseTask(planName: planName,
                                                     planDescription: planDescription, promise: promise)
-        }.flatMap {
+        }
+        .flatMap { planId in
             guard let landmarks = landmarks else {
-                return Fail<Void, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidObjectSchema(description: "Landmark schemas are not provided"))
+                return Fail<UUID, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidObjectSchema(description: "Landmark schemas are not provided"))
                     .eraseToAnyPublisher()
             }
-            let task = Empty<Void, PipelineDatabaseError>()
+            let task = Empty<UUID, PipelineDatabaseError>()
             self.composeSaveLandmarksInDatabaseJob(job: task, landmarks: landmarks)
             return task.eraseToAnyPublisher()
-        }.mapError {
+        }
+        .collect()
+        .flatMap {
+            output in
+            
+            let planId = output[0]
+            let landmarkIds = Array(output[1...])
+            
+            guard let userToken = userToken else {
+                return Fail<UUID, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidObjectSchema(description: "Access token is not provided"))
+                    .eraseToAnyPublisher()
+            }
+            
+            return self.getCreateDatabaseRelationshipsTask(currentToken: userToken, planIdentifier: planId, landmarkIdentifiers: landmarkIds)
+        }
+        .mapError {
             error in PipelineWrapperError.WrapError(error: error)
         }.eraseToAnyPublisher()
+      
     }
     
-    private func composeSaveLandmarksInDatabaseJob(job : Empty<Void, PipelineDatabaseError>, landmarks : Array<PlanCreatePipelineLandmarkSchema>){
+    private func composeSaveLandmarksInDatabaseJob(job : Empty<UUID, PipelineDatabaseError>, landmarks : Array<PlanCreatePipelineLandmarkSchema>){
         landmarks.forEach {
             schema in
             _ = job.merge(with: Future(){ promise in
@@ -69,7 +91,7 @@ class PlanCreatePipeline : BasePipeline {
                     promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Invalid landmark schema data")))
                     return
                 }
-                self.doSaveLandmarkObjectInDatabaseTask(
+                self.doSaveLandmarkObjectInDatabaseSubtask(
                     landmarkName: landmarkName,
                     landmarkDescription: landmarkDescription,
                     remoteId: remoteId,
@@ -78,9 +100,71 @@ class PlanCreatePipeline : BasePipeline {
         }
     }
     
+    private func getCreateDatabaseRelationshipsTask(currentToken: String, planIdentifier: UUID, landmarkIdentifiers : Array<UUID>) -> AnyPublisher<UUID, PipelineDatabaseError>{
+        let task = Empty<UUID, PipelineDatabaseError>()
+        
+      
+        
+        landmarkIdentifiers.forEach {
+            landmarkIdentifier in
+            _ = task.merge(with: Future(){
+                promise in
+                
+                guard let databaseClient = self.planToLandmarkDatabaseClient else {
+                    promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
+                    return
+                }
+                
+                databaseClient.createPlanToLandmarkRelationship(
+                    planId: planIdentifier, landmarkId: landmarkIdentifier){
+                    result in
+                    switch result {
+                    case .success:
+                        do {
+                            if let identifier = try result.get(){
+                                promise(Result.success(identifier))
+                            }
+                           
+                        } catch {
+                            promise(Result.failure(PipelineDatabaseError.InvalidDatabaseResponse))
+                        }
+                    case .failure(let error):
+                        promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
+                    }
+                }
+            })
+        }
+        
+        return task.merge(with: Future(){
+            promise in
+            guard let databaseClient = self.planToUserDatabaseClient else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
+                return
+            }
+            
+            databaseClient.createPlanToUserRelationship(planId: planIdentifier, userCurrentToken: currentToken){
+                result in
+                switch result {
+                case .success:
+                    do {
+                        if let identifier = try result.get(){
+                            promise(Result.success(identifier))
+                        }
+                       
+                    } catch {
+                        promise(Result.failure(PipelineDatabaseError.InvalidDatabaseResponse))
+                    }
+                case .failure(let error):
+                    promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
+                }
+            }
+            
+        }).eraseToAnyPublisher()
+    }
+    
 
     
-    private func doSavePlanObjectInDatabaseTask(planName : String?, planDescription : String?, promise : @escaping Future<Void,  PipelineDatabaseError>.Promise){
+    private func doSavePlanObjectInDatabaseTask(planName : String?, planDescription : String?, promise : @escaping Future<UUID,  PipelineDatabaseError>.Promise){
         guard let databaseClient = self.planDatabaseClient else {
             promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
             return
@@ -95,14 +179,21 @@ class PlanCreatePipeline : BasePipeline {
             result in
             switch result {
             case .success:
-                promise(Result.success(()))
+                do {
+                    let identifier = try result.get()
+                    promise(Result.success(identifier))
+                   
+                } catch {
+                    promise(Result.failure(PipelineDatabaseError.InvalidDatabaseResponse))
+                }
+                
             case .failure(let error):
                 promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
             }
         }
     }
     
-    private func doSaveLandmarkObjectInDatabaseTask(landmarkName : String, landmarkDescription : String, remoteId : String, promise : @escaping Future<Void,  PipelineDatabaseError>.Promise){
+    private func doSaveLandmarkObjectInDatabaseSubtask(landmarkName : String, landmarkDescription : String, remoteId : String, promise : @escaping Future<UUID,  PipelineDatabaseError>.Promise){
         guard let databaseClient = self.landmarkDatabaseClient else {
             promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
             return
@@ -111,7 +202,13 @@ class PlanCreatePipeline : BasePipeline {
             result in
             switch result {
             case .success:
-                promise(Result.success(()))
+                do {
+                    let identifier = try result.get()
+                    promise(Result.success(identifier))
+                   
+                } catch {
+                    promise(Result.failure(PipelineDatabaseError.InvalidDatabaseResponse))
+                }
             case .failure(let error):
                 promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
             }

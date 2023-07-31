@@ -16,7 +16,7 @@ class PlanPipelineExecutor : BasePipelineExecutor {
     }
  
     
-    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<Void, PipelineExecutorError>) -> ()) throws {
+    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<UUID, PipelineExecutorError>) -> ()) throws {
         
         guard let planCreatePipeline = planCreatePipeline else {
             throw PipelineExecutorError.PipelineNotInitialized

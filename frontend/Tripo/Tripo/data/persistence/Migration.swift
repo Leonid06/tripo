@@ -9,7 +9,7 @@ import CoreStore
 
 
 struct MigrationUtil {
-    static let currentVersion = V1.self
+    static let currentVersion = V2.self
 }
 
 protocol Version {

@@ -9,9 +9,9 @@ import CoreStore
 
 
 class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
-    func createPlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func createPlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<UUID?>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> () in
+            transaction -> (UUID?) in
             do {
                 var plan = try transaction.fetchOne(
                     From<Plan>().where(\.$remoteId == planRemoteId)
@@ -23,7 +23,12 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                     var planToLandmark = transaction.create(Into<PlanToLandmark>())
                     plan.planToLandmark.insert(planToLandmark)
                     landmark.planToLandmark.insert(planToLandmark)
+                    
+                    return planToLandmark.identifier
                 }
+                
+                return nil
+                
         
             } catch {
                 throw CoreStoreError(error)
@@ -31,9 +36,9 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
-    func createPlanToLandmarkRelationship(planId : UUID, landmarkId: UUID, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func createPlanToLandmarkRelationship(planId : UUID, landmarkId: UUID, callback : @escaping (AsynchronousDataTransaction.Result<UUID?>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> () in
+            transaction -> (UUID?) in
             do {
                 var plan = try transaction.fetchOne(
                     From<Plan>().where(\.$identifier == planId)
@@ -45,7 +50,11 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                     var planToLandmark = transaction.create(Into<PlanToLandmark>())
                     plan.planToLandmark.insert(planToLandmark)
                     landmark.planToLandmark.insert(planToLandmark)
+                    
+                    return planToLandmark.identifier
                 }
+                
+                return nil
         
             } catch {
                 throw CoreStoreError(error)

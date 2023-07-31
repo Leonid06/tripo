@@ -26,6 +26,7 @@ enum PipelineDefaultsError : PipelineError {
 
 enum PipelineDatabaseError : PipelineError {
     case DatabaseRequestFailed(error : Error)
+    case InvalidDatabaseResponse
     case InvalidObjectSchema(description: String)
     
     enum PipelineDatabaseInstantiationError : PipelineError {

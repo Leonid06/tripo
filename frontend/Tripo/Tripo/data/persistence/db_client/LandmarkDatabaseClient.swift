@@ -8,9 +8,9 @@
 import CoreStore
 
 class LandmarkDatabaseClient : BaseDatabaseClient {
-    func createLandmarkObject(remoteId : String? = nil, name : String, description : String, type : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func createLandmarkObject(remoteId : String? = nil, name : String, description : String, type : String, callback : @escaping (AsynchronousDataTransaction.Result<UUID>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> () in
+            transaction -> (UUID) in
             let landmark = transaction.create(Into<Landmark>())
             if let remoteId = remoteId {
                 landmark.remoteId = remoteId
@@ -18,6 +18,9 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
             landmark.name = name
             landmark.landmarkDescription = description
             landmark.type = type
+            
+            return landmark.identifier
+        
             
         }, async_callback_closure: callback)
     }
