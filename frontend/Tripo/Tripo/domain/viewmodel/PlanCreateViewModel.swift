@@ -24,33 +24,12 @@ class PlanCreateViewModel : BaseViewModel {
         do {
             planCreatePipelineExecutor = try PlanCreatePipelineExecutor()
             databaseClientInstantiationState = .instantiationSucceded
-        } catch PipelineExecutorError.databaseClientInitializationFailed {
+        } catch PipelineExecutorError.DatabaseClientInitializationFailed {
             print("plan create pipeline executor instantiation failed due to ab error in database client instantiation")
             databaseClientInstantiationState = .instantiationFailed
         } catch {
             print("plan create pipeline executor instantiation failed due to unknown error")
         }
-        
-        
-        //    private func performFutureSavePlanHTTPClientRequest(httpClient: PlanHTTPService, name : String, description: String)
-        //
-        //
-        //    private func performFutureCreatePlanDatabaseClientRequest(databaseClient: PlanDatabaseClient,name : String, description: String) -> Future<Void, ViewModelError> {
-        //        return Future<Void, ViewModelError> { promise in
-        //            databaseClient.createPlanObject(name: name, description: description, completed: false){
-        //                result in
-        //                switch result {
-        //                case .success:
-        //                    promise(Result.success(()))
-        //                    self.createPlanRequestState = .requestNotRequested
-        //                case .failure(let error):
-        //                    promise(Result.failure(ViewModelError.requestFailed))
-        //                    self.createPlanRequestState = .requestFailed
-        //                    print("Unknown error happened : \(error)")
-        //                }
-        //            }
-        //        }
-        //    }
         
         //    func fetchLandmarksByCurrentLocation(radius: Int){
         //        fetchLandmarksRequestState = .requestInProgress
@@ -91,7 +70,9 @@ class PlanCreateViewModel : BaseViewModel {
         }
         do {
             let pipelineSchema = PlanCreatePipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
-            planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema)
+            try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
+                product in
+            }
             createPlanRequestState = .requestSucceeded
         } catch {
             createPlanRequestState = .requestFailed

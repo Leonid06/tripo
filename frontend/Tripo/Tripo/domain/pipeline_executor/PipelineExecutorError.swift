@@ -9,5 +9,11 @@ import Foundation
 
 
 enum PipelineExecutorError : Error {
-    case databaseClientInitializationFailed
+    case DatabaseClientInitializationFailed
+    case NoValueByDefaultsKey(key : String)
+    case InvalidDefaultsKey
+    case InvalidValueByDefaultsKey(key : Any)
+    case PipelineExecutionError(description: String)
+    case DatabaseRequestFailed(error : Error)
+    
 }

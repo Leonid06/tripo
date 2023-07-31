@@ -9,6 +9,12 @@ import Foundation
 import Combine
 
 class BasePipelineExecutor {
+    
+    enum PipelineExecutionProduct<Output, Failure> {
+        case Success(output : Output)
+        case Failure(failure: Failure)
+    }
+    
     init() throws {
         
     }

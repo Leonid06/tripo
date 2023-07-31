@@ -22,6 +22,7 @@
 		B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D812A75303100895EBC /* PipelineSchema.swift */; };
 		B3464D842A75312900895EBC /* PipelineExecutor+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */; };
 		B3464D872A7564AB00895EBC /* PipelineExecutorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D862A7564AB00895EBC /* PipelineExecutorError.swift */; };
+		B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */; };
 		B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A65B7E2A6EEE8B00AED659 /* Migration.swift */; };
 		B3B598762A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */; };
 		B3B598782A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */; };
@@ -102,6 +103,7 @@
 		B3464D812A75303100895EBC /* PipelineSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSchema.swift; sourceTree = "<group>"; };
 		B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Mapping.swift"; sourceTree = "<group>"; };
 		B3464D862A7564AB00895EBC /* PipelineExecutorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineExecutorError.swift; sourceTree = "<group>"; };
+		B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Convenience.swift"; sourceTree = "<group>"; };
 		B3A65B7E2A6EEE8B00AED659 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
 		B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToLandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */,
+				B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
+				B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */,
 				B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */,
 				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,
 				B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */,
