@@ -8,16 +8,21 @@
 import Foundation
 
 
-protocol PipelineError : Error {
-    
+protocol PipelineError : Error {}
+
+
+enum PipelineJobError : PipelineError {
+    case WrapError(error: PipelineError)
+
 }
 
-enum PipelineWrapperError : PipelineError {
-    case WrapError(error: PipelineError)
+enum PipelineOutputError : PipelineError {
+    case PipelineJobInvalidOutput(description: String)
 }
+
 
 enum PipelineDefaultsError : PipelineError {
-    
+    case InvalidUpstreamTaskOutput(description :String)
     case NoValueByDefaultsKey(key : String)
     case InvalidDefaultsKey
     case InvalidValueByDefaultsKey(key : Any)
@@ -25,6 +30,7 @@ enum PipelineDefaultsError : PipelineError {
 }
 
 enum PipelineDatabaseError : PipelineError {
+    case InvalidUpstreamTaskOutput(description :String)
     case DatabaseRequestFailed(error : Error)
     case InvalidDatabaseResponse
     case InvalidObjectSchema(description: String)

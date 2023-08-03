@@ -17,6 +17,7 @@
 		B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* HTTPService.swift */; };
 		B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */; };
 		B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */; };
+		B3448AD92A7A651800A4F19E /* PipelinePublisherOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3448AD82A7A651800A4F19E /* PipelinePublisherOutput.swift */; };
 		B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */; };
 		B3464D802A752E8300895EBC /* PlanPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7F2A752E8300895EBC /* PlanPipelineExecutor.swift */; };
 		B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D812A75303100895EBC /* PipelineSchema.swift */; };
@@ -101,6 +102,7 @@
 		B322C6C22A45ACA300845A3C /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseClient.swift; sourceTree = "<group>"; };
 		B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B3448AD82A7A651800A4F19E /* PipelinePublisherOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelinePublisherOutput.swift; sourceTree = "<group>"; };
 		B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePipelineExecutor.swift; sourceTree = "<group>"; };
 		B3464D7F2A752E8300895EBC /* PlanPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPipelineExecutor.swift; sourceTree = "<group>"; };
 		B3464D812A75303100895EBC /* PipelineSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSchema.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				B3464D8D2A77D0A900895EBC /* BasePipeline.swift */,
 				B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */,
 				B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */,
+				B3448AD82A7A651800A4F19E /* PipelinePublisherOutput.swift */,
 			);
 			path = pipeline;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				B3BED9EC2A4D8FD70073934A /* AuthenticationView.swift in Sources */,
 				B3464D902A77D0C300895EBC /* PlanCreatePipeline.swift in Sources */,
 				B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */,
+				B3448AD92A7A651800A4F19E /* PipelinePublisherOutput.swift in Sources */,
 				B3BED9F82A4DDECB0073934A /* RegisterViewModel.swift in Sources */,
 				B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */,
 				B3DD82892A72B77400F7F588 /* PlanViewModel.swift in Sources */,

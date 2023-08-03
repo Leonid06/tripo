@@ -16,7 +16,7 @@ class PlanPipelineExecutor : BasePipelineExecutor {
     }
  
     
-    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<UUID, PipelineExecutorError>) -> ()) throws {
+    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<BasePipeline.PipelineJobOutput, PipelineExecutorError>) -> ()) throws {
         
         guard let planCreatePipeline = planCreatePipeline else {
             throw PipelineExecutorError.PipelineNotInitialized
@@ -26,11 +26,25 @@ class PlanPipelineExecutor : BasePipelineExecutor {
         
         let pipeline = defaultsJob
             .flatMap {
-                token in
-                planCreatePipeline.getPlanCreateDatabaseJob(userToken: token,planName: pipelineSchema.planName,
-                                                            planDescription: pipelineSchema.planDescription,
-                                                            landmarks: pipelineSchema.landmarks)
-            }.eraseToAnyPublisher()
+                output in
+
+//                guard let token = (output as? BasePipeline.PipelineDefaultsTaskOutput).userCurrentToken else {
+//                    return Fail<BasePipeline.PipelineJobOutput, PipelineOutputError>(error: PipelineOutputError.PipelineJobInvalidOutput(description: "invalid defaults job output"))
+//                        .mapError {error in PipelineJobError.WrapError(error: error)}
+//                        .eraseToAnyPublisher()
+//                }
+                
+//                return Fail<BasePipeline.PipelineJobOutput, PipelineJobError>(error: PipelineJobError.WrapError(error: PipelineOutputError.PipelineJobInvalidOutput(description: "invalid defaults job output")) )
+//                    .eraseToAnyPublisher()
+
+                return planCreatePipeline.getPlanCreateDatabaseJob(userToken: "", planName: pipelineSchema.planName,
+                    planDescription: pipelineSchema.planDescription,
+                    landmarks: pipelineSchema.landmarks)
+            }
+            .map {
+                output in BasePipeline.PipelineJobOutput(output: output)
+            }
+            .eraseToAnyPublisher()
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):

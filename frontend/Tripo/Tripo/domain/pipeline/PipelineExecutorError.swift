@@ -10,5 +10,5 @@ import Foundation
 
 enum PipelineExecutorError : Error {
     case PipelineNotInitialized
-    case PipelineExecutionFailed(error : PipelineWrapperError)
+    case PipelineExecutionFailed(error : Error)
 }

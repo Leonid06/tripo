@@ -9,25 +9,21 @@ import CoreStore
 
 
 class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
-    func createPlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<UUID?>) -> ()){
+    func createPlanToLandmarkRelationship(planRemoteId : String, landmarkRemoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> (UUID?) in
+            transaction -> () in
             do {
-                var plan = try transaction.fetchOne(
+                let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$remoteId == planRemoteId)
                 )
-                var landmark = try transaction.fetchOne(
+                let landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$remoteId == landmarkRemoteId)
                 )
                 if let plan = plan, let landmark = landmark {
-                    var planToLandmark = transaction.create(Into<PlanToLandmark>())
+                    let planToLandmark = transaction.create(Into<PlanToLandmark>())
                     plan.planToLandmark.insert(planToLandmark)
                     landmark.planToLandmark.insert(planToLandmark)
-                    
-                    return planToLandmark.identifier
                 }
-                
-                return nil
                 
         
             } catch {
@@ -36,25 +32,21 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
-    func createPlanToLandmarkRelationship(planId : UUID, landmarkId: UUID, callback : @escaping (AsynchronousDataTransaction.Result<UUID?>) -> ()){
+    func createPlanToLandmarkRelationship(planId : UUID, landmarkId: UUID, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
-            transaction -> (UUID?) in
+            transaction -> () in
             do {
-                var plan = try transaction.fetchOne(
+                let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$identifier == planId)
                 )
-                var landmark = try transaction.fetchOne(
+                let landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$identifier == landmarkId)
                 )
                 if let plan = plan, let landmark = landmark {
                     var planToLandmark = transaction.create(Into<PlanToLandmark>())
                     plan.planToLandmark.insert(planToLandmark)
                     landmark.planToLandmark.insert(planToLandmark)
-                    
-                    return planToLandmark.identifier
                 }
-                
-                return nil
         
             } catch {
                 throw CoreStoreError(error)
@@ -67,14 +59,14 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             do {
-                var plan = try transaction.fetchOne(
+                let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$remoteId == planRemoteId)
                 )
-                var landmark = try transaction.fetchOne(
+                let landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$remoteId == landmarkRemoteId)
                 )
                 if let plan = plan, let landmark = landmark {
-                    var planToLandmark = try transaction.fetchOne(
+                    let planToLandmark = try transaction.fetchOne(
                         From<PlanToLandmark>().where(\.$plan == plan && \.$landmark == landmark)
                     )
                     
@@ -96,14 +88,14 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             do {
-                var plan = try transaction.fetchOne(
+                let plan = try transaction.fetchOne(
                     From<Plan>().where(\.$identifier == planId)
                 )
-                var landmark = try transaction.fetchOne(
+                let landmark = try transaction.fetchOne(
                     From<Landmark>().where(\.$identifier == landmarkId)
                 )
                 if let plan = plan, let landmark = landmark {
-                    var planToLandmark = try transaction.fetchOne(
+                    let planToLandmark = try transaction.fetchOne(
                         From<PlanToLandmark>().where(\.$plan == plan && \.$landmark == landmark)
                     )
                     
