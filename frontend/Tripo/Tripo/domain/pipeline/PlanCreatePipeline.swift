@@ -16,7 +16,6 @@ class PlanCreatePipeline : BasePipeline {
     internal var landmarkDatabaseClient : LandmarkDatabaseClient?
     internal var planToLandmarkDatabaseClient : PlanToLandmarkDatabaseClient?
     internal var planToUserDatabaseClient : PlanToUserDatabaseClient?
-    
     internal var planHTTPClient = PlanHTTPService()
     
     override init() throws  {
@@ -42,13 +41,13 @@ class PlanCreatePipeline : BasePipeline {
         }
     }
     
-    func getPlanCreateDefaultsJob() -> AnyPublisher<PipelineDefaultsTaskOutput, PipelineJobError> {
+    func getDefaultsJob() -> AnyPublisher<PipelineDefaultsTaskOutput, PipelineJobError> {
         return getProvideUserCurrentTokenTask().mapError {
             error in PipelineJobError.WrapError(error: error)
         }.eraseToAnyPublisher()
     }
     
-    func getPlanCreateNetworkJob(planName: String?, planDescription: String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineNetworkTaskOutput, PipelineJobError> {
+    func getNetworkJob(planName: String?, planDescription: String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineNetworkTaskOutput, PipelineJobError> {
         return getMapCreatePlanHTTPRequestParametersTask(planName: planName, planDescription: planDescription, landmarks: landmarks)
             .flatMap {
                 output in
@@ -64,7 +63,7 @@ class PlanCreatePipeline : BasePipeline {
         }.eraseToAnyPublisher()
     }
     
-    func getPlanCreateDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
+    func getDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
         return getSavePlanObjectInDatabaseTask(planName: planName, planDescription: planDescription)
             .flatMap { output in
                 guard let landmarks = landmarks else {

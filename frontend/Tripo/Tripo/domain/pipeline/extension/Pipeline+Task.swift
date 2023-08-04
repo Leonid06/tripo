@@ -169,3 +169,30 @@ extension PlanCreatePipeline {
         return subtask.eraseToAnyPublisher()
     }
 }
+
+
+extension LandmarkSearchPipeline {
+    internal func getMakeHTTPSearchPlanRequestTask(mode: LandmarkSearchPipelineMode) -> AnyPublisher<PipelineNetworkTaskOutput, PipelineNetworkError> {
+        let task = Future<PipelineNetworkTaskOutput, PipelineNetworkError>(){
+            promise in
+            let parameters = LandmarkSearchByRadiusParameters(
+                latitude: "52.377956",
+                longitude: " 4.897070",
+                radius: "50000")
+            self.landmarkHTTPClient.sendSearchLandmarkByRadiusRequest(
+                parameters: parameters){
+                    response, error in
+                    guard let error = error else {
+                        guard let response = response else {
+                            promise(Result.failure(PipelineNetworkError.InvalidResponse))
+                            return
+                        }
+                        promise(Result.success(PipelineNetworkTaskOutput.LandmarkSearchByRadiusHTTPRequestResponse(response: response)))
+                        return
+                    }
+                    promise(Result.failure(PipelineNetworkError.networkRequestFailed(error: error)))
+                }
+        }
+        return task.eraseToAnyPublisher()
+    }
+}

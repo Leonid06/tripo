@@ -13,11 +13,6 @@ protocol PipelineOutput {
 }
 
 class BasePipeline  {
-    
-    struct PipelineJobOutput {
-        var output : PipelineOutput
-    }
-    
         enum PipelineDatabaseTaskOutput : PipelineOutput {
             case Void
             case LandmarkUUID(identifier : UUID)
@@ -33,6 +28,7 @@ class BasePipeline  {
         
         enum PipelineNetworkTaskOutput : PipelineOutput {
             case Void
+            case LandmarkSearchByRadiusHTTPRequestResponse(response: LandmarkSearchByRadiusRequestResponse)
             case PlanRemoteId(remoteId: String)
             case mappedPlanCreateHTTPRequestParameters(parameters: ManualPlanCreateRequestParameters)
         }

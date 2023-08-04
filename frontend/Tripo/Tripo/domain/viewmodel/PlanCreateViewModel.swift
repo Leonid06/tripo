@@ -17,12 +17,12 @@ class PlanCreateViewModel : BaseViewModel {
     @Published var createPlanRequestState : ViewModelState.RequestState =
         .requestSucceeded
     
-    private var planCreatePipelineExecutor : PlanPipelineExecutor?
+    private var planCreatePipelineExecutor : PlanCreateViewPipelineExecutor?
     
     override init() {
         super.init()
         do {
-            planCreatePipelineExecutor = try PlanPipelineExecutor()
+            planCreatePipelineExecutor = try PlanCreateViewPipelineExecutor()
             databaseClientInstantiationState = .instantiationSucceded
         } catch PipelineDatabaseError.PipelineDatabaseInstantiationError.InternalDatabaseErrorHappened(let error) {
             print("Internal database client error happened : \(error)")
@@ -36,32 +36,36 @@ class PlanCreateViewModel : BaseViewModel {
             print("plan create pipeline executor instantiation failed due to unknown error")
         }
         
-        //    func fetchLandmarksByCurrentLocation(radius: Int){
-        //        fetchLandmarksRequestState = .requestInProgress
-        //        landmarkHTTPService
-        //            .sendSearchLandmarkByRadiusRequest(parameters: LandmarkSearchByRadiusParameters(latitude: "52.377956", longitude: "4.897070", radius: String(radius))){
-        //                response, error in
-        //
-        //                if let error = error {
-        //                    self.fetchLandmarksRequestState = .requestFailed
-        //                    switch error {
-        //                    case .createURLRequestFailed(let error):
-        //                        print("Failed to create url request due to the following error raised : \(error)")
-        //                    case .responseSerializationFailed(let reason):
-        //                        print("Response serialization failed due to the following reason: \(reason)")
-        //                    case .responseValidationFailed(let reason):
-        //                        print("Response validation failed due to the following reason: \(reason)")
-        //                    default:
-        //                        print("fetch failed due to unknown  error : \(error)")
-        //                    }
-        //                }
-        //
-        //                if let response = response {
-        //                    self.fetchedLandmarks = self.mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchShortPresentationUnits(response: response)
-        //                    self.fetchLandmarksRequestState = .requestNotRequested
-        //                }
-        //            }
-        //    }
+    }
+    
+    func searchLandmarksByCurrentLocation(){
+        guard let planCreatePipelineExecutor = planCreatePipelineExecutor else {
+            print("plan create view pipeline executor is not initialized")
+            createPlanRequestState = .requestFailed
+            return
+        }
+        
+        do {
+            let pipelineSchema = LandmarkSearchPipelineSchema(mode: .ByCurrentLocation)
+            
+            let pipeline = try planCreatePipelineExecutor.executeSearchLandmarkPipeline(pipelineSchema: pipelineSchema){
+                product in
+                switch product {
+                case .Failure(let error):
+                    print("Error happened during search landmark pipeline execution : \(error)")
+                case .Success(let output):
+                    switch output{
+                    case .LandmarkSearchByRadiusHTTPRequestResponse(let response):
+                        self.fetchedLandmarks = self.mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchShortPresentationUnits(response: response)
+                    default:
+                        print("Invalid search landmark pipeline product")
+                    }
+                }
+            }
+            pipeline.cancel()
+        }  catch {
+            createPlanRequestState = .requestFailed
+        }
     }
     
     
@@ -70,15 +74,24 @@ class PlanCreateViewModel : BaseViewModel {
         
         
         guard let planCreatePipelineExecutor = planCreatePipelineExecutor else {
-            print("plan create pipeline executor is not initialized")
+            print("plan create view pipeline executor is not initialized")
+            createPlanRequestState = .requestFailed
             return
         }
         do {
-            let pipelineSchema = PlanPipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
-            try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
+            let pipelineSchema = PlanCreateViewPipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
+            let pipeline = try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
                 product in
+                
+                switch product {
+                case .Failure(let error):
+                    print("Error happened during create plan pipeline execution : \(error)")
+                case .Success:
+                    self.createPlanRequestState = .requestSucceeded
+                }
             }
-            createPlanRequestState = .requestSucceeded
+            pipeline.cancel()
+            
         } catch {
             createPlanRequestState = .requestFailed
         }

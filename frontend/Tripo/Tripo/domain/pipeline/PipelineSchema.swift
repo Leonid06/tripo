@@ -8,10 +8,19 @@
 import Foundation
 
 
+enum LandmarkSearchPipelineMode {
+    case ByCurrentLocation
+}
+
+
 struct PlanCreatePipelineSchema {
     var planName : String?
     var planDescription : String?
     var landmarks : Array<PlanCreatePipelineLandmarkSchema>?
+}
+
+struct LandmarkSearchPipelineSchema {
+    var mode: LandmarkSearchPipelineMode
 }
 
 struct PlanCreatePipelineLandmarkSchema {
