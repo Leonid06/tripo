@@ -14,7 +14,7 @@ class PlanPipelineExecutor : BasePipelineExecutor {
     override init() throws {
         planCreatePipeline = try PlanCreatePipeline()
     }
- 
+    
     
     func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<BasePipeline.PipelineJobOutput, PipelineExecutorError>) -> () )   throws -> AnyCancellable {
         
@@ -23,29 +23,26 @@ class PlanPipelineExecutor : BasePipelineExecutor {
         }
         
         let defaultsJob = planCreatePipeline.getPlanCreateDefaultsJob()
+
         
         let pipeline = defaultsJob
             .flatMap {
                 output -> AnyPublisher<BasePipeline.PipelineJobOutput, PipelineJobError> in
-
+                
                 let defaultsTaskOutput = output as BasePipeline.PipelineDefaultsTaskOutput
                 
                 switch defaultsTaskOutput {
                 case .userCurrentToken(let token):
                     return planCreatePipeline.getPlanCreateDatabaseJob(userToken: token, planName: pipelineSchema.planName,
-                        planDescription: pipelineSchema.planDescription,
-                        landmarks: pipelineSchema.landmarks)
+                                                                       planDescription: pipelineSchema.planDescription,
+                                                                       landmarks: pipelineSchema.landmarks)
                     .map {output in BasePipeline.PipelineJobOutput(output: output)}
                     .eraseToAnyPublisher()
                 case .Void:
                     return Fail(error: PipelineJobError.WrapError(error: PipelineOutputError.PipelineJobInvalidOutput(description: "invalid defaults job output")))
-                        .map {
-                            output in BasePipeline.PipelineJobOutput(output: output)
-                        }
                         .eraseToAnyPublisher()
                 }
             }
-            
             .eraseToAnyPublisher()
             .sink(receiveCompletion: { completion in
                 switch completion {

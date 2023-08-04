@@ -32,7 +32,9 @@ class BasePipeline  {
         }
         
         enum PipelineNetworkTaskOutput : PipelineOutput {
-            
+            case Void
+            case PlanRemoteId(remoteId: String)
+            case mappedPlanCreateHTTPRequestParameters(parameters: ManualPlanCreateRequestParameters)
         }
     
     internal let defaultsService = DefaultsService()
