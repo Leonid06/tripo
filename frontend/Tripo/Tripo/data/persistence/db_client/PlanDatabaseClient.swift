@@ -1,0 +1,73 @@
+//
+//  PlanDatabaseClient.swift
+//  Tripo
+//
+//  Created by Leonid on 24.07.2023.
+//
+
+import CoreStore
+
+
+class PlanDatabaseClient : BaseDatabaseClient {
+    func createPlanObject(remoteId : String? = nil, name : String, description : String, completed : Bool, callback : @escaping (AsynchronousDataTransaction.Result<UUID>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> (UUID) in
+            let plan = transaction.create(Into<Plan>())
+            if let remoteId = remoteId {
+                plan.remoteId = remoteId
+            }
+            plan.name = name
+            plan.planDescription = description
+            plan.completed = completed
+            
+            return plan.identifier
+            
+            
+        }, async_callback_closure: callback)
+    }
+    
+    func getPlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Plan?>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction  -> Plan? in
+            
+            do {
+                let plan = try transaction.fetchOne(
+                    From<Plan>().where(\.$remoteId == remoteId)
+                )
+                return plan
+            } catch {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
+    func updatePlanObjectRemoteId(oldRemoteId : String, newRemoteId : String,
+      callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                let plan = try transaction.fetchOne(
+                    From<Plan>().where(\.$remoteId == oldRemoteId)
+                )
+                if let plan = plan {
+                    plan.remoteId = newRemoteId
+                }
+            } catch  {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
+    func deletePlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                try transaction.deleteAll(
+                    From<Plan>().where(\.$remoteId == remoteId)
+                )
+            } catch {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+}

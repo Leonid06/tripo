@@ -1,0 +1,15 @@
+//
+//  config.xcconfig
+//  Tripo
+//
+//  Created by Leonid on 26.06.2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+REST_HEAD = http://localhost:8000
+REST_PORT = 8000
+JWT_KEYCHAIN_KEY = JWT_KEYCHAIN_KEY
+
+

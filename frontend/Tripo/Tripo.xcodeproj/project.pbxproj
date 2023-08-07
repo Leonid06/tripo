@@ -7,6 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65BCCD2F59FAE586EC54D7E9 /* Pods_TripoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903BF324CF85C3F325597C15 /* Pods_TripoTests.framework */; };
+		87E329FE4EC4C2167B660A05 /* Pods_Tripo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */; };
+		A06FC03E1C2ADDB1027106C4 /* Pods_Tripo_TripoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F08545C87966D746A91531 /* Pods_Tripo_TripoUITests.framework */; };
+		B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2872A66E353000F0563 /* PlanHTTPService.swift */; };
+		B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */; };
+		B319F28F2A683922000F0563 /* PlanHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */; };
+		B319F2912A694F32000F0563 /* LandmarkHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */; };
+		B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* HTTPService.swift */; };
+		B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */; };
+		B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */; };
+		B3448ADC2A7D0F1100A4F19E /* Pipeline+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3448ADB2A7D0F1100A4F19E /* Pipeline+Mapping.swift */; };
+		B3448ADE2A7D2BAC00A4F19E /* Pipeline+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3448ADD2A7D2BAC00A4F19E /* Pipeline+Task.swift */; };
+		B3448AE02A7D37F600A4F19E /* LandmarkSearchPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */; };
+		B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */; };
+		B3464D802A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D7F2A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift */; };
+		B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D812A75303100895EBC /* PipelineSchema.swift */; };
+		B3464D842A75312900895EBC /* PipelineExecutor+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */; };
+		B3464D872A7564AB00895EBC /* PipelineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D862A7564AB00895EBC /* PipelineError.swift */; };
+		B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */; };
+		B3464D8E2A77D0A900895EBC /* BasePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D8D2A77D0A900895EBC /* BasePipeline.swift */; };
+		B3464D902A77D0C300895EBC /* PlanCreatePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */; };
+		B3464D922A77EBF800895EBC /* PipelineExecutorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */; };
+		B39780AB2A813D6C003B0037 /* LandmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39780AA2A813D6C003B0037 /* LandmarkViewModel.swift */; };
+		B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A65B7E2A6EEE8B00AED659 /* Migration.swift */; };
+		B3B598762A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */; };
+		B3B598782A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */; };
+		B3B5E1562A45A30200EDD9F7 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */; };
+		B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */; };
+		B3BED9D62A49CE170073934A /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9D52A49CE170073934A /* EnvironmentVariables.swift */; };
+		B3BED9DA2A49D3840073934A /* RequestDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9D92A49D3840073934A /* RequestDetails.swift */; };
+		B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9DB2A49D5410073934A /* RequestDetailsProvider.swift */; };
+		B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9DE2A49E9690073934A /* HTTPServiceUtil.swift */; };
+		B3BED9E12A49FBCB0073934A /* AuthenticationHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */; };
+		B3BED9E32A4AF8540073934A /* RequestParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E22A4AF8540073934A /* RequestParameters.swift */; };
+		B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */; };
+		B3BED9E82A4CD1170073934A /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9E72A4CD1170073934A /* AuthenticationState.swift */; };
+		B3BED9EC2A4D8FD70073934A /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9EB2A4D8FD70073934A /* AuthenticationView.swift */; };
+		B3BED9EE2A4D99990073934A /* DefaultsService .swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9ED2A4D99990073934A /* DefaultsService .swift */; };
+		B3BED9F02A4DB1EE0073934A /* HTTPRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9EF2A4DB1EE0073934A /* HTTPRequestResponse.swift */; };
+		B3BED9F42A4DCB7C0073934A /* KeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9F32A4DCB7C0073934A /* KeyState.swift */; };
+		B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */; };
+		B3BED9F82A4DDECB0073934A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */; };
+		B3BED9FC2A4DE91B0073934A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BED9FB2A4DE91B0073934A /* HomeView.swift */; };
 		B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19D92A30C61200991A13 /* TripoApp.swift */; };
 		B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19DB2A30C61200991A13 /* ContentView.swift */; };
 		B3CB19DE2A30C61300991A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3CB19DD2A30C61300991A13 /* Assets.xcassets */; };
@@ -16,6 +59,21 @@
 		B3CB19F02A30C61300991A13 /* TripoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19EF2A30C61300991A13 /* TripoTests.swift */; };
 		B3CB19FA2A30C61300991A13 /* TripoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19F92A30C61300991A13 /* TripoUITests.swift */; };
 		B3CB19FC2A30C61300991A13 /* TripoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB19FB2A30C61300991A13 /* TripoUITestsLaunchTests.swift */; };
+		B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD98D2A6E7BC50020C884 /* PlanDatabaseClient.swift */; };
+		B3CFD9902A6E8EAE0020C884 /* LandmarkDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD98F2A6E8EAE0020C884 /* LandmarkDatabaseClient.swift */; };
+		B3CFD9922A6E8FFE0020C884 /* PlanToLandmarkDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9912A6E8FFE0020C884 /* PlanToLandmarkDatabaseClient.swift */; };
+		B3CFD9942A6EAC660020C884 /* UserDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9932A6EAC660020C884 /* UserDatabaseClient.swift */; };
+		B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9952A6EB0F20020C884 /* PlanToUserDatabaseClient.swift */; };
+		B3CFD9982A6EB5650020C884 /* DatabaseClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD9972A6EB5650020C884 /* DatabaseClientError.swift */; };
+		B3CFD99B2A6EB9C70020C884 /* PlanDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CFD99A2A6EB9C70020C884 /* PlanDatabaseClientTests.swift */; };
+		B3DD82892A72B77400F7F588 /* PlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82882A72B77400F7F588 /* PlanViewModel.swift */; };
+		B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */; };
+		B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */; };
+		B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */; };
+		B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */; };
+		B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */; };
+		B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */; };
+		B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD829B2A74152100F7F588 /* ViewModelError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +94,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35A825130B4D6C7997CBE81C /* Pods-Tripo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.debug.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.debug.xcconfig"; sourceTree = "<group>"; };
+		67999BC34CAFAE3A34A7C603 /* Pods-Tripo-TripoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.release.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		903BF324CF85C3F325597C15 /* Pods_TripoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F08545C87966D746A91531 /* Pods_Tripo_TripoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo_TripoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B319F2872A66E353000F0563 /* PlanHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPService.swift; sourceTree = "<group>"; };
+		B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPService.swift; sourceTree = "<group>"; };
+		B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPClientTests.swift; sourceTree = "<group>"; };
+		B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPClientTests.swift; sourceTree = "<group>"; };
+		B322C6C22A45ACA300845A3C /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseClient.swift; sourceTree = "<group>"; };
+		B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B3448ADB2A7D0F1100A4F19E /* Pipeline+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pipeline+Mapping.swift"; sourceTree = "<group>"; };
+		B3448ADD2A7D2BAC00A4F19E /* Pipeline+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pipeline+Task.swift"; sourceTree = "<group>"; };
+		B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkSearchPipeline.swift; sourceTree = "<group>"; };
+		B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePipelineExecutor.swift; sourceTree = "<group>"; };
+		B3464D7F2A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreateViewPipelineExecutor.swift; sourceTree = "<group>"; };
+		B3464D812A75303100895EBC /* PipelineSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineSchema.swift; sourceTree = "<group>"; };
+		B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Mapping.swift"; sourceTree = "<group>"; };
+		B3464D862A7564AB00895EBC /* PipelineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineError.swift; sourceTree = "<group>"; };
+		B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Convenience.swift"; sourceTree = "<group>"; };
+		B3464D8D2A77D0A900895EBC /* BasePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePipeline.swift; sourceTree = "<group>"; };
+		B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatePipeline.swift; sourceTree = "<group>"; };
+		B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineExecutorError.swift; sourceTree = "<group>"; };
+		B39780AA2A813D6C003B0037 /* LandmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewModel.swift; sourceTree = "<group>"; };
+		B3A65B7E2A6EEE8B00AED659 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
+		B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToLandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
+		B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B3BED9D32A49CA660073934A /* config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = config.xcconfig; sourceTree = "<group>"; };
+		B3BED9D42A49CC6E0073934A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B3BED9D52A49CE170073934A /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
+		B3BED9D92A49D3840073934A /* RequestDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetails.swift; sourceTree = "<group>"; };
+		B3BED9DB2A49D5410073934A /* RequestDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailsProvider.swift; sourceTree = "<group>"; };
+		B3BED9DE2A49E9690073934A /* HTTPServiceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServiceUtil.swift; sourceTree = "<group>"; };
+		B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHTTPService.swift; sourceTree = "<group>"; };
+		B3BED9E22A4AF8540073934A /* RequestParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParameters.swift; sourceTree = "<group>"; };
+		B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateViewModel.swift; sourceTree = "<group>"; };
+		B3BED9E72A4CD1170073934A /* AuthenticationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
+		B3BED9EB2A4D8FD70073934A /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		B3BED9ED2A4D99990073934A /* DefaultsService .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DefaultsService .swift"; sourceTree = "<group>"; };
+		B3BED9EF2A4DB1EE0073934A /* HTTPRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestResponse.swift; sourceTree = "<group>"; };
+		B3BED9F32A4DCB7C0073934A /* KeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyState.swift; sourceTree = "<group>"; };
+		B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		B3BED9FB2A4DE91B0073934A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B3CB19D62A30C61200991A13 /* Tripo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tripo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CB19D92A30C61200991A13 /* TripoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoApp.swift; sourceTree = "<group>"; };
 		B3CB19DB2A30C61200991A13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +152,26 @@
 		B3CB19F52A30C61300991A13 /* TripoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CB19F92A30C61300991A13 /* TripoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoUITests.swift; sourceTree = "<group>"; };
 		B3CB19FB2A30C61300991A13 /* TripoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B3CFD98D2A6E7BC50020C884 /* PlanDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDatabaseClient.swift; sourceTree = "<group>"; };
+		B3CFD98F2A6E8EAE0020C884 /* LandmarkDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDatabaseClient.swift; sourceTree = "<group>"; };
+		B3CFD9912A6E8FFE0020C884 /* PlanToLandmarkDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToLandmarkDatabaseClient.swift; sourceTree = "<group>"; };
+		B3CFD9932A6EAC660020C884 /* UserDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDatabaseClient.swift; sourceTree = "<group>"; };
+		B3CFD9952A6EB0F20020C884 /* PlanToUserDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToUserDatabaseClient.swift; sourceTree = "<group>"; };
+		B3CFD9972A6EB5650020C884 /* DatabaseClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClientError.swift; sourceTree = "<group>"; };
+		B3CFD99A2A6EB9C70020C884 /* PlanDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDatabaseClientTests.swift; sourceTree = "<group>"; };
+		B3DD82882A72B77400F7F588 /* PlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewModel.swift; sourceTree = "<group>"; };
+		B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreateViewModel.swift; sourceTree = "<group>"; };
+		B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
+		B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Mapping.swift"; sourceTree = "<group>"; };
+		B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkPresentationModel.swift; sourceTree = "<group>"; };
+		B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPresentationModel.swift; sourceTree = "<group>"; };
+		B3DD829B2A74152100F7F588 /* ViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelError.swift; sourceTree = "<group>"; };
+		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0F3AF90DF6BD6E43781067D /* Pods-TripoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.release.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.release.xcconfig"; sourceTree = "<group>"; };
+		E31FDDF12754BE5561FC6E41 /* Pods-Tripo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo.release.xcconfig"; path = "Target Support Files/Pods-Tripo/Pods-Tripo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E329FE4EC4C2167B660A05 /* Pods_Tripo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BCCD2F59FAE586EC54D7E9 /* Pods_TripoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +195,189 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06FC03E1C2ADDB1027106C4 /* Pods_Tripo_TripoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F58E404F1FCBD8150990263 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35A825130B4D6C7997CBE81C /* Pods-Tripo.debug.xcconfig */,
+				E31FDDF12754BE5561FC6E41 /* Pods-Tripo.release.xcconfig */,
+				C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */,
+				67999BC34CAFAE3A34A7C603 /* Pods-Tripo-TripoUITests.release.xcconfig */,
+				BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */,
+				E0F3AF90DF6BD6E43781067D /* Pods-TripoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9BF2B1A7A9DD1900E44A2F6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */,
+				A2F08545C87966D746A91531 /* Pods_Tripo_TripoUITests.framework */,
+				903BF324CF85C3F325597C15 /* Pods_TripoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B319F28D2A683914000F0563 /* http_client */ = {
+			isa = PBXGroup;
+			children = (
+				B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */,
+				B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */,
+			);
+			path = http_client;
+			sourceTree = "<group>";
+		};
+		B322C6C02A45AC8400845A3C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				B323D9742A6AA3CB00A7917C /* persistence */,
+				B322C6C12A45AC8D00845A3C /* service */,
+				B3BED9D32A49CA660073934A /* config.xcconfig */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		B322C6C12A45AC8D00845A3C /* service */ = {
+			isa = PBXGroup;
+			children = (
+				B322C6C22A45ACA300845A3C /* HTTPService.swift */,
+				B3BED9E02A49FBCB0073934A /* AuthenticationHTTPService.swift */,
+				B3BED9ED2A4D99990073934A /* DefaultsService .swift */,
+				B319F2872A66E353000F0563 /* PlanHTTPService.swift */,
+				B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		B323D9742A6AA3CB00A7917C /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				B3A65B7E2A6EEE8B00AED659 /* Migration.swift */,
+				B3CFD98C2A6E7BA40020C884 /* db_client */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		B3448ADA2A7D0F0300A4F19E /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B3448ADB2A7D0F1100A4F19E /* Pipeline+Mapping.swift */,
+				B3448ADD2A7D2BAC00A4F19E /* Pipeline+Task.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		B3464D7C2A752D4E00895EBC /* pipeline_executor */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */,
+				B3464D852A75315300895EBC /* extension */,
+				B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */,
+				B3464D7F2A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift */,
+			);
+			path = pipeline_executor;
+			sourceTree = "<group>";
+		};
+		B3464D852A75315300895EBC /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */,
+				B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		B3464D8C2A77D09500895EBC /* pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D812A75303100895EBC /* PipelineSchema.swift */,
+				B3448ADA2A7D0F0300A4F19E /* extension */,
+				B3464D862A7564AB00895EBC /* PipelineError.swift */,
+				B3464D8D2A77D0A900895EBC /* BasePipeline.swift */,
+				B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */,
+				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
+			);
+			path = pipeline;
+			sourceTree = "<group>";
+		};
+		B3B5E1532A45A2BB00EDD9F7 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82962A73FAD800F7F588 /* model */,
+				B3B5E1542A45A2DC00EDD9F7 /* view */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
+		B3B5E1542A45A2DC00EDD9F7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */,
+				B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */,
+				B3BED9EB2A4D8FD70073934A /* AuthenticationView.swift */,
+				B3BED9FB2A4DE91B0073934A /* HomeView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		B3BED9D72A49D35E0073934A /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				B3464D8C2A77D09500895EBC /* pipeline */,
+				B3464D7C2A752D4E00895EBC /* pipeline_executor */,
+				B3BED9E42A4B27760073934A /* viewmodel */,
+				B3BED9DD2A49D55D0073934A /* util */,
+				B3BED9D82A49D3780073934A /* model */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		B3BED9D82A49D3780073934A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B3BED9D92A49D3840073934A /* RequestDetails.swift */,
+				B3BED9E22A4AF8540073934A /* RequestParameters.swift */,
+				B3BED9EF2A4DB1EE0073934A /* HTTPRequestResponse.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B3BED9DD2A49D55D0073934A /* util */ = {
+			isa = PBXGroup;
+			children = (
+				B3BED9DB2A49D5410073934A /* RequestDetailsProvider.swift */,
+				B3BED9DE2A49E9690073934A /* HTTPServiceUtil.swift */,
+				B3BED9E72A4CD1170073934A /* AuthenticationState.swift */,
+				B3BED9F32A4DCB7C0073934A /* KeyState.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		B3BED9E42A4B27760073934A /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82902A73F54600F7F588 /* extension */,
+				B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */,
+				B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */,
+				B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */,
+				B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */,
+				B3DD82882A72B77400F7F588 /* PlanViewModel.swift */,
+				B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */,
+				B3DD828C2A72FE7A00F7F588 /* ViewModelState.swift */,
+				B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */,
+				B3DD829B2A74152100F7F588 /* ViewModelError.swift */,
+				B39780AA2A813D6C003B0037 /* LandmarkViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
 		B3CB19CD2A30C61200991A13 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +385,8 @@
 				B3CB19EE2A30C61300991A13 /* TripoTests */,
 				B3CB19F82A30C61300991A13 /* TripoUITests */,
 				B3CB19D72A30C61200991A13 /* Products */,
+				2F58E404F1FCBD8150990263 /* Pods */,
+				9BF2B1A7A9DD1900E44A2F6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +403,11 @@
 		B3CB19D82A30C61200991A13 /* Tripo */ = {
 			isa = PBXGroup;
 			children = (
+				B3BED9D52A49CE170073934A /* EnvironmentVariables.swift */,
+				B3BED9D72A49D35E0073934A /* domain */,
+				B3BED9D42A49CC6E0073934A /* Info.plist */,
+				B322C6C02A45AC8400845A3C /* data */,
+				B3B5E1532A45A2BB00EDD9F7 /* presentation */,
 				B3CB19D92A30C61200991A13 /* TripoApp.swift */,
 				B3CB19DB2A30C61200991A13 /* ContentView.swift */,
 				B3CB19DD2A30C61300991A13 /* Assets.xcassets */,
@@ -119,6 +429,8 @@
 		B3CB19EE2A30C61300991A13 /* TripoTests */ = {
 			isa = PBXGroup;
 			children = (
+				B3CFD9992A6EB9A10020C884 /* db_client */,
+				B319F28D2A683914000F0563 /* http_client */,
 				B3CB19EF2A30C61300991A13 /* TripoTests.swift */,
 			);
 			path = TripoTests;
@@ -133,6 +445,47 @@
 			path = TripoUITests;
 			sourceTree = "<group>";
 		};
+		B3CFD98C2A6E7BA40020C884 /* db_client */ = {
+			isa = PBXGroup;
+			children = (
+				B3CFD98F2A6E8EAE0020C884 /* LandmarkDatabaseClient.swift */,
+				B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */,
+				B3CFD98D2A6E7BC50020C884 /* PlanDatabaseClient.swift */,
+				B3CFD9912A6E8FFE0020C884 /* PlanToLandmarkDatabaseClient.swift */,
+				B3CFD9932A6EAC660020C884 /* UserDatabaseClient.swift */,
+				B3CFD9952A6EB0F20020C884 /* PlanToUserDatabaseClient.swift */,
+				B3CFD9972A6EB5650020C884 /* DatabaseClientError.swift */,
+			);
+			path = db_client;
+			sourceTree = "<group>";
+		};
+		B3CFD9992A6EB9A10020C884 /* db_client */ = {
+			isa = PBXGroup;
+			children = (
+				B3CFD99A2A6EB9C70020C884 /* PlanDatabaseClientTests.swift */,
+				B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */,
+				B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */,
+			);
+			path = db_client;
+			sourceTree = "<group>";
+		};
+		B3DD82902A73F54600F7F588 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		B3DD82962A73FAD800F7F588 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B3DD82972A73FAE700F7F588 /* LandmarkPresentationModel.swift */,
+				B3DD82992A73FB0500F7F588 /* PlanPresentationModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +493,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB19FF2A30C61300991A13 /* Build configuration list for PBXNativeTarget "Tripo" */;
 			buildPhases = (
+				6A66218036DC50876DCB72BF /* [CP] Check Pods Manifest.lock */,
 				B3CB19D22A30C61200991A13 /* Sources */,
 				B3CB19D32A30C61200991A13 /* Frameworks */,
 				B3CB19D42A30C61200991A13 /* Resources */,
+				125725F90E0DAFFCDC75F0F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +512,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB1A022A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoTests" */;
 			buildPhases = (
+				4651EF533B0161DF310EA524 /* [CP] Check Pods Manifest.lock */,
 				B3CB19E72A30C61300991A13 /* Sources */,
 				B3CB19E82A30C61300991A13 /* Frameworks */,
 				B3CB19E92A30C61300991A13 /* Resources */,
@@ -175,9 +531,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3CB1A052A30C61300991A13 /* Build configuration list for PBXNativeTarget "TripoUITests" */;
 			buildPhases = (
+				02EE8A89AC76C7F6D4D989B1 /* [CP] Check Pods Manifest.lock */,
 				B3CB19F12A30C61300991A13 /* Sources */,
 				B3CB19F22A30C61300991A13 /* Frameworks */,
 				B3CB19F32A30C61300991A13 /* Resources */,
+				93E12248F27E0BC9927C75C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,15 +616,168 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02EE8A89AC76C7F6D4D989B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tripo-TripoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		125725F90E0DAFFCDC75F0F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tripo/Pods-Tripo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4651EF533B0161DF310EA524 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TripoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A66218036DC50876DCB72BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tripo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93E12248F27E0BC9927C75C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B3CB19D22A30C61200991A13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
+				B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */,
+				B3464D802A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift in Sources */,
+				B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */,
+				B39780AB2A813D6C003B0037 /* LandmarkViewModel.swift in Sources */,
+				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
+				B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */,
+				B3448ADE2A7D2BAC00A4F19E /* Pipeline+Task.swift in Sources */,
+				B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
+				B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */,
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
+				B3BED9F42A4DCB7C0073934A /* KeyState.swift in Sources */,
+				B3BED9D62A49CE170073934A /* EnvironmentVariables.swift in Sources */,
+				B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */,
+				B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */,
+				B3464D8E2A77D0A900895EBC /* BasePipeline.swift in Sources */,
+				B3BED9FC2A4DE91B0073934A /* HomeView.swift in Sources */,
+				B3CFD9902A6E8EAE0020C884 /* LandmarkDatabaseClient.swift in Sources */,
+				B3464D842A75312900895EBC /* PipelineExecutor+Mapping.swift in Sources */,
+				B3464D872A7564AB00895EBC /* PipelineError.swift in Sources */,
+				B3BED9E82A4CD1170073934A /* AuthenticationState.swift in Sources */,
+				B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */,
+				B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */,
+				B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */,
+				B3464D922A77EBF800895EBC /* PipelineExecutorError.swift in Sources */,
+				B3DD829A2A73FB0500F7F588 /* PlanPresentationModel.swift in Sources */,
+				B3BED9E32A4AF8540073934A /* RequestParameters.swift in Sources */,
+				B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */,
+				B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */,
+				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
+				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
+				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
+				B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */,
+				B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */,
 				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,
+				B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */,
 				B3CB19DA2A30C61200991A13 /* TripoApp.swift in Sources */,
+				B3BED9EE2A4D99990073934A /* DefaultsService .swift in Sources */,
+				B3CFD9942A6EAC660020C884 /* UserDatabaseClient.swift in Sources */,
+				B3BED9EC2A4D8FD70073934A /* AuthenticationView.swift in Sources */,
+				B3464D902A77D0C300895EBC /* PlanCreatePipeline.swift in Sources */,
+				B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */,
+				B3BED9F82A4DDECB0073934A /* RegisterViewModel.swift in Sources */,
+				B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */,
+				B3DD82892A72B77400F7F588 /* PlanViewModel.swift in Sources */,
+				B3BED9F02A4DB1EE0073934A /* HTTPRequestResponse.swift in Sources */,
+				B3448ADC2A7D0F1100A4F19E /* Pipeline+Mapping.swift in Sources */,
+				B3BED9DA2A49D3840073934A /* RequestDetails.swift in Sources */,
+				B3CFD9922A6E8FFE0020C884 /* PlanToLandmarkDatabaseClient.swift in Sources */,
+				B3CFD9982A6EB5650020C884 /* DatabaseClientError.swift in Sources */,
+				B3B5E1562A45A30200EDD9F7 /* RegistrationView.swift in Sources */,
+				B3BED9E12A49FBCB0073934A /* AuthenticationHTTPService.swift in Sources */,
+				B3448AE02A7D37F600A4F19E /* LandmarkSearchPipeline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +785,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B598762A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift in Sources */,
 				B3CB19F02A30C61300991A13 /* TripoTests.swift in Sources */,
+				B319F2912A694F32000F0563 /* LandmarkHTTPClientTests.swift in Sources */,
+				B3CFD99B2A6EB9C70020C884 /* PlanDatabaseClientTests.swift in Sources */,
+				B319F28F2A683922000F0563 /* PlanHTTPClientTests.swift in Sources */,
+				B3B598782A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,15 +935,18 @@
 		};
 		B3CB1A002A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35A825130B4D6C7997CBE81C /* Pods-Tripo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tripo/Preview Content\"";
 				DEVELOPMENT_TEAM = YARMR5F2CV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tripo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,15 +967,18 @@
 		};
 		B3CB1A012A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E31FDDF12754BE5561FC6E41 /* Pods-Tripo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tripo/Preview Content\"";
 				DEVELOPMENT_TEAM = YARMR5F2CV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tripo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -477,6 +999,7 @@
 		};
 		B3CB1A032A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -497,6 +1020,7 @@
 		};
 		B3CB1A042A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0F3AF90DF6BD6E43781067D /* Pods-TripoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -517,6 +1041,7 @@
 		};
 		B3CB1A062A30C61300991A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +1060,7 @@
 		};
 		B3CB1A072A30C61300991A13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67999BC34CAFAE3A34A7C603 /* Pods-Tripo-TripoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
