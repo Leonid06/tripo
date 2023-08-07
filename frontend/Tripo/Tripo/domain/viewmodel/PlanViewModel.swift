@@ -11,14 +11,15 @@ import CoreStore
 
 
 class PlanViewModel : BaseViewModel {
-    @Published var plan : Plan?
+    @Published var planDetailCard : PlanDetailsCard?
+    @Published var landmarkDetailCards : Array<LandmarkDetailsCard?> = Array<LandmarkDetailsCard?>()
     @Published var instantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanRequestState :
     ViewModelState.RequestState = .requestSucceeded
     private var databaseClient : PlanDatabaseClient?
     
     
-    init(id : String) {
+    override init() {
         do {
             databaseClient = try PlanDatabaseClient(version: MigrationUtil.currentVersion)
             instantiationState = .instantiationSucceded
@@ -50,7 +51,14 @@ class PlanViewModel : BaseViewModel {
             switch result {
             case .success(let plan):
                 if let plan = plan {
-                    self.plan = plan
+                    self.planDetailCard = self.mapPlanToPlanDetailsCard(plan: plan)
+                    self.landmarkDetailCards = plan.planToLandmark.map {
+                        relationship -> LandmarkDetailsCard? in
+                        guard let landmark = relationship.landmark else {
+                            return nil
+                        }
+                        return self.mapLandmarkToLandmarkDetailsCard(landmark: landmark)
+                    }
                     self.fetchPlanRequestState = .requestSucceeded
                 }
                 self.fetchPlanRequestState = .requestFailed

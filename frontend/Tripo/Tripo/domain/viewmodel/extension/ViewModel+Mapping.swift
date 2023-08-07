@@ -23,3 +23,17 @@ extension PlanCreateViewModel {
         return units
     }
 }
+
+extension PlanViewModel {
+    internal func mapPlanToPlanDetailsCard(plan : Plan) -> PlanDetailsCard {
+        return PlanDetailsCard(
+            name: plan.name,
+            completed: plan.completed)
+    }
+    
+    internal func mapLandmarkToLandmarkDetailsCard(landmark: Landmark) -> LandmarkDetailsCard {
+        return LandmarkDetailsCard(
+            name : landmark.name,
+            description: landmark.landmarkDescription)
+    }
+}
