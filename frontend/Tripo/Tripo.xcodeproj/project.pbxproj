@@ -307,6 +307,16 @@
 			path = pipeline;
 			sourceTree = "<group>";
 		};
+		B39E3E4A2A81422A007B3484 /* authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */,
+				B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */,
+				B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */,
+			);
+			path = authentication;
+			sourceTree = "<group>";
+		};
 		B3B5E1532A45A2BB00EDD9F7 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,10 +373,8 @@
 		B3BED9E42A4B27760073934A /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				B39E3E4A2A81422A007B3484 /* authentication */,
 				B3DD82902A73F54600F7F588 /* extension */,
-				B3BED9E52A4B27920073934A /* AuthenticationStateViewModel.swift */,
-				B3BED9F52A4DDEBD0073934A /* LoginViewModel.swift */,
-				B3BED9F72A4DDECB0073934A /* RegisterViewModel.swift */,
 				B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */,
 				B3DD82882A72B77400F7F588 /* PlanViewModel.swift */,
 				B3DD828A2A72FE4600F7F588 /* PlanCreateViewModel.swift */,
