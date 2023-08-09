@@ -33,7 +33,9 @@ extension PlanViewModel {
     
     internal func mapLandmarkToLandmarkDetailsCard(landmark: Landmark) -> LandmarkDetailsCard {
         return LandmarkDetailsCard(
+            remoteId: landmark.remoteId,
             name : landmark.name,
-            landmarkDescription: landmark.landmarkDescription)
+            landmarkDescription: landmark.landmarkDescription
+        )
     }
 }

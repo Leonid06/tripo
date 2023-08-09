@@ -35,6 +35,8 @@
 		B39E3E512A814765007B3484 /* LandmarkDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E502A814765007B3484 /* LandmarkDetailsCardView.swift */; };
 		B39E3E582A815C78007B3484 /* PlanViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E572A815C78007B3484 /* PlanViewItems.swift */; };
 		B39E3E5C2A83BE23007B3484 /* LandmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E5B2A83BE23007B3484 /* LandmarkView.swift */; };
+		B39E3E5E2A83D36E007B3484 /* LandmarkViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E5D2A83D36E007B3484 /* LandmarkViewItems.swift */; };
+		B39E3E602A83D494007B3484 /* LandmarkDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E5F2A83D494007B3484 /* LandmarkDetailsView.swift */; };
 		B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A65B7E2A6EEE8B00AED659 /* Migration.swift */; };
 		B3B598762A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */; };
 		B3B598782A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */; };
@@ -128,6 +130,8 @@
 		B39E3E502A814765007B3484 /* LandmarkDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailsCardView.swift; sourceTree = "<group>"; };
 		B39E3E572A815C78007B3484 /* PlanViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewItems.swift; sourceTree = "<group>"; };
 		B39E3E5B2A83BE23007B3484 /* LandmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkView.swift; sourceTree = "<group>"; };
+		B39E3E5D2A83D36E007B3484 /* LandmarkViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewItems.swift; sourceTree = "<group>"; };
+		B39E3E5F2A83D494007B3484 /* LandmarkDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailsView.swift; sourceTree = "<group>"; };
 		B3A65B7E2A6EEE8B00AED659 /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
 		B3B598752A6EFA2000669B5A /* LandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
 		B3B598772A6EFC1500669B5A /* PlanToLandmarkDatabaseClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanToLandmarkDatabaseClientTests.swift; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				B39E3E5B2A83BE23007B3484 /* LandmarkView.swift */,
+				B39E3E5D2A83D36E007B3484 /* LandmarkViewItems.swift */,
+				B39E3E5F2A83D494007B3484 /* LandmarkDetailsView.swift */,
 			);
 			path = landmark_view;
 			sourceTree = "<group>";
@@ -764,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
+				B39E3E5E2A83D36E007B3484 /* LandmarkViewItems.swift in Sources */,
 				B3DD82982A73FAE700F7F588 /* LandmarkPresentationModel.swift in Sources */,
 				B3464D802A752E8300895EBC /* PlanCreateViewPipelineExecutor.swift in Sources */,
 				B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */,
@@ -801,6 +808,7 @@
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
 				B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */,
+				B39E3E602A83D494007B3484 /* LandmarkDetailsView.swift in Sources */,
 				B3BED9DF2A49E9690073934A /* HTTPServiceUtil.swift in Sources */,
 				B3CB19DC2A30C61200991A13 /* ContentView.swift in Sources */,
 				B3DD828B2A72FE4600F7F588 /* PlanCreateViewModel.swift in Sources */,

@@ -24,9 +24,9 @@ struct PlanView : View {
                 PlanDetailsCardView(name: viewModel.planDetailCard?.name, completed: viewModel.planDetailCard?.completed)
                 
                 ForEach(viewModel.landmarkDetailCards){ card in
-                    if let name = card.name, let description = card.landmarkDescription {
+                    if let name = card.name, let description = card.landmarkDescription, let remoteId = card.remoteId {
                         NavigationLink {
-                            LandmarkView()
+                            LandmarkView(remoteId: remoteId)
                         } label: {
                             LandmarkDetailsCardView(name: name, description: description)
                         }

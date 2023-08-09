@@ -16,6 +16,7 @@ struct PlanDetailsCard : Identifiable {
 
 struct LandmarkDetailsCard : Identifiable {
     var id = UUID()
+    var remoteId : String? 
     var name :  String?
     var landmarkDescription : String? 
 }

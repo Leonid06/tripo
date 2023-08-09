@@ -9,7 +9,22 @@ import SwiftUI
 
 struct LandmarkView : View {
     
+    private var remoteId : String?
+    
+    
+    init(remoteId: String) {
+        self.remoteId = remoteId
+    }
+  
+    @StateObject var viewModel = LandmarkViewModel()
     var body : some View {
-        EmptyView()
+        if let name = viewModel.landmark?.name, let description = viewModel.landmark?.landmarkDescription {
+            LandmarkDetailsView(name: name, description: description)
+                .onAppear {
+                    if let remoteId = remoteId {
+                        viewModel.fetchLandmarkByRemoteId(remoteId: remoteId)
+                    }
+                }
+        }
     }
 }
