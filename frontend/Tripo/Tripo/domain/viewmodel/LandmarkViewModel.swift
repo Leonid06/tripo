@@ -10,7 +10,7 @@ import CoreStore
 
 
 class LandmarkViewModel : BaseViewModel {
-    @Published var landmark : Landmark?
+    @Published var landmarkDetailCard : LandmarkDetailsCard?
     @Published var instantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchLandmarkRequestState : ViewModelState.RequestState = .requestSucceeded
     var databaseClient : LandmarkDatabaseClient?
@@ -33,7 +33,7 @@ class LandmarkViewModel : BaseViewModel {
             instantiationState = .instantiationFailed
         }
     }
-    func fetchLandmarkByRemoteId(remoteId : String){
+    func fetchLandmarkDetailCardByRemoteId(remoteId : String){
         guard let databaseClient = databaseClient else {
             self.fetchLandmarkRequestState = .requestFailed
             return 
@@ -43,7 +43,11 @@ class LandmarkViewModel : BaseViewModel {
             switch result {
             case .success(let landmark):
                 if let landmark = landmark {
-                    self.landmark = landmark
+                    self.landmarkDetailCard = LandmarkDetailsCard(
+                        remoteId: remoteId,
+                        name: landmark.name,
+                        landmarkDescription: landmark.landmarkDescription
+                    )
                     self.fetchLandmarkRequestState = .requestSucceeded
                 }
                 self.fetchLandmarkRequestState = .requestFailed

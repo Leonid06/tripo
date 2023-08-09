@@ -21,21 +21,24 @@ struct PlanView : View {
     var body : some View {
         NavigationStack {
             VStack {
-                PlanDetailsCardView(name: viewModel.planDetailCard?.name, completed: viewModel.planDetailCard?.completed)
-                
-                ForEach(viewModel.landmarkDetailCards){ card in
-                    if let name = card.name, let description = card.landmarkDescription, let remoteId = card.remoteId {
+                if let card = viewModel.planDetailCard {
+                    PlanDetailsCardView(card: card)
+                    
+                    ForEach(viewModel.landmarkDetailCards){ card in
+                    
                         NavigationLink {
-                            LandmarkView(remoteId: remoteId)
+                            if let remoteId = remoteId {
+                                LandmarkView(remoteId: remoteId)
+                            }
                         } label: {
-                            LandmarkDetailsCardView(name: name, description: description)
+                            LandmarkDetailsCardView(card: card)
                         }
-                        
                     }
                 }
+                
             }.onAppear {
                 if let remoteId = remoteId {
-                    viewModel.fetchPlanByRemoteId(remoteId: remoteId)
+                    viewModel.fetchPlanDetailCardByRemoteId(remoteId: remoteId)
                 }
             }
         }

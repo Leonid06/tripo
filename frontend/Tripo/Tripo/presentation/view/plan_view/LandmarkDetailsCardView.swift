@@ -10,12 +10,14 @@ import SwiftUI
 
 struct LandmarkDetailsCardView : View {
     
-    var name : String?
-    var description : String?
+    private var name : String?
+    private var description : String?
     
-    init(name : String, description :String){
-        self.name = name
-        self.description = description
+    init(card: LandmarkDetailsCard){
+        if let name = card.name, let description = card.landmarkDescription {
+            self.name = name
+            self.description = description
+        }
     }
     var body : some View {
         EmptyView()

@@ -38,7 +38,7 @@ class PlanViewModel : BaseViewModel {
         }
     }
     
-    func fetchPlanByRemoteId(remoteId: String){
+    func fetchPlanDetailCardByRemoteId(remoteId: String){
         fetchPlanRequestState = .requestInProgress
         
         guard let databaseClient = databaseClient else {

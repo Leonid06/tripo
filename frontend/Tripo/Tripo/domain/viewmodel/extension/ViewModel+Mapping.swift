@@ -8,19 +8,19 @@
 import Foundation
 
 
-extension PlanCreateViewModel {
-    internal func mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchShortPresentationUnits
-    (response : LandmarkSearchByRadiusRequestResponse) -> [LandmarkSearchShortPresentationUnit] {
-        var units = Array<LandmarkSearchShortPresentationUnit>()
+extension PlanManualCreateViewModel {
+    internal func mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchDetailCards
+    (response : LandmarkSearchByRadiusRequestResponse) -> [LandmarkSearchDetailCard] {
+        var cards = Array<LandmarkSearchDetailCard>()
         let landmarks =  response.landmark
         
         landmarks.forEach {
             landmark in
-            let unit = LandmarkSearchShortPresentationUnit(name: landmark.name, remoteId: landmark.id)
-            units.append(unit)
+            let card = LandmarkSearchDetailCard(name: landmark.name, landmarkDescription: "", remoteId: landmark.id)
+            cards.append(card)
         }
         
-        return units
+        return cards
     }
 }
 

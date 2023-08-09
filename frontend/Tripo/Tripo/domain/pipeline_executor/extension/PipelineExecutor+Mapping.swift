@@ -8,22 +8,22 @@
 import Foundation
 
 
-extension PlanCreateViewPipelineExecutor {
-    static func mapPlanCreatePresentationDataToPipelineSchema(
-        planPresentationUnit : PlanCreatePresentationUnit, landmarkUnits : Array<LandmarkSearchShortPresentationUnit>
+extension PlanManualCreateViewPipelineExecutor {
+    static func mapManualPlanCreatePresentationDataToPipelineSchema(
+        planDetailCard : PlanManualCreateDetailCard, landmarkDetailCards : Array<LandmarkSearchDetailCard>
     ) -> PlanCreatePipelineSchema {
         var landmarkSchemas = Array<PlanCreatePipelineLandmarkSchema>()
         let pipelineSchema = PlanCreatePipelineSchema(
-            planName: planPresentationUnit.name,
-            planDescription: planPresentationUnit.description,
+            planName: planDetailCard.name,
+            planDescription: planDetailCard.description,
             landmarks: landmarkSchemas
         )
         
-        landmarkUnits.forEach {
-            unit in
+        landmarkDetailCards.forEach {
+            card in
             let landmarkSchema = PlanCreatePipelineLandmarkSchema(
-                name: unit.name,
-                remoteId: unit.remoteId
+                name: card.name,
+                remoteId: card.remoteId
             )
             
             landmarkSchemas.append(landmarkSchema)

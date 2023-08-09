@@ -10,15 +10,10 @@ import SwiftUI
 
 struct PlanDetailsCardView : View {
     
-    var name : String?
-    var completed : Bool?
+    private var card : PlanDetailsCard?
     
-    init(name : String?, completed : Bool?){
-        guard let name = name, let completed = completed else {
-            return
-        }
-        self.name = name
-        self.completed = completed
+    init(card : PlanDetailsCard){
+        self.card = card
         
     }
     var body : some View {

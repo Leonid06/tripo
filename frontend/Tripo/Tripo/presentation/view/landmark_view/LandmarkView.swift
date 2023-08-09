@@ -18,13 +18,22 @@ struct LandmarkView : View {
   
     @StateObject var viewModel = LandmarkViewModel()
     var body : some View {
-        if let name = viewModel.landmark?.name, let description = viewModel.landmark?.landmarkDescription {
-            LandmarkDetailsView(name: name, description: description)
-                .onAppear {
-                    if let remoteId = remoteId {
-                        viewModel.fetchLandmarkByRemoteId(remoteId: remoteId)
+        VStack {
+            if let card = viewModel.landmarkDetailCard {
+                LandmarkDetailsView(card: card)
+                    .onAppear {
+                        if let remoteId = remoteId {
+                            viewModel.fetchLandmarkDetailCardByRemoteId(remoteId: remoteId)
+                        }
                     }
-                }
+            }
+            
+        }.onAppear {
+            if let remoteId = remoteId {
+                viewModel.fetchLandmarkDetailCardByRemoteId(remoteId: remoteId)
+            }
+            
         }
+        
     }
 }
