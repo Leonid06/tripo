@@ -12,7 +12,7 @@ import CoreStore
 
 class PlanViewModel : BaseViewModel {
     @Published var planDetailCard : PlanDetailsCard?
-    @Published var landmarkDetailCards : Array<LandmarkDetailsCard?> = Array<LandmarkDetailsCard?>()
+    @Published var landmarkDetailCards : Array<LandmarkDetailsCard> = Array<LandmarkDetailsCard>()
     @Published var instantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanRequestState :
     ViewModelState.RequestState = .requestSucceeded
@@ -52,8 +52,7 @@ class PlanViewModel : BaseViewModel {
             case .success(let plan):
                 if let plan = plan {
                     self.planDetailCard = self.mapPlanToPlanDetailsCard(plan: plan)
-                    self.landmarkDetailCards = plan.planToLandmark.map {
-                        relationship -> LandmarkDetailsCard? in
+                    self.landmarkDetailCards = plan.planToLandmark.compactMap { relationship in
                         guard let landmark = relationship.landmark else {
                             return nil
                         }

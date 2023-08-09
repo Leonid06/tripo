@@ -26,8 +26,8 @@ struct PlanDetailsCardView : View {
     }
 }
 
-struct PlanDetailsCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlanView()
-    }
-}
+//struct PlanDetailsCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlanView()
+//    }
+//}

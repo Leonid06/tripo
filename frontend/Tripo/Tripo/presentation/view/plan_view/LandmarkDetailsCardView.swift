@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct LandmarkDetailsCardView : View {
+    
     var name : String?
     var description : String?
     
@@ -17,12 +18,12 @@ struct LandmarkDetailsCardView : View {
         self.description = description
     }
     var body : some View {
-        return EmptyView()
+        EmptyView()
     }
 }
 
-struct LandmarksDetailsCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlanView()
-    }
-}
+//struct LandmarksDetailsCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlanView()
+//    }
+//}
