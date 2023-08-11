@@ -14,6 +14,11 @@
 		B319F28C2A682679000F0563 /* LandmarkHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */; };
 		B319F28F2A683922000F0563 /* PlanHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */; };
 		B319F2912A694F32000F0563 /* LandmarkHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */; };
+		B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */; };
+		B321D93F2A85026100D0B2F2 /* HomePlanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */; };
+		B321D9412A85027900D0B2F2 /* HomeViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9402A85027900D0B2F2 /* HomeViewItems.swift */; };
+		B321D9432A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */; };
+		B321D9452A85060100D0B2F2 /* PlanFetchPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */; };
 		B322C6C32A45ACA300845A3C /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B322C6C22A45ACA300845A3C /* HTTPService.swift */; };
 		B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */; };
 		B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */; };
@@ -112,6 +117,11 @@
 		B319F28B2A682679000F0563 /* LandmarkHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPService.swift; sourceTree = "<group>"; };
 		B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPClientTests.swift; sourceTree = "<group>"; };
 		B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPClientTests.swift; sourceTree = "<group>"; };
+		B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlanListView.swift; sourceTree = "<group>"; };
+		B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlanCardView.swift; sourceTree = "<group>"; };
+		B321D9402A85027900D0B2F2 /* HomeViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewItems.swift; sourceTree = "<group>"; };
+		B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPipelineExecutor.swift; sourceTree = "<group>"; };
+		B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFetchPipeline.swift; sourceTree = "<group>"; };
 		B322C6C22A45ACA300845A3C /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		B323D9752A6AA3F000A7917C /* BaseDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseClient.swift; sourceTree = "<group>"; };
 		B32A5C5B2A4F152500F7E236 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -254,6 +264,27 @@
 			path = http_client;
 			sourceTree = "<group>";
 		};
+		B321D93A2A8501C300D0B2F2 /* home_view */ = {
+			isa = PBXGroup;
+			children = (
+				B3BED9FB2A4DE91B0073934A /* HomeView.swift */,
+				B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */,
+				B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */,
+				B321D9402A85027900D0B2F2 /* HomeViewItems.swift */,
+			);
+			path = home_view;
+			sourceTree = "<group>";
+		};
+		B321D93B2A8501D200D0B2F2 /* authentication_view */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */,
+				B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */,
+				B3BED9EB2A4D8FD70073934A /* AuthenticationView.swift */,
+			);
+			path = authentication_view;
+			sourceTree = "<group>";
+		};
 		B322C6C02A45AC8400845A3C /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +332,7 @@
 				B3464D852A75315300895EBC /* extension */,
 				B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */,
 				B3464D7F2A752E8300895EBC /* PlanManualCreateViewPipelineExecutor.swift */,
+				B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */,
 			);
 			path = pipeline_executor;
 			sourceTree = "<group>";
@@ -323,6 +355,7 @@
 				B3464D8D2A77D0A900895EBC /* BasePipeline.swift */,
 				B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */,
 				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
+				B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */,
 			);
 			path = pipeline;
 			sourceTree = "<group>";
@@ -381,13 +414,11 @@
 		B3B5E1542A45A2DC00EDD9F7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B321D93B2A8501D200D0B2F2 /* authentication_view */,
+				B321D93A2A8501C300D0B2F2 /* home_view */,
 				B39E3E612A83D843007B3484 /* plan_manual_create_view */,
 				B39E3E5A2A83BE13007B3484 /* landmark_view */,
 				B39E3E4D2A814725007B3484 /* plan_view */,
-				B3B5E1552A45A30200EDD9F7 /* RegistrationView.swift */,
-				B3B5E1572A45A30A00EDD9F7 /* LoginView.swift */,
-				B3BED9EB2A4D8FD70073934A /* AuthenticationView.swift */,
-				B3BED9FB2A4DE91B0073934A /* HomeView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -789,6 +820,7 @@
 				B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */,
 				B3448ADE2A7D2BAC00A4F19E /* Pipeline+Task.swift in Sources */,
 				B3464D822A75303100895EBC /* PipelineSchema.swift in Sources */,
+				B321D9412A85027900D0B2F2 /* HomeViewItems.swift in Sources */,
 				B3CB19E62A30C61300991A13 /* Tripo.xcdatamodeld in Sources */,
 				B3A65B7F2A6EEE8B00AED659 /* Migration.swift in Sources */,
 				B3CB19E32A30C61300991A13 /* Persistence.swift in Sources */,
@@ -797,6 +829,7 @@
 				B3BED9D62A49CE170073934A /* EnvironmentVariables.swift in Sources */,
 				B3DD828D2A72FE7A00F7F588 /* ViewModelState.swift in Sources */,
 				B32A5C5C2A4F152500F7E236 /* HomeViewModel.swift in Sources */,
+				B321D9452A85060100D0B2F2 /* PlanFetchPipeline.swift in Sources */,
 				B3464D8E2A77D0A900895EBC /* BasePipeline.swift in Sources */,
 				B3BED9FC2A4DE91B0073934A /* HomeView.swift in Sources */,
 				B3CFD9902A6E8EAE0020C884 /* LandmarkDatabaseClient.swift in Sources */,
@@ -811,11 +844,14 @@
 				B39E3E5C2A83BE23007B3484 /* LandmarkView.swift in Sources */,
 				B39E3E4F2A81474C007B3484 /* PlanDetailsCardView.swift in Sources */,
 				B3BED9E32A4AF8540073934A /* RequestParameters.swift in Sources */,
+				B321D9432A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift in Sources */,
 				B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */,
 				B39E3E4C2A81471D007B3484 /* PlanView.swift in Sources */,
 				B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */,
+				B321D93F2A85026100D0B2F2 /* HomePlanCardView.swift in Sources */,
 				B39E3E6B2A83D917007B3484 /* PlanManualCreateBlockView.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
+				B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */,
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
 				B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */,

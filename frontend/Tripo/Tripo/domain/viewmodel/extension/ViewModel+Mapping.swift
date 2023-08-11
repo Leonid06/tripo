@@ -39,3 +39,15 @@ extension PlanViewModel {
         )
     }
 }
+
+extension HomeViewModel {
+    internal func mapFetchAllPlansByCurrentUserResultToHomePlanDetailCards(
+        result: Array<Plan>) -> [HomePlanDetailCard] {
+            return result.map {
+                HomePlanDetailCard(
+                    name: $0.name,
+                    remoteId: $0.remoteId
+                )
+            }
+        }
+}
