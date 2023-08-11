@@ -15,7 +15,7 @@ class HomeViewModel : BaseViewModel {
     
     private var homeViewPipelineExecutor : HomeViewPipelineExecutor?
     
-    @Published private var homePlanDetailCards : Array<HomePlanDetailCard>?
+    @Published var homePlanDetailCards : Array<HomePlanDetailCard> = Array<HomePlanDetailCard>()
     
 
     override init() {

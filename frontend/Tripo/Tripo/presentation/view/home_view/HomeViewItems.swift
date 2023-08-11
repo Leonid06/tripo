@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct HomePlanDetailCard {
+struct HomePlanDetailCard : Identifiable {
+    var id = UUID()
     var name : String?
     var remoteId : String?
 }

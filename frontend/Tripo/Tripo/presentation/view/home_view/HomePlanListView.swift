@@ -8,9 +8,31 @@
 import SwiftUI
 
 struct HomePlanListView : View {
+    private var viewModel : HomeViewModel?
     
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body : some View {
-        return EmptyView()
+        VStack {
+            if let viewModel = viewModel {
+                ForEach(viewModel.homePlanDetailCards){
+                    card in
+                    if let remoteId = card.remoteId {
+                        NavigationLink {
+                            PlanManualCreateView()
+                        } label : {
+                            Button {
+                                
+                            } label: {
+                                PlanView(remoteId: remoteId)
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
     }
 }

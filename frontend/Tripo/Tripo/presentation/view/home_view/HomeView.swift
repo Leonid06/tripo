@@ -10,16 +10,32 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     var body: some View {
-        Button(action: {
-            viewModel.sendLogoutUserRequest()
-        }) {
-            Text("Log out")
-                .padding()
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(lineWidth: 2)
+        NavigationStack {
+            Button(action: {
+                viewModel.sendLogoutUserRequest()
+            }) {
+                Text("Log out")
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 2)
+                    }
+            }
+            HomePlanListView(viewModel: viewModel)
+                .onAppear {
+                    viewModel.fetchAllPlansByCurrentUser()
                 }
+            NavigationLink {
+               PlanManualCreateView()
+            } label : {
+                Button {
+                    
+                } label : {
+                    
+                }
+            }
         }
+        
     }
 }
 

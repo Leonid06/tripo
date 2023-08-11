@@ -15,7 +15,7 @@
 		B319F28F2A683922000F0563 /* PlanHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */; };
 		B319F2912A694F32000F0563 /* LandmarkHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */; };
 		B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */; };
-		B321D93F2A85026100D0B2F2 /* HomePlanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */; };
+		B321D93F2A85026100D0B2F2 /* HomePlanCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D93E2A85026100D0B2F2 /* HomePlanCardDetailView.swift */; };
 		B321D9412A85027900D0B2F2 /* HomeViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9402A85027900D0B2F2 /* HomeViewItems.swift */; };
 		B321D9432A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */; };
 		B321D9452A85060100D0B2F2 /* PlanFetchPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */; };
@@ -118,7 +118,7 @@
 		B319F28E2A683922000F0563 /* PlanHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHTTPClientTests.swift; sourceTree = "<group>"; };
 		B319F2902A694F32000F0563 /* LandmarkHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkHTTPClientTests.swift; sourceTree = "<group>"; };
 		B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlanListView.swift; sourceTree = "<group>"; };
-		B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlanCardView.swift; sourceTree = "<group>"; };
+		B321D93E2A85026100D0B2F2 /* HomePlanCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlanCardDetailView.swift; sourceTree = "<group>"; };
 		B321D9402A85027900D0B2F2 /* HomeViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewItems.swift; sourceTree = "<group>"; };
 		B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPipelineExecutor.swift; sourceTree = "<group>"; };
 		B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFetchPipeline.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 			children = (
 				B3BED9FB2A4DE91B0073934A /* HomeView.swift */,
 				B321D93C2A85025100D0B2F2 /* HomePlanListView.swift */,
-				B321D93E2A85026100D0B2F2 /* HomePlanCardView.swift */,
+				B321D93E2A85026100D0B2F2 /* HomePlanCardDetailView.swift */,
 				B321D9402A85027900D0B2F2 /* HomeViewItems.swift */,
 			);
 			path = home_view;
@@ -848,7 +848,7 @@
 				B3BED9F62A4DDEBD0073934A /* LoginViewModel.swift in Sources */,
 				B39E3E4C2A81471D007B3484 /* PlanView.swift in Sources */,
 				B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */,
-				B321D93F2A85026100D0B2F2 /* HomePlanCardView.swift in Sources */,
+				B321D93F2A85026100D0B2F2 /* HomePlanCardDetailView.swift in Sources */,
 				B39E3E6B2A83D917007B3484 /* PlanManualCreateBlockView.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */,
