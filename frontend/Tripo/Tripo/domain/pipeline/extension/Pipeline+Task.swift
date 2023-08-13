@@ -196,3 +196,49 @@ extension LandmarkSearchPipeline {
         return task.eraseToAnyPublisher()
     }
 }
+
+
+extension PlanFetchPipeline {
+    internal func getFetchAllPlansByUserTokenTask(userToken: String?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineDatabaseError> {
+        let task = Future<PipelineDatabaseTaskOutput, PipelineDatabaseError>(){
+            promise in
+            guard let userToken = userToken else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Invalid userToken")))
+                return
+            }
+            guard let databaseClient = self.planToUserDatabaseClient else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
+                return
+            }
+            
+            databaseClient.getAllPlanToUserRelationshipsByUserCurrentToken(userCurrentToken: userToken){
+                result in
+                switch result {
+                case .success:
+                    do {
+                        let relationships = try result.get()
+                        promise(Result.success(PipelineDatabaseTaskOutput.PlanToUserRelationshipArray(relationships: relationships)))
+                        
+                    } catch {
+                        promise(Result.failure(PipelineDatabaseError.InvalidDatabaseResponse))
+                    }
+                case .failure(let error):
+                    promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
+                }
+            }
+        }
+        return task.eraseToAnyPublisher()
+    }
+    
+    internal func getPlanFetchResultMapTask(relationships : Array<PlanToUser>) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineDatabaseError> {
+        let task = Future<PipelineDatabaseTaskOutput, PipelineDatabaseError>(){
+            promise in
+            let plans = relationships.compactMap {
+                $0.plan
+            }
+            promise(Result.success(PipelineDatabaseTaskOutput.PlanArray(plans: plans)))
+            
+        }
+        return task.eraseToAnyPublisher()
+    }
+}

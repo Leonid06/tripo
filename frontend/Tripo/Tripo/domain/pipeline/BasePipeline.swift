@@ -19,6 +19,8 @@ class BasePipeline  {
             case PlanUUID(identifier : UUID)
             case PlanToLandmarkUUID(identifier: UUID)
             case PlanToUserUUID(identifier: UUID)
+            case PlanToUserRelationshipArray(relationships: Array<PlanToUser>)
+            case PlanArray(plans: Array<Plan>)
         }
         
         enum PipelineDefaultsTaskOutput : PipelineOutput {

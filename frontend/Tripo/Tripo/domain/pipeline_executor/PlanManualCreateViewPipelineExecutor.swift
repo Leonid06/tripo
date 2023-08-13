@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class PlanCreateViewPipelineExecutor : BasePipelineExecutor {
+class PlanManualCreateViewPipelineExecutor : BasePipelineExecutor {
     private var planCreatePipeline : PlanCreatePipeline?
     private var landmarkSearchPipeline : LandmarkSearchPipeline?
     

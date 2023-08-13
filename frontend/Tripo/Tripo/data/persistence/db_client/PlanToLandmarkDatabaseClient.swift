@@ -109,6 +109,5 @@ class PlanToLandmarkDatabaseClient : BaseDatabaseClient {
                 throw CoreStoreError(error)
             }
         }, async_callback_closure: callback)
-        
     }
 }

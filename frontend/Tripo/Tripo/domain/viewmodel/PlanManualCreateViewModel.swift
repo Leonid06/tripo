@@ -10,19 +10,21 @@ import Combine
 
 
 
-class PlanCreateViewModel : BaseViewModel {
-    @Published var fetchedLandmarks : Array<LandmarkSearchShortPresentationUnit>?
+class PlanManualCreateViewModel : BaseViewModel {
+    @Published var landmarkSearchDetailCards  =  Array<LandmarkSearchDetailCard>()
+    @Published var landmarkChosenSearchDetailCards = Array<LandmarkSearchDetailCard>()
     @Published var databaseClientInstantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchLandmarksRequestState : ViewModelState.RequestState = .requestSucceeded
     @Published var createPlanRequestState : ViewModelState.RequestState =
         .requestSucceeded
+    @Published var creationAllowed : Bool?
     
-    private var planCreatePipelineExecutor : PlanCreateViewPipelineExecutor?
+    private var planCreatePipelineExecutor : PlanManualCreateViewPipelineExecutor?
     
     override init() {
         super.init()
         do {
-            planCreatePipelineExecutor = try PlanCreateViewPipelineExecutor()
+            planCreatePipelineExecutor = try PlanManualCreateViewPipelineExecutor()
             databaseClientInstantiationState = .instantiationSucceded
         } catch PipelineDatabaseError.PipelineDatabaseInstantiationError.InternalDatabaseErrorHappened(let error) {
             print("Internal database client error happened : \(error)")
@@ -36,6 +38,11 @@ class PlanCreateViewModel : BaseViewModel {
             print("plan create pipeline executor instantiation failed due to unknown error")
         }
         
+    }
+    
+    func chooseLandmarkForPlan(card: LandmarkSearchDetailCard){
+        landmarkSearchDetailCards.append(card)
+        creationAllowed = true 
     }
     
     func searchLandmarksByCurrentLocation(){
@@ -56,7 +63,7 @@ class PlanCreateViewModel : BaseViewModel {
                 case .Success(let output):
                     switch output{
                     case .LandmarkSearchByRadiusHTTPRequestResponse(let response):
-                        self.fetchedLandmarks = self.mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchShortPresentationUnits(response: response)
+                        self.landmarkSearchDetailCards = self.mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchDetailCards(response: response)
                     default:
                         print("Invalid search landmark pipeline product")
                     }
@@ -69,7 +76,7 @@ class PlanCreateViewModel : BaseViewModel {
     }
     
     
-    func createPlanWith(_ planPresentationUnit : PlanCreatePresentationUnit, and landmarkSearchShortPresentationUnits : Array<LandmarkSearchShortPresentationUnit>){
+    func createPlanWith(_ planDetailCard : PlanManualCreateDetailCard, and landmarkDetailCards : Array<LandmarkSearchDetailCard>){
         createPlanRequestState = .requestInProgress
         
         
@@ -79,7 +86,7 @@ class PlanCreateViewModel : BaseViewModel {
             return
         }
         do {
-            let pipelineSchema = PlanCreateViewPipelineExecutor.mapPlanCreatePresentationDataToPipelineSchema(planPresentationUnit: planPresentationUnit, landmarkUnits: landmarkSearchShortPresentationUnits)
+            let pipelineSchema = PlanManualCreateViewPipelineExecutor.mapManualPlanCreatePresentationDataToPipelineSchema(planDetailCard: planDetailCard, landmarkDetailCards: landmarkDetailCards)
             let pipeline = try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
                 product in
                 

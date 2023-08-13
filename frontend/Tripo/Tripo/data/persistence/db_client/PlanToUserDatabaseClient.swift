@@ -50,6 +50,20 @@ class PlanToUserDatabaseClient : BaseDatabaseClient {
             }
         }, async_callback_closure: callback)
     }
+    
+    func getAllPlanToUserRelationshipsByUserCurrentToken(userCurrentToken: String, callback : @escaping (AsynchronousDataTransaction.Result<Array<PlanToUser>>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> (Array<PlanToUser>) in
+            do {
+                var user = try transaction.fetchOne(From<User>().where(\.$currentToken == userCurrentToken))
+                var relationships = try transaction.fetchAll(From<PlanToUser>().where(\.$user == user))
+                
+                return relationships
+            } catch {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
 
     
     func deletePlanToUserRelationship(planRemoteId : String, userCurrentToken: String,
