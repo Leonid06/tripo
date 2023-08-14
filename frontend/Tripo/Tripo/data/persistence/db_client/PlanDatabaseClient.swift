@@ -26,6 +26,27 @@ class PlanDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
+    func updatePlan(identifier: UUID, name: String? = nil, description: String? = nil, remoteId: String?, completed : Bool?, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()) {
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            let plan = try transaction.fetchOne(
+                From<Plan>().where(\.$identifier == identifier)
+            )
+            if let name = name {
+                plan?.name = name
+            }
+            if let description = description {
+                plan?.planDescription = description
+            }
+            if let remoteId = remoteId {
+                plan?.remoteId = remoteId
+            }
+            if let completed = completed {
+                plan?.completed = completed
+            }
+        }, async_callback_closure: callback)
+    }
+    
     func getPlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Plan?>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction  -> Plan? in

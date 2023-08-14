@@ -25,6 +25,27 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
+    func updateLandmark(identifier: UUID, name: String? = nil, description: String? = nil, remoteId: String? = nil, type : String? = nil, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()) {
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            let landmark = try transaction.fetchOne(
+                From<Landmark>().where(\.$identifier == identifier)
+            )
+            if let name = name {
+                landmark?.name = name
+            }
+            if let description = description {
+                landmark?.landmarkDescription = description
+            }
+            if let remoteId = remoteId {
+                landmark?.remoteId = remoteId
+            }
+            if let type = type {
+                landmark?.type = type
+            }
+        }, async_callback_closure: callback)
+    }
+    
     func getLandmarkObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Landmark?>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> Landmark? in
