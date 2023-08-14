@@ -24,7 +24,7 @@ class PlanManualCreateViewPipelineExecutor : BasePipelineExecutor {
             throw PipelineExecutorError.PipelineNotInitialized
         }
         
-        let defaultsJob = planCreatePipeline.getDefaultsJob()
+        let defaultsJob = planCreatePipeline.getRetrieveUserTokenJob()
 
         
         let pipeline = defaultsJob
@@ -35,7 +35,7 @@ class PlanManualCreateViewPipelineExecutor : BasePipelineExecutor {
                 
                 switch defaultsTaskOutput {
                 case .userCurrentToken(let token):
-                    return planCreatePipeline.getDatabaseJob(userToken: token, planName: pipelineSchema.planName,
+                    return planCreatePipeline.getSavePlanInDatabaseJob(userToken: token, planName: pipelineSchema.planName,
                         planDescription: pipelineSchema.planDescription,
                         landmarks: pipelineSchema.landmarks)
                     .eraseToAnyPublisher()
@@ -46,7 +46,7 @@ class PlanManualCreateViewPipelineExecutor : BasePipelineExecutor {
             }
             .flatMap {
                 output in
-                return planCreatePipeline.getNetworkJob(planName: pipelineSchema.planName, planDescription: pipelineSchema.planDescription, landmarks: pipelineSchema.landmarks)
+                return planCreatePipeline.getMakePlanCreateNetworkCallsJob(planName: pipelineSchema.planName, planDescription: pipelineSchema.planDescription, landmarks: pipelineSchema.landmarks)
                     .eraseToAnyPublisher()
             }
 

@@ -35,7 +35,7 @@ extension PlanCreatePipeline {
                         promise(Result.failure(PipelineNetworkError.InvalidResponse))
                         return
                     }
-                    promise(Result.success(PipelineNetworkTaskOutput.PlanRemoteId(remoteId: "")))
+                    promise(Result.success(PipelineNetworkTaskOutput.PlanRemoteId(remoteId: response.id)))
                     return
                 }
                 promise(Result.failure(PipelineNetworkError.networkRequestFailed(error: error)))
@@ -54,6 +54,33 @@ extension PlanCreatePipeline {
                 return
             }
             self.mapCreatePlanHTTPRequestTaskParameters(planName: planName, planDescription: planDescription, landmarkSchemas: landmarks, promise: promise)
+        }
+        return task.eraseToAnyPublisher()
+    }
+    
+    internal func getAssignRemoteIdToPlanTask(identifier: UUID?, remoteId: String?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineDatabaseError> {
+        let task = Future<PipelineDatabaseTaskOutput, PipelineDatabaseError>() {
+            promise in
+            guard let databaseClient = self.planDatabaseClient else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
+                return
+            }
+            
+            guard let identifier = identifier, let remoteId = remoteId else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Invalid Assign Remote Id To Plan Task schema")))
+                return
+            }
+            
+            databaseClient.updatePlanObjectRemoteId(id: identifier, remoteId: remoteId){
+                result in 
+                switch result {
+                case .success:
+                    promise(Result.success(PipelineDatabaseTaskOutput.Void))
+                case .failure(let error):
+                    promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
+                }
+            }
+            
         }
         return task.eraseToAnyPublisher()
     }

@@ -58,6 +58,23 @@ class PlanDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
+    func updatePlanObjectRemoteId(id : UUID, remoteId : String,
+      callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                let plan = try transaction.fetchOne(
+                    From<Plan>().where(\.$identifier == id)
+                )
+                if let plan = plan {
+                    plan.remoteId = remoteId
+                }
+            } catch  {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
     func deletePlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in

@@ -40,6 +40,23 @@ class LandmarkDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
+    func updateLandmarkObjectRemoteId(id : UUID, remoteId : String,
+      callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                let landmark = try transaction.fetchOne(
+                    From<Landmark>().where(\.$identifier == id)
+                )
+                if let landmark = landmark {
+                    landmark.remoteId = remoteId
+                }
+            } catch {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
     func updateLandmarkObjectRemoteId(oldRemoteId : String, newRemoteId : String,
       callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {

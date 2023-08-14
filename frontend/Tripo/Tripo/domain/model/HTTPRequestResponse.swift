@@ -30,7 +30,7 @@ struct LogOutUserRequestResponse : HTTPRequestResponse, EmptyResponse {
 }
 
 struct PlanManualCreateRequestResponse : HTTPRequestResponse {
-    var message : String 
+    var id : String
 }
 
 struct LandmarkSearchByRadiusRequestResponse  : HTTPRequestResponse {
