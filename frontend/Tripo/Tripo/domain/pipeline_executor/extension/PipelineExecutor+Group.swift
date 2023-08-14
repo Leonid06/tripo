@@ -85,7 +85,7 @@ extension PlanManualCreateViewPipelineExecutor {
         planIdentifier: UUID?,
         landmarkIdentifiers: Array<UUID>)  -> AnyPublisher<BasePipeline.PipelineDatabaseTaskOutput, PipelineJobError> {
             
-        let subgroup = pipeline.getSaveRelationshipsInDatabaseJob(userToken: userToken, planIdentifier: planIdentifier, landmarkIdentifiers: landmarkIdentifiers)
+        let business = pipeline.getSaveRelationshipsInDatabaseJob(userToken: userToken, planIdentifier: planIdentifier, landmarkIdentifiers: landmarkIdentifiers)
             .flatMap {
                 _ in
                 return pipeline.getMakePlanCreateNetworkCallsJob(planName: planName, planDescription: planDescription, landmarks: landmarks)
@@ -100,7 +100,7 @@ extension PlanManualCreateViewPipelineExecutor {
                         .eraseToAnyPublisher()
                 }
             }
-        return subgroup.eraseToAnyPublisher()
+        return business.eraseToAnyPublisher()
     }
 
 }
