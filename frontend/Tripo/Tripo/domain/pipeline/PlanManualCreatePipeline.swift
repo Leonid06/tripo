@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-class PlanCreatePipeline : BasePipeline {
+class PlanManualCreatePipeline : BasePipeline {
     
     internal let landmarkHTTPService = LandmarkHTTPService()
     internal var planDatabaseClient : PlanDatabaseClient?
@@ -95,29 +95,7 @@ class PlanCreatePipeline : BasePipeline {
                 }
                 return self.getSaveLandmarksInDatabaseTask(landmarks: landmarks)
             }
-        //            .collect().flatMap {
-        //                outputs in
-        //
-        //                let outputArray = outputs as Array<PipelineDatabaseTaskOutput>
-        //
-        //
-        //                var planIdentifier : UUID?
-        //                var landmarkIdentifiers = Array<UUID>()
-        //
-        //                outputArray.forEach { output in
-        //                    switch output {
-        //                    case .PlanUUID(let identifier):
-        //                        planIdentifier = identifier
-        //                    case .LandmarkUUID(let identifier):
-        //                        landmarkIdentifiers.append(identifier)
-        //                    default:
-        //                        return
-        //                    }
-        //                }
-        
-        
-        
-        //            }
+      
             .mapError {error in PipelineJobError.WrapError(error: error)}
             .eraseToAnyPublisher()
     }

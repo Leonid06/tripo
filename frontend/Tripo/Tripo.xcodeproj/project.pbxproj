@@ -32,7 +32,7 @@
 		B3464D872A7564AB00895EBC /* PipelineError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D862A7564AB00895EBC /* PipelineError.swift */; };
 		B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */; };
 		B3464D8E2A77D0A900895EBC /* BasePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D8D2A77D0A900895EBC /* BasePipeline.swift */; };
-		B3464D902A77D0C300895EBC /* PlanCreatePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */; };
+		B3464D902A77D0C300895EBC /* PlanManualCreatePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */; };
 		B3464D922A77EBF800895EBC /* PipelineExecutorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */; };
 		B39780AB2A813D6C003B0037 /* LandmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39780AA2A813D6C003B0037 /* LandmarkViewModel.swift */; };
 		B39E3E4C2A81471D007B3484 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E3E4B2A81471D007B3484 /* PlanView.swift */; };
@@ -89,6 +89,7 @@
 		B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */; };
 		B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */; };
 		B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD829B2A74152100F7F588 /* ViewModelError.swift */; };
+		B3DE0BC12A8A607500DAE3CF /* PipelineExecutor+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +136,7 @@
 		B3464D862A7564AB00895EBC /* PipelineError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineError.swift; sourceTree = "<group>"; };
 		B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Convenience.swift"; sourceTree = "<group>"; };
 		B3464D8D2A77D0A900895EBC /* BasePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePipeline.swift; sourceTree = "<group>"; };
-		B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatePipeline.swift; sourceTree = "<group>"; };
+		B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanManualCreatePipeline.swift; sourceTree = "<group>"; };
 		B3464D912A77EBF800895EBC /* PipelineExecutorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineExecutorError.swift; sourceTree = "<group>"; };
 		B39780AA2A813D6C003B0037 /* LandmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkViewModel.swift; sourceTree = "<group>"; };
 		B39E3E4B2A81471D007B3484 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		B3DD828E2A73DF2700F7F588 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Mapping.swift"; sourceTree = "<group>"; };
 		B3DD829B2A74152100F7F588 /* ViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelError.swift; sourceTree = "<group>"; };
+		B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Group.swift"; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,6 +344,7 @@
 			children = (
 				B3464D832A75312900895EBC /* PipelineExecutor+Mapping.swift */,
 				B3464D882A76A6F600895EBC /* PipelineExecutor+Convenience.swift */,
+				B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -353,7 +356,7 @@
 				B3448ADA2A7D0F0300A4F19E /* extension */,
 				B3464D862A7564AB00895EBC /* PipelineError.swift */,
 				B3464D8D2A77D0A900895EBC /* BasePipeline.swift */,
-				B3464D8F2A77D0C300895EBC /* PlanCreatePipeline.swift */,
+				B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */,
 				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
 				B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */,
 			);
@@ -849,6 +852,7 @@
 				B39E3E4C2A81471D007B3484 /* PlanView.swift in Sources */,
 				B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */,
 				B321D93F2A85026100D0B2F2 /* HomePlanCardDetailView.swift in Sources */,
+				B3DE0BC12A8A607500DAE3CF /* PipelineExecutor+Group.swift in Sources */,
 				B39E3E6B2A83D917007B3484 /* PlanManualCreateBlockView.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */,
@@ -864,7 +868,7 @@
 				B3CFD9942A6EAC660020C884 /* UserDatabaseClient.swift in Sources */,
 				B39E3E582A815C78007B3484 /* PlanViewItems.swift in Sources */,
 				B3BED9EC2A4D8FD70073934A /* AuthenticationView.swift in Sources */,
-				B3464D902A77D0C300895EBC /* PlanCreatePipeline.swift in Sources */,
+				B3464D902A77D0C300895EBC /* PlanManualCreatePipeline.swift in Sources */,
 				B3DD828F2A73DF2700F7F588 /* BaseViewModel.swift in Sources */,
 				B3BED9F82A4DDECB0073934A /* RegisterViewModel.swift in Sources */,
 				B3CFD9962A6EB0F20020C884 /* PlanToUserDatabaseClient.swift in Sources */,

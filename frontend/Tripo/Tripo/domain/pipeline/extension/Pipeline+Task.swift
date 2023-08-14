@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-extension PlanCreatePipeline {
+extension PlanManualCreatePipeline {
     internal func getSaveLandmarksInDatabaseTask(landmarks: Array<PlanCreatePipelineLandmarkSchema>) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineDatabaseError>{
         let task = Empty<PipelineDatabaseTaskOutput, PipelineDatabaseError>()
         landmarks.forEach {
