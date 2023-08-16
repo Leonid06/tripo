@@ -1,8 +1,8 @@
-from typing import  Dict
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import update
 from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, \
-    DBAPIError, NoResultFound
+    DBAPIError
 
 from rest.schema.plan.edit import PlanEditByIdIn, PlanEditByIdOut
 from db.models import Plan
@@ -12,7 +12,7 @@ from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
     DatabaseDriverError
 
 
-async def edit_plan_by_id(payload: PlanEditByIdIn, db: AsyncSession) -> PlanEditByIdOut:
+async def put_plan_by_id(payload: PlanEditByIdIn, db: AsyncSession) -> PlanEditByIdOut:
     try:
         async with db.begin():
 
@@ -26,8 +26,6 @@ async def edit_plan_by_id(payload: PlanEditByIdIn, db: AsyncSession) -> PlanEdit
         return PlanEditByIdOut()
     except (TypeError, AttributeError) as error:
         raise DatabaseDataError from error
-    except NoResultFound as error:
-        raise DatabaseNoResultFoundError from error
     except DisconnectionError as error:
         raise DatabaseDisconnectionError from error
     except TimeoutError as error:

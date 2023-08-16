@@ -6,7 +6,8 @@ from rest.schema.plan.get import PlanGetByIdIn, PlanGetByIdOut
 from db.crud.plan.get import select_plan_by_id
 from db.dependencies import get_main_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \
-    DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError
+    DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError, \
+    DatabaseDriverError
 
 plan_get_router = APIRouter(
     prefix='/plan/get',
@@ -22,7 +23,7 @@ async def get_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession = Depends(get_
         raise HTTPException(status_code=400, detail='Invalid request format') from error
     except DatabaseTimeoutError as error:
         raise HTTPException(status_code=504) from error
-    except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError) as error:
+    except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseDriverError) as error:
         raise HTTPException(status_code=502) from error
     except DatabaseNoResultFoundError:
         plan = PlanGetByIdOut()
