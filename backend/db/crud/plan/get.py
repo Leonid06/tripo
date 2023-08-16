@@ -1,12 +1,13 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, \
-    NoResultFound
+    NoResultFound, DBAPIError
 
 from rest.schema.plan.get import PlanGetByIdIn, PlanGetByIdOut, PlanToLandmarkOut
 from db.models import Plan, PlanToLandmark
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
-    DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError
+    DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError, \
+    DatabaseDriverError
 
 
 async def select_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession) -> PlanGetByIdOut:
@@ -29,6 +30,8 @@ async def select_plan_by_id(payload: PlanGetByIdIn, db: AsyncSession) -> PlanGet
         raise DatabaseTimeoutError from error
     except ResourceClosedError as error:
         raise DatabaseResourceInvalidatedError from error
+    except DBAPIError as error:
+        raise DatabaseDriverError from error
 
     plan_to_landmark_data = plan_to_landmark_data_query_result.scalars()
     locations = []
