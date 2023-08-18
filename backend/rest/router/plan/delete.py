@@ -13,7 +13,7 @@ plan_delete_router = APIRouter(
 )
 
 
-@plan_delete_router.delete('by-id')
+@plan_delete_router.delete('/by-id')
 async def delete_plan_by_id_endpoint(payload: PlanDeleteByIdIn,
                                      db: AsyncSession = Depends(get_main_async_session)) -> PlanDeleteByIdOut:
     try:
