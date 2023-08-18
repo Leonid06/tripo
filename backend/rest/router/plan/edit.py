@@ -14,8 +14,8 @@ plan_edit_router = APIRouter(
 )
 
 
-@plan_edit_router.post('/by-id')
-async def edit_plan_by_id(payload: PlanEditByIdIn, db: AsyncSession = Depends(get_main_async_session)) -> PlanEditByIdOut:
+@plan_edit_router.put('/by-id')
+async def edit_plan_by_id_endpoint(payload: PlanEditByIdIn, db: AsyncSession = Depends(get_main_async_session)) -> PlanEditByIdOut:
     try:
         outward_schema = await put_plan_by_id(payload=payload, db=db)
     except DatabaseDataError as error:

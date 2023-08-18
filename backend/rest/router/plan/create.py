@@ -18,7 +18,7 @@ plan_create_router = APIRouter(
 
 
 @plan_create_router.post('/manual')
-async def create_plan_manually(payload : PlanManualCreateIn, db : AsyncSession = Depends(get_main_async_session)) -> PlanManualCreateOut:
+async def create_plan_manually_endpoint(payload : PlanManualCreateIn, db : AsyncSession = Depends(get_main_async_session)) -> PlanManualCreateOut:
     try:
         outward_schema = await save_plan_created_manually(payload=payload, db = db)
     except DatabaseDataError as error:

@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 @landmark_search_router.post('/by-radius')
-async def search_landmark_by_radius(payload: SearchLandmarkByRadiusIn) -> SearchLandmarkOut:
+async def search_landmark_by_radius_endpoint(payload: SearchLandmarkByRadiusIn) -> SearchLandmarkOut:
     try:
         request_message_body = map_search_landmark_by_radius_inward_schema_to_message_body(payload)
     except MappingError as error:
