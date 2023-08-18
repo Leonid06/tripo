@@ -26,5 +26,6 @@ app.include_router(
 app.include_router(plan_create_router)
 app.include_router(plan_get_router)
 app.include_router(plan_edit_router)
+app.include_router(plan_delete_router)
 app.include_router(landmark_get_router)
 app.include_router(landmark_search_router)
