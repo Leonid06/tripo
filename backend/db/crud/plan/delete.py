@@ -3,14 +3,14 @@ from sqlalchemy import delete
 from sqlalchemy.exc import DisconnectionError, TimeoutError, ResourceClosedError, \
     NoResultFound, DBAPIError
 
-from rest.schema.plan.delete import PlanDeleteIn, PlanDeleteOut
+from rest.schema.plan.delete import PlanDeleteByIdIn, PlanDeleteByIdOut
 from db.models import Plan
 from db.exception import DatabaseDataError, DatabaseDisconnectionError, \
     DatabaseTimeoutError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError, \
     DatabaseDriverError
 
 
-async def delete_plan_by_id(payload: PlanDeleteIn, db: AsyncSession) -> PlanDeleteOut:
+async def delete_plan_by_id(payload: PlanDeleteByIdIn, db: AsyncSession) -> PlanDeleteByIdOut:
     try:
         async with db.begin():
             await db.execute(
@@ -18,7 +18,7 @@ async def delete_plan_by_id(payload: PlanDeleteIn, db: AsyncSession) -> PlanDele
             )
             await db.commit()
 
-            return PlanDeleteOut()
+            return PlanDeleteByIdOut()
     except (TypeError, AttributeError) as error:
         raise DatabaseDataError from error
     except NoResultFound as error:

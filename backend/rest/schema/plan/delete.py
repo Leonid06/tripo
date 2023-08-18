@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 
-class PlanDeleteIn(BaseModel):
+class PlanDeleteByIdIn(BaseModel):
     id: str
 
 
-class PlanDeleteOut(BaseModel):
+class PlanDeleteByIdOut(BaseModel):
     pass
