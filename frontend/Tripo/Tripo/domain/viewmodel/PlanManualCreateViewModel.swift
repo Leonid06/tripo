@@ -59,17 +59,19 @@ class PlanManualCreateViewModel : BaseViewModel {
                 product in
                 switch product {
                 case .Failure(let error):
+                    self.createPlanRequestState = .requestFailed
                     print("Error happened during search landmark pipeline execution : \(error)")
                 case .Success(let output):
                     switch output{
                     case .LandmarkSearchByRadiusHTTPRequestResponse(let response):
+                        self.createPlanRequestState = .requestSucceeded
                         self.landmarkSearchDetailCards = self.mapLandmarkSearchByRadiusRequestResponseToLandmarkSearchDetailCards(response: response)
                     default:
+                        self.createPlanRequestState = .requestFailed
                         print("Invalid search landmark pipeline product")
                     }
                 }
             }
-            pipeline.cancel()
         }  catch {
             createPlanRequestState = .requestFailed
         }
@@ -92,6 +94,7 @@ class PlanManualCreateViewModel : BaseViewModel {
                 
                 switch product {
                 case .Failure(let error):
+                    self.createPlanRequestState = .requestFailed
                     print("Error happened during create plan pipeline execution : \(error)")
                 case .Success:
                     self.createPlanRequestState = .requestSucceeded
