@@ -55,4 +55,11 @@ struct PlanGetByIdParameters : RequestParameters {
     var id : String 
 }
 
+struct PlanEditByIdParameters : RequestParameters {
+    var identifier : UUID
+    var name : String?
+    var description : String?
+    var completed : Bool?
+}
+
 

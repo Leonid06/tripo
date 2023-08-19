@@ -30,4 +30,15 @@ class PlanHTTPService : HTTPService {
             parameters: parameters)
         sendRequest(requestDetails: requestDetails, callback: callback)
     }
+    
+    func sendPlanEditByIdRequest(parameters : PlanEditByIdParameters, callback :
+        @escaping (PlanGetByIdRequestResponse?, AFError?) -> ()){
+        let requestDetailsProvider = RequestDetailsProvider.planEditById
+        let requestDetails = RequestDetails(
+            method: requestDetailsProvider.method,
+            route: requestDetailsProvider.route,
+            format: requestDetailsProvider.format,
+            parameters: parameters)
+        sendRequest(requestDetails: requestDetails, callback: callback)
+    }
 }

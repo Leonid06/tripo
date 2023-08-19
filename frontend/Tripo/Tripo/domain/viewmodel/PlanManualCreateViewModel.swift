@@ -86,7 +86,7 @@ class PlanManualCreateViewModel : BaseViewModel {
             return
         }
         do {
-            let pipelineSchema = PlanManualCreateViewPipelineExecutor.mapManualPlanCreatePresentationDataToPipelineSchema(planDetailCard: planDetailCard, landmarkDetailCards: landmarkDetailCards)
+            let pipelineSchema = PlanManualCreateViewPipelineExecutor.mapManualPlanCreateDetailCardToPipelineSchema(planDetailCard: planDetailCard, landmarkDetailCards: landmarkDetailCards)
             let pipeline = try planCreatePipelineExecutor.executeCreatePlanPipeline(pipelineSchema: pipelineSchema){
                 product in
                 

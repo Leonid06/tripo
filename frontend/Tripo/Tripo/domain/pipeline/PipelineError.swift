@@ -32,8 +32,9 @@ enum PipelineDefaultsError : PipelineError {
 enum PipelineNetworkError :PipelineError {
     case InvalidUpstreamTaskOutput(description :String)
     case InvalidResponse
-    case networkRequestFailed(error: Error)
+    case NetworkRequestFailed(error: Error)
     case InvalidRequestParameters(description: String)
+    case InvalidObjectSchema(description: String)
 }
 
 enum PipelineDatabaseError : PipelineError {

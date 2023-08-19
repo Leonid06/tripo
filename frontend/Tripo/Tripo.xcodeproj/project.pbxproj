@@ -90,6 +90,8 @@
 		B3DD82922A73F59A00F7F588 /* ViewModel+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */; };
 		B3DD829C2A74152100F7F588 /* ViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD829B2A74152100F7F588 /* ViewModelError.swift */; };
 		B3DE0BC12A8A607500DAE3CF /* PipelineExecutor+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */; };
+		B3FDFC762A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FDFC752A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift */; };
+		B3FDFC782A8FC181002EBB3A /* PlanEditPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +201,8 @@
 		B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Mapping.swift"; sourceTree = "<group>"; };
 		B3DD829B2A74152100F7F588 /* ViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelError.swift; sourceTree = "<group>"; };
 		B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Group.swift"; sourceTree = "<group>"; };
+		B3FDFC752A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewPipelineExecutor.swift; sourceTree = "<group>"; };
+		B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditPipeline.swift; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +339,7 @@
 				B3464D7D2A752D6100895EBC /* BasePipelineExecutor.swift */,
 				B3464D7F2A752E8300895EBC /* PlanManualCreateViewPipelineExecutor.swift */,
 				B321D9422A85058C00D0B2F2 /* HomeViewPipelineExecutor.swift */,
+				B3FDFC752A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift */,
 			);
 			path = pipeline_executor;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */,
 				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
 				B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */,
+				B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */,
 			);
 			path = pipeline;
 			sourceTree = "<group>";
@@ -812,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3FDFC762A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift in Sources */,
 				B39E3E692A83D8F6007B3484 /* LandmarkSearchCardDetailView.swift in Sources */,
 				B319F2882A66E353000F0563 /* PlanHTTPService.swift in Sources */,
 				B39E3E5E2A83D36E007B3484 /* LandmarkViewItems.swift in Sources */,
@@ -819,6 +826,7 @@
 				B3464D7E2A752D6100895EBC /* BasePipelineExecutor.swift in Sources */,
 				B39780AB2A813D6C003B0037 /* LandmarkViewModel.swift in Sources */,
 				B39E3E512A814765007B3484 /* LandmarkDetailsCardView.swift in Sources */,
+				B3FDFC782A8FC181002EBB3A /* PlanEditPipeline.swift in Sources */,
 				B3B5E1582A45A30A00EDD9F7 /* LoginView.swift in Sources */,
 				B3CFD98E2A6E7BC50020C884 /* PlanDatabaseClient.swift in Sources */,
 				B3448ADE2A7D2BAC00A4F19E /* Pipeline+Task.swift in Sources */,

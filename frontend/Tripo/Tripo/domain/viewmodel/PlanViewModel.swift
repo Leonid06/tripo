@@ -16,6 +16,8 @@ class PlanViewModel : BaseViewModel {
     @Published var instantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanRequestState :
     ViewModelState.RequestState = .requestSucceeded
+    @Published var editPlanRequestState :
+    ViewModelState.RequestState = .requestSucceeded
     private var databaseClient : PlanDatabaseClient?
     
     
@@ -36,6 +38,10 @@ class PlanViewModel : BaseViewModel {
             print("unknown error happened")
             instantiationState = .instantiationFailed
         }
+    }
+    
+    func editPlanDetailCard(card: PlanDetailsCard){
+        
     }
     
     func fetchPlanDetailCardByRemoteId(remoteId: String){
