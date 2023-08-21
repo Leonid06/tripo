@@ -30,7 +30,7 @@ struct LogOutUserRequestResponse : HTTPRequestResponse, EmptyResponse {
 }
 
 struct PlanManualCreateRequestResponse : HTTPRequestResponse {
-    var message : String 
+    var id : String
 }
 
 struct LandmarkSearchByRadiusRequestResponse  : HTTPRequestResponse {
@@ -57,4 +57,16 @@ struct PlanGetByIdRequestResponse : HTTPRequestResponse {
 struct PlanGetByIdRequestResponseUnit : HTTPRequestResponseUnit {
     var landmark_id : String
     var visit_data : String?
+}
+
+struct PlanEditByIdRequestResponse : HTTPRequestResponse {
+    static func emptyValue() -> LogOutUserRequestResponse {
+        return LogOutUserRequestResponse.init()
+    }
+}
+
+struct PlanDeleteByIdRequestResponse : HTTPRequestResponse {
+    static func emptyValue() -> LogOutUserRequestResponse {
+        return LogOutUserRequestResponse.init()
+    }
 }

@@ -115,7 +115,7 @@ final class PlanDatabaseClientTests : TripoTests {
                         print(error)
                     }
                 })
-            client.deletePlanObjectByRemoteId(remoteId: remoteId, callback: {
+            client.deletePlanObject(remoteId: remoteId, callback: {
                 result in
                 switch result {
                 case .success:

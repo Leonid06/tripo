@@ -9,47 +9,28 @@ import Foundation
 import Combine
 
 class PlanManualCreateViewPipelineExecutor : BasePipelineExecutor {
-    private var planCreatePipeline : PlanCreatePipeline?
-    private var landmarkSearchPipeline : LandmarkSearchPipeline?
+    internal var planCreatePipeline : PlanManualCreatePipeline?
+    internal var landmarkSearchPipeline : LandmarkSearchPipeline?
     
     override init() throws {
-        planCreatePipeline = try PlanCreatePipeline()
+        planCreatePipeline = try PlanManualCreatePipeline()
         landmarkSearchPipeline = try LandmarkSearchPipeline()
     }
     
     
-    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<BasePipeline.PipelineNetworkTaskOutput, PipelineExecutorError>) -> () ) throws -> AnyCancellable {
+    func executeCreatePlanPipeline(pipelineSchema: PlanCreatePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<BasePipeline.PipelineDatabaseTaskOutput, PipelineExecutorError>) -> () ) throws -> AnyCancellable {
         
         guard let planCreatePipeline = planCreatePipeline else {
             throw PipelineExecutorError.PipelineNotInitialized
         }
         
-        let defaultsJob = planCreatePipeline.getDefaultsJob()
-
+        let savePlanInLocalDatabaseGroup = getSaveEntitiesGroup(
+            pipeline: planCreatePipeline,
+            planName: pipelineSchema.planName,
+            planDescription: pipelineSchema.planDescription,
+            landmarks: pipelineSchema.landmarks)
         
-        let pipeline = defaultsJob
-            .flatMap {
-                output in
-                
-                let defaultsTaskOutput = output as BasePipeline.PipelineDefaultsTaskOutput
-                
-                switch defaultsTaskOutput {
-                case .userCurrentToken(let token):
-                    return planCreatePipeline.getDatabaseJob(userToken: token, planName: pipelineSchema.planName,
-                        planDescription: pipelineSchema.planDescription,
-                        landmarks: pipelineSchema.landmarks)
-                    .eraseToAnyPublisher()
-                case .Void:
-                    return Fail(error: PipelineJobError.WrapError(error: PipelineOutputError.PipelineJobInvalidOutput(description: "invalid defaults job output")))
-                        .eraseToAnyPublisher()
-                }
-            }
-            .flatMap {
-                output in
-                return planCreatePipeline.getNetworkJob(planName: pipelineSchema.planName, planDescription: pipelineSchema.planDescription, landmarks: pipelineSchema.landmarks)
-                    .eraseToAnyPublisher()
-            }
-
+        let pipeline = savePlanInLocalDatabaseGroup
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):

@@ -1,24 +1,23 @@
-import asyncio
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-from rest.schema.plan.get import PlanGetByIdIn, PlanGetByIdOut
-from db.crud.plan.get import select_plan_by_id
+from rest.schema.plan.delete import PlanDeleteByIdIn, PlanDeleteByIdOut
+from db.crud.plan.delete import delete_plan_by_id
 from db.dependencies import get_main_async_session
 from db.exception import DatabaseDataError, DatabaseTimeoutError, \
     DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseNoResultFoundError, \
     DatabaseDriverError
 
-plan_get_router = APIRouter(
-    prefix='/plan/get',
-    tags=['plan/get']
+plan_delete_router = APIRouter(
+    prefix='/plan/delete',
+    tags=['plan/delete']
 )
 
 
-@plan_get_router.post('/by-id')
-async def get_plan_by_id_endpoint(payload: PlanGetByIdIn, db: AsyncSession = Depends(get_main_async_session)) -> PlanGetByIdOut:
+@plan_delete_router.delete('/by-id')
+async def delete_plan_by_id_endpoint(payload: PlanDeleteByIdIn,
+                                     db: AsyncSession = Depends(get_main_async_session)) -> PlanDeleteByIdOut:
     try:
-        plan = await select_plan_by_id(payload=payload, db=db)
+        plan = await delete_plan_by_id(payload=payload, db=db)
     except DatabaseDataError as error:
         raise HTTPException(status_code=400, detail='Invalid request format') from error
     except DatabaseTimeoutError as error:
@@ -26,6 +25,6 @@ async def get_plan_by_id_endpoint(payload: PlanGetByIdIn, db: AsyncSession = Dep
     except (DatabaseDisconnectionError, DatabaseResourceInvalidatedError, DatabaseDriverError) as error:
         raise HTTPException(status_code=502) from error
     except DatabaseNoResultFoundError:
-        plan = PlanGetByIdOut()
+        plan = PlanDeleteByIdOut()
 
     return plan

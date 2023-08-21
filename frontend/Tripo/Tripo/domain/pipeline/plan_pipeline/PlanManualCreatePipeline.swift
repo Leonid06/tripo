@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 
-class PlanCreatePipeline : BasePipeline {
+class PlanManualCreatePipeline : BasePipeline {
     
     internal let landmarkHTTPService = LandmarkHTTPService()
     internal var planDatabaseClient : PlanDatabaseClient?
@@ -41,13 +41,19 @@ class PlanCreatePipeline : BasePipeline {
         }
     }
     
-    func getDefaultsJob() -> AnyPublisher<PipelineDefaultsTaskOutput, PipelineJobError> {
+    func getRetrieveUserTokenJob() -> AnyPublisher<PipelineDefaultsTaskOutput, PipelineJobError> {
         return getProvideUserCurrentTokenTask().mapError {
             error in PipelineJobError.WrapError(error: error)
         }.eraseToAnyPublisher()
     }
     
-    func getNetworkJob(planName: String?, planDescription: String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineNetworkTaskOutput, PipelineJobError> {
+    func getAssignRemoteIdToPlanJob(identifier: UUID?, remoteId: String?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
+        return getAssignRemoteIdToPlanTask(identifier: identifier, remoteId: remoteId).mapError {
+            error in PipelineJobError.WrapError(error: error)
+        }.eraseToAnyPublisher()
+    }
+    
+    func getMakePlanCreateNetworkCallsJob(planName: String?, planDescription: String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineNetworkTaskOutput, PipelineJobError> {
         return getMapCreatePlanHTTPRequestParametersTask(planName: planName, planDescription: planDescription, landmarks: landmarks)
             .flatMap {
                 output in
@@ -59,11 +65,28 @@ class PlanCreatePipeline : BasePipeline {
                         .eraseToAnyPublisher()
                 }
             }.mapError {
-            error in PipelineJobError.WrapError(error: error)
-        }.eraseToAnyPublisher()
+                error in PipelineJobError.WrapError(error: error)
+            }.eraseToAnyPublisher()
     }
     
-    func getDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
+    func getSaveRelationshipsInDatabaseJob(userToken: String?, planIdentifier: UUID?, landmarkIdentifiers : Array<UUID>) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
+        guard let userToken = userToken else {
+            return Fail<PipelineDatabaseTaskOutput, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidObjectSchema(description: "Access token is not provided"))
+                .mapError {error in PipelineJobError.WrapError(error: error)}
+                .eraseToAnyPublisher()
+        }
+        
+        guard let planIdentifier = planIdentifier, !landmarkIdentifiers.isEmpty else {
+            return Fail<PipelineDatabaseTaskOutput, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidUpstreamTaskOutput(description: "invalid landmark and plan  upstream db task outputs"))
+                .mapError {error in PipelineJobError.WrapError(error: error)}
+                .eraseToAnyPublisher()
+        }
+        
+        return self.getCreateDatabaseRelationshipsTask(currentToken: userToken, planIdentifier: planIdentifier, landmarkIdentifiers: landmarkIdentifiers)
+            .mapError {error in PipelineJobError.WrapError(error: error)}
+            .eraseToAnyPublisher()
+    }
+    func getSavePlanInDatabaseJob(userToken : String?, planName: String?, planDescription : String?, landmarks : Array<PlanCreatePipelineLandmarkSchema>?) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineJobError> {
         return getSavePlanObjectInDatabaseTask(planName: planName, planDescription: planDescription)
             .flatMap { output in
                 guard let landmarks = landmarks else {
@@ -72,39 +95,9 @@ class PlanCreatePipeline : BasePipeline {
                 }
                 return self.getSaveLandmarksInDatabaseTask(landmarks: landmarks)
             }
-            .collect().flatMap {
-                outputs in
-                guard let userToken = userToken else {
-                    return Fail<PipelineDatabaseTaskOutput, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidObjectSchema(description: "Access token is not provided"))
-                        .eraseToAnyPublisher()
-                }
-                
-                let outputArray = outputs as Array<PipelineDatabaseTaskOutput>
-                
-                
-                var planIdentifier : UUID?
-                var landmarkIdentifiers = Array<UUID>()
-                
-                outputArray.forEach { output in
-                    switch output {
-                    case .PlanUUID(let identifier):
-                        planIdentifier = identifier
-                    case .LandmarkUUID(let identifier):
-                        landmarkIdentifiers.append(identifier)
-                    default:
-                        return
-                    }
-                    
-                }
-
-                guard let planIdentifier = planIdentifier, !landmarkIdentifiers.isEmpty else {
-                    return Fail<PipelineDatabaseTaskOutput, PipelineDatabaseError>(error: PipelineDatabaseError.InvalidUpstreamTaskOutput(description: "invalid landmark and plan  upstream db task outputs"))
-                        .eraseToAnyPublisher()
-                }
-                return self.getCreateDatabaseRelationshipsTask(currentToken: userToken, planIdentifier: planIdentifier, landmarkIdentifiers: landmarkIdentifiers)
-            }.mapError {error in PipelineJobError.WrapError(error: error)}
+      
+            .mapError {error in PipelineJobError.WrapError(error: error)}
             .eraseToAnyPublisher()
-        }
-        
     }
+}
 

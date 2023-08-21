@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-extension PlanCreatePipeline {
+extension PlanManualCreatePipeline {
     internal func mapCreatePlanHTTPRequestTaskParameters(planName: String, planDescription: String, landmarkSchemas : Array<PlanCreatePipelineLandmarkSchema>, promise: Future<PipelineNetworkTaskOutput, PipelineNetworkError>.Promise) {
         
         var parameters = ManualPlanCreateRequestParameters(

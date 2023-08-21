@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 @landmark_get_router.post('/by-id')
-async def get_cached_landmark_by_id(payload: GetCachedLandmarkIn) -> GetCachedLandmarkOut:
+async def get_cached_landmark_by_id_endpoint(payload: GetCachedLandmarkIn) -> GetCachedLandmarkOut:
     try:
         request_message_body = map_get_landmark_inward_schema_to_message_body(payload)
     except MappingError as error:

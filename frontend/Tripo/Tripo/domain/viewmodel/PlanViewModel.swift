@@ -16,7 +16,11 @@ class PlanViewModel : BaseViewModel {
     @Published var instantiationState : ViewModelState.DatabaseClientInstantiationState = .instantiationInProgress
     @Published var fetchPlanRequestState :
     ViewModelState.RequestState = .requestSucceeded
+    @Published var editPlanRequestState :
+    ViewModelState.RequestState = .requestSucceeded
     private var databaseClient : PlanDatabaseClient?
+    
+    private var planViewPipelineExecutor : PlanViewPipelineExecutor?
     
     
     override init() {
@@ -36,6 +40,43 @@ class PlanViewModel : BaseViewModel {
             print("unknown error happened")
             instantiationState = .instantiationFailed
         }
+    }
+    
+    func editPlanDetailCard(card: PlanDetailsCard){
+        editPlanRequestState = .requestInProgress
+        
+        guard let planViewPipelineExecutor = planViewPipelineExecutor else {
+            print("plan view pipeline executor is not initialized")
+            editPlanRequestState = .requestFailed
+            return
+        }
+        
+        let schema = PlanViewPipelineExecutor.mapPlanDetailCardToPlanEditPipelineSchema(planDetailCard: card)
+        
+        do {
+            let pipelineCancellable = try planViewPipelineExecutor.executePlanEditPipeline(schema: schema){
+                product in
+                switch product {
+                case .Failure(let error):
+                    self.editPlanRequestState = .requestFailed
+                    print("Error happened during plan edit pipeline execution : \(error)")
+                  
+                case .Success(let output):
+                    switch output {
+                    case .Void:
+                        self.editPlanRequestState = .requestSucceeded
+                        return
+                    default:
+                        self.editPlanRequestState = .requestSucceeded
+                        print("Invalid plan edit pipeline product")
+                    }
+                }
+            }
+        } catch {
+            editPlanRequestState = .requestFailed
+        }
+        
+        
     }
     
     func fetchPlanDetailCardByRemoteId(remoteId: String){

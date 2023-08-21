@@ -9,7 +9,7 @@ import Foundation
 
 
 extension PlanManualCreateViewPipelineExecutor {
-    static func mapManualPlanCreatePresentationDataToPipelineSchema(
+    static func mapManualPlanCreateDetailCardToPipelineSchema(
         planDetailCard : PlanManualCreateDetailCard, landmarkDetailCards : Array<LandmarkSearchDetailCard>
     ) -> PlanCreatePipelineSchema {
         var landmarkSchemas = Array<PlanCreatePipelineLandmarkSchema>()
@@ -30,5 +30,23 @@ extension PlanManualCreateViewPipelineExecutor {
         }
         
         return pipelineSchema
+    }
+}
+
+extension PlanViewPipelineExecutor {
+    static func mapPlanDetailCardToPlanEditPipelineSchema(planDetailCard: PlanDetailsCard) -> PlanEditPipelineSchema {
+        return PlanEditPipelineSchema(
+            name: planDetailCard.name,
+            description: "",
+            completed: planDetailCard.completed,
+            identifier: planDetailCard.id
+        )
+    }
+    
+    static func mapPlanDetailCardToPlanDeletePipelineSchema(planDetailCard: PlanDetailsCard) -> PlanDeletePipelineSchema {
+        return PlanDeletePipelineSchema(
+            identifier: UUID(),
+            remoteId: ""
+        )
     }
 }

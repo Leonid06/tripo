@@ -28,3 +28,15 @@ struct PlanCreatePipelineLandmarkSchema {
     var description : String?
     var remoteId : String? 
 }
+
+struct PlanEditPipelineSchema {
+    var name : String?
+    var description : String?
+    var completed : Bool?
+    var identifier : UUID?
+}
+
+struct PlanDeletePipelineSchema {
+    var identifier : UUID?
+    var remoteId : String?
+}
