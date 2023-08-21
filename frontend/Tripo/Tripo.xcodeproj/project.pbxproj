@@ -92,6 +92,7 @@
 		B3DE0BC12A8A607500DAE3CF /* PipelineExecutor+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */; };
 		B3FDFC762A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FDFC752A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift */; };
 		B3FDFC782A8FC181002EBB3A /* PlanEditPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */; };
+		B3FDFC7D2A90E2B5002EBB3A /* PlanDeletePipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FDFC7C2A90E2B5002EBB3A /* PlanDeletePipeline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,7 @@
 		B3DE0BC02A8A607500DAE3CF /* PipelineExecutor+Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PipelineExecutor+Group.swift"; sourceTree = "<group>"; };
 		B3FDFC752A8FC15C002EBB3A /* PlanViewPipelineExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewPipelineExecutor.swift; sourceTree = "<group>"; };
 		B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditPipeline.swift; sourceTree = "<group>"; };
+		B3FDFC7C2A90E2B5002EBB3A /* PlanDeletePipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDeletePipeline.swift; sourceTree = "<group>"; };
 		BD17B7C313B4351E9CF5DCF5 /* Pods-TripoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripoTests.debug.xcconfig"; path = "Target Support Files/Pods-TripoTests/Pods-TripoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C27FED22BD86F9B7F7986B92 /* Pods-Tripo-TripoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tripo-TripoUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tripo-TripoUITests/Pods-Tripo-TripoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8D530383B4FBA87F3295FD /* Pods_Tripo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tripo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,14 +359,12 @@
 		B3464D8C2A77D09500895EBC /* pipeline */ = {
 			isa = PBXGroup;
 			children = (
+				B3FDFC7B2A90E293002EBB3A /* landmark_pipeline */,
+				B3FDFC7A2A90E283002EBB3A /* plan_pipeline */,
 				B3464D812A75303100895EBC /* PipelineSchema.swift */,
 				B3448ADA2A7D0F0300A4F19E /* extension */,
 				B3464D862A7564AB00895EBC /* PipelineError.swift */,
 				B3464D8D2A77D0A900895EBC /* BasePipeline.swift */,
-				B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */,
-				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
-				B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */,
-				B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */,
 			);
 			path = pipeline;
 			sourceTree = "<group>";
@@ -578,6 +578,25 @@
 				B3DD82912A73F59A00F7F588 /* ViewModel+Mapping.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		B3FDFC7A2A90E283002EBB3A /* plan_pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				B3FDFC772A8FC181002EBB3A /* PlanEditPipeline.swift */,
+				B321D9442A85060100D0B2F2 /* PlanFetchPipeline.swift */,
+				B3464D8F2A77D0C300895EBC /* PlanManualCreatePipeline.swift */,
+				B3FDFC7C2A90E2B5002EBB3A /* PlanDeletePipeline.swift */,
+			);
+			path = plan_pipeline;
+			sourceTree = "<group>";
+		};
+		B3FDFC7B2A90E293002EBB3A /* landmark_pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				B3448ADF2A7D37F600A4F19E /* LandmarkSearchPipeline.swift */,
+			);
+			path = landmark_pipeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -864,6 +883,7 @@
 				B39E3E6B2A83D917007B3484 /* PlanManualCreateBlockView.swift in Sources */,
 				B323D9762A6AA3F000A7917C /* BaseDatabaseClient.swift in Sources */,
 				B321D93D2A85025100D0B2F2 /* HomePlanListView.swift in Sources */,
+				B3FDFC7D2A90E2B5002EBB3A /* PlanDeletePipeline.swift in Sources */,
 				B3BED9E62A4B27920073934A /* AuthenticationStateViewModel.swift in Sources */,
 				B3BED9DC2A49D5410073934A /* RequestDetailsProvider.swift in Sources */,
 				B3464D892A76A6F600895EBC /* PipelineExecutor+Convenience.swift in Sources */,

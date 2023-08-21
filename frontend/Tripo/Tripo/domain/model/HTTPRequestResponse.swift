@@ -58,3 +58,15 @@ struct PlanGetByIdRequestResponseUnit : HTTPRequestResponseUnit {
     var landmark_id : String
     var visit_data : String?
 }
+
+struct PlanEditByIdRequestResponse : HTTPRequestResponse {
+    static func emptyValue() -> LogOutUserRequestResponse {
+        return LogOutUserRequestResponse.init()
+    }
+}
+
+struct PlanDeleteByIdRequestResponse : HTTPRequestResponse {
+    static func emptyValue() -> LogOutUserRequestResponse {
+        return LogOutUserRequestResponse.init()
+    }
+}

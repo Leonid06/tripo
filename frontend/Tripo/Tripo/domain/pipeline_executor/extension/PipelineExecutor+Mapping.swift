@@ -42,4 +42,11 @@ extension PlanViewPipelineExecutor {
             identifier: planDetailCard.id
         )
     }
+    
+    static func mapPlanDetailCardToPlanDeletePipelineSchema(planDetailCard: PlanDetailsCard) -> PlanDeletePipelineSchema {
+        return PlanDeletePipelineSchema(
+            identifier: UUID(),
+            remoteId: ""
+        )
+    }
 }

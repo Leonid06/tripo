@@ -62,4 +62,8 @@ struct PlanEditByIdParameters : RequestParameters {
     var completed : Bool?
 }
 
+struct PlanDeleteByIdParameters : RequestParameters {
+    var id : String
+}
+
 

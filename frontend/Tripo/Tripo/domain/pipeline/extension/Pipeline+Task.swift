@@ -282,7 +282,7 @@ extension PlanEditPipeline {
                 promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Invalid task schema")))
                 return 
             }
-            databaseClient.updatePlan(identifier: identifier,
+            databaseClient.updatePlanObject(identifier: identifier,
                                       name: schema.name,
                                       description: schema.description,
                                       remoteId: nil,
@@ -317,6 +317,60 @@ extension PlanEditPipeline {
                 completed: schema.completed
             )
             self.planHTTPClient.sendPlanEditByIdRequest(parameters: parameters){
+                response, error in
+                guard let error = error else {
+                    guard let response = response else {
+                        promise(Result.failure(PipelineNetworkError.InvalidResponse))
+                        return
+                    }
+                    promise(Result.success(PipelineNetworkTaskOutput.Void))
+                    return
+                }
+                promise(Result.failure(PipelineNetworkError.NetworkRequestFailed(error: error)))
+            }
+        }
+        return task.eraseToAnyPublisher()
+    }
+}
+
+extension PlanDeletePipeline {
+    internal func getDeletePlanInLocalDatabaseTask(schema: PlanDeletePipelineSchema) -> AnyPublisher<PipelineDatabaseTaskOutput, PipelineDatabaseError> {
+        let task = Future<PipelineDatabaseTaskOutput, PipelineDatabaseError> {
+            promise in
+            guard let databaseClient = self.planDatabaseClient else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Database client is not initialized")))
+                return
+            }
+            guard let identifier = schema.identifier else {
+                promise(Result.failure(PipelineDatabaseError.InvalidObjectSchema(description: "Invalid task schema")))
+                return
+            }
+            databaseClient.deletePlanObject(identifier: identifier){
+                result in
+                switch result {
+                case .success:
+                    promise(Result.success(PipelineDatabaseTaskOutput.Void))
+                case .failure(let error):
+                    promise(Result.failure(PipelineDatabaseError.DatabaseRequestFailed(error: error)))
+                }
+            }
+            
+        }
+        return task
+            .eraseToAnyPublisher()
+    }
+    
+    internal func getDeletePlanInRemoteDatabaseTask(schema: PlanDeletePipelineSchema) ->
+    AnyPublisher<PipelineNetworkTaskOutput, PipelineNetworkError> {
+        let task = Future<PipelineNetworkTaskOutput, PipelineNetworkError> {
+            promise in
+            guard let remoteId = schema.remoteId else {
+                promise(Result.failure(PipelineNetworkError.InvalidObjectSchema(description: "No plan remote identifier provided")))
+                return
+            }
+            
+            let parameters = PlanDeleteByIdParameters(id: remoteId)
+            self.planHTTPClient.sendPlanDeleteByIdRequest(parameters: parameters){
                 response, error in
                 guard let error = error else {
                     guard let response = response else {

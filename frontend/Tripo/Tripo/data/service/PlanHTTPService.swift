@@ -32,8 +32,19 @@ class PlanHTTPService : HTTPService {
     }
     
     func sendPlanEditByIdRequest(parameters : PlanEditByIdParameters, callback :
-        @escaping (PlanGetByIdRequestResponse?, AFError?) -> ()){
+        @escaping (PlanEditByIdRequestResponse?, AFError?) -> ()){
         let requestDetailsProvider = RequestDetailsProvider.planEditById
+        let requestDetails = RequestDetails(
+            method: requestDetailsProvider.method,
+            route: requestDetailsProvider.route,
+            format: requestDetailsProvider.format,
+            parameters: parameters)
+        sendRequest(requestDetails: requestDetails, callback: callback)
+    }
+    
+    func sendPlanDeleteByIdRequest(parameters : PlanDeleteByIdParameters, callback :
+        @escaping (PlanDeleteByIdRequestResponse?, AFError?) -> ()){
+        let requestDetailsProvider = RequestDetailsProvider.planDeleteById
         let requestDetails = RequestDetails(
             method: requestDetailsProvider.method,
             route: requestDetailsProvider.route,

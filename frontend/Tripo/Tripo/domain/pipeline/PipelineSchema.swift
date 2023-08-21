@@ -35,3 +35,8 @@ struct PlanEditPipelineSchema {
     var completed : Bool?
     var identifier : UUID?
 }
+
+struct PlanDeletePipelineSchema {
+    var identifier : UUID?
+    var remoteId : String?
+}

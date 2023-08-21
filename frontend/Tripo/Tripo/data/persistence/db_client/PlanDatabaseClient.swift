@@ -26,7 +26,7 @@ class PlanDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
-    func updatePlan(identifier: UUID, name: String? = nil, description: String? = nil, remoteId: String?, completed : Bool?, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()) {
+    func updatePlanObject(identifier: UUID, name: String? = nil, description: String? = nil, remoteId: String?, completed : Bool?, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()) {
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             let plan = try transaction.fetchOne(
@@ -96,12 +96,25 @@ class PlanDatabaseClient : BaseDatabaseClient {
         }, async_callback_closure: callback)
     }
     
-    func deletePlanObjectByRemoteId(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+    func deletePlanObject(remoteId : String, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
         makeAsyncTransaction(async_db_interaction_closure: {
             transaction -> () in
             do {
                 try transaction.deleteAll(
                     From<Plan>().where(\.$remoteId == remoteId)
+                )
+            } catch {
+                throw CoreStoreError(error)
+            }
+        }, async_callback_closure: callback)
+    }
+    
+    func deletePlanObject(identifier: UUID, callback : @escaping (AsynchronousDataTransaction.Result<Void>) -> ()){
+        makeAsyncTransaction(async_db_interaction_closure: {
+            transaction -> () in
+            do {
+                try transaction.deleteAll(
+                    From<Plan>().where(\.$identifier == identifier)
                 )
             } catch {
                 throw CoreStoreError(error)

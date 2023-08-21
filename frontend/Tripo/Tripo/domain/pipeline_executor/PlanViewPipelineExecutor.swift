@@ -10,6 +10,7 @@ import Combine
 
 class PlanViewPipelineExecutor : BasePipelineExecutor {
     private var planEditPipeline : PlanEditPipeline?
+    private var planDeletePipeline : PlanDeletePipeline?
     
     override init() throws {
         planEditPipeline = try PlanEditPipeline()
@@ -25,6 +26,29 @@ class PlanViewPipelineExecutor : BasePipelineExecutor {
             _ in networkJob
         }.sink(receiveCompletion: {
             completion in 
+            switch completion {
+            case .failure(let error):
+                completionClosure(PipelineExecutionProduct.Failure(failure: PipelineExecutorError.PipelineExecutionFailed(error: error)))
+            default:
+                return
+            }
+        }, receiveValue: { output in
+            completionClosure(PipelineExecutionProduct.Success(output: output))
+        })
+        return pipelineCancellable
+    }
+    
+    func executePlanDeletePipeline(schema: PlanDeletePipelineSchema, completionClosure: @escaping (PipelineExecutionProduct<BasePipeline.PipelineNetworkTaskOutput, PipelineExecutorError>) -> ()) throws -> AnyCancellable {
+        guard let planDeletePipeline = planDeletePipeline else {
+            throw PipelineExecutorError.PipelineNotInitialized
+        }
+        
+        let databaseJob = planDeletePipeline.getDatabaseJob(schema: schema)
+        let networkJob = planDeletePipeline.getNetworkJob(schema: schema)
+        let pipelineCancellable = databaseJob.flatMap {
+            _ in networkJob
+        }.sink(receiveCompletion: {
+            completion in
             switch completion {
             case .failure(let error):
                 completionClosure(PipelineExecutionProduct.Failure(failure: PipelineExecutorError.PipelineExecutionFailed(error: error)))
