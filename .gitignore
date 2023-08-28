@@ -1,5 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/django,swift,visualstudiocode,xcode,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,swift,visualstudiocode,xcode,pycharm
+node_modules
 filter-repo
 Pods
 ### Django ###
