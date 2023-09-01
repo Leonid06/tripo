@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function PlanDeleteButton() {
+export default function PlanDeleteButton({identifier})  {
     return (
         <Link href="/">
             <button
