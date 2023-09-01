@@ -1,7 +1,8 @@
 import Link from "next/link";
-export default function PlanCard({ plan }) {
+
+export default function LandmarkCard({ landmark }) {
     return (
-        <Link href="/plan">
+        <Link href="/landmark/detail">
             <li key={person.email} className="flex justify-between gap-x-6 py-5">
                 <div className="flex min-w-0 gap-x-4">
                     <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
