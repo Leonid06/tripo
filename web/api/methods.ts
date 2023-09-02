@@ -29,3 +29,10 @@ export default async function fetchAllPlans(){
 
 }
 
+export default async function fetchAccountInfoByToken(){
+
+}
+
+export default async function logOutByAccountToken(){
+
+}
