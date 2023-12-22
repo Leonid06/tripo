@@ -1,14 +1,20 @@
-import Link from "next/link";
+'use client'
+import {useRouter} from "next/navigation";
 
 export default function PlanCreateButton() {
+    const router = useRouter()
     return (
-        <Link href="/plan/create">
-            <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            >
-                Create plan
-            </button>
-        </Link>
+
+            <div className="flex items-center justify-center mb-5">
+                    <button
+                        onClick={()=> router.push('/plan/create')}
+                        type="button"
+                        className="font-xl h-16 w-32 mt-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-2xl text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                        Create plan
+                    </button>
+            </div>
+
+
     )
 }

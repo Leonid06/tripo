@@ -21,18 +21,20 @@ async function makeApiCrudCall(route: string,  format : string, method: string, 
     return result.json()
 }
 
-export default async function fetchAllPlans(){
-    const data = await makeApiCrudCall(
-        route= 'plan/get/all',
-        format = 'application/json',
-        method='GET')
-
-}
-
-export default async function fetchAccountInfoByToken(){
-
-}
-
-export default async function logOutByAccountToken(){
-
-}
+// async function fetchAllPlans(){
+//     const data = await makeApiCrudCall(
+//         'plan/get/all',
+//         'application/json',
+//         'GET')
+//
+// }
+//
+// async function fetchAccountInfoByToken(){
+//
+// }
+//
+//  async function logOutByAccountToken(){
+//
+// }
+//
+// export {fetchAllPlans, fetchAccountInfoByToken, logOutByAccountToken}
