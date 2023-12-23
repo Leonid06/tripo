@@ -3,7 +3,7 @@ import {useRouter} from "next/navigation";
 export default function PlanCard({ plan }) {
     const router = useRouter()
     return (
-            <div onClick={()=> router.push(`/plan/${plan.id}`)} className=" h-52 flex w-52 overflow-auto bg-white rounded-2xl shadow-lg dark:bg-gray-800 mt-7">
+            <div onClick={()=> router.push(`/plan/${plan.id}`)} className=" h-52 flex w-52 overflow-auto bg-white rounded-2xl shadow-lg dark:bg-gray-800 mb-5">
 
                 <div className="ml-10">
                     <h1 className="mt-6 text-xl font-bold text-gray-800 dark:text-white">
