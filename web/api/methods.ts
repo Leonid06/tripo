@@ -21,13 +21,12 @@ async function makeApiCrudCall(route: string,  format : string, method: string, 
     return result.json()
 }
 
-// async function fetchAllPlans(){
-//     const data = await makeApiCrudCall(
-//         'plan/get/all',
-//         'application/json',
-//         'GET')
-//
-// }
+async function fetchAllPlans(){
+    const data = await makeApiCrudCall(
+        'plan/get/all',
+        'application/json',
+        'GET')
+}
 //
 // async function fetchAccountInfoByToken(){
 //
