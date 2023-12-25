@@ -3,18 +3,23 @@ import {useRouter} from "next/navigation";
 export default function PlanCard({ plan }) {
     const router = useRouter()
     return (
-            <div onClick={()=> router.push(`/plan/${plan.id}`)} className=" h-52 flex w-52 overflow-auto bg-white rounded-2xl shadow-lg dark:bg-gray-800 mb-5">
+        <div>
+            <button onClick={()=> router.push(`/plan/${plan.id}`)} className=" h-44 flex w-44 overflow-auto bg-primary_card_color rounded-2xl shadow-lg dark:bg-gray-800 mb-5">
 
-                <div className="ml-10">
-                    <h1 className="mt-6 text-xl font-bold text-gray-800 dark:text-white">
-                        {plan.name}
-                    </h1>
-
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        {plan.description}
-                    </p>
+                <div className='container'>
+                    <div className='overflow-hidden max-h-14 mr-2 ml-6 mt-4'>
+                        <p className="text-left text-lg font-bold text-primary_text_color">
+                            {plan.name}
+                        </p>
+                    </div>
+                    <div className='max-h-20 overflow-hidden mt-1 mr-2 ml-6'>
+                        <p className=" text-left text-sm text-secondary_text_color">
+                            {plan.description}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </button>
+        </div>
 
 
     )

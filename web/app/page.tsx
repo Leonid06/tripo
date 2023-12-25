@@ -5,7 +5,7 @@ import PlanCreateButton from "../component/home_page/plan_create_button";
 export default async function Page(){
     // const plans = await fetchAllPlans()
     return (
-        <div>
+        <div className='bg-custom_bg_color'>
             <PlanCreateButton></PlanCreateButton>
             <PlanList plans={{}}></PlanList>
         </div>
