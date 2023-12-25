@@ -6,7 +6,7 @@ export default function PlanCreateButton() {
     const router = useRouter()
     return (
 
-            <div className="fixed bottom-2 right-6 flex items-center justify-center mb-5">
+            <div className="fixed bottom-2 right-28 sm:right-14 md:right-18 lg:right-28 xl:right-12 2xl:right-14 mb-5">
                     <button
                         onClick={()=> router.push('/plan/create')}
                         type="button"

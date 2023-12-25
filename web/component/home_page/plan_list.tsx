@@ -14,12 +14,13 @@ export default function PlanList() {
         })
     }
     return (
-        <div className = 'container mx-auto'>
-            <div className="items-center justify-items-center grid grid-rows-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {plans.map((plan) => (
-                    <HomePlanCard plan={plan}></HomePlanCard>
-                ))}
-            </div>
+        <div className='flex flex-col items-start ml-11'>
+                <label className='text-route_label_color text-4xl font-bold'>My plans</label>
+                <div className="mt-8 items-center justify-items-center grid grid-rows-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-9 gap-y-9">
+                    {plans.map((plan) => (
+                        <HomePlanCard plan={plan}></HomePlanCard>
+                    ))}
+                </div>
         </div>
     )
 }
