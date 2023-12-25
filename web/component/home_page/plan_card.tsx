@@ -8,12 +8,12 @@ export default function PlanCard({ plan }) {
 
                 <div className='container'>
                     <div className='overflow-hidden max-h-14 mr-2 ml-6 mt-4'>
-                        <p className="text-left text-lg font-bold text-primary_text_color">
+                        <p className="line-clamp-2 text-left text-lg font-bold text-primary_text_color">
                             {plan.name}
                         </p>
                     </div>
                     <div className='max-h-20 overflow-hidden mt-1 mr-2 ml-6'>
-                        <p className=" text-left text-sm text-secondary_text_color">
+                        <p className="line-clamp-4 text-left text-sm text-secondary_text_color">
                             {plan.description}
                         </p>
                     </div>
