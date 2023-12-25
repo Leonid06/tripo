@@ -14,7 +14,7 @@ export default function PlanList() {
         })
     }
     return (
-        <div className = 'container mx-auto mt-10'>
+        <div className = 'container mx-auto'>
             <div className="items-center justify-items-center grid grid-rows-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {plans.map((plan) => (
                     <HomePlanCard plan={plan}></HomePlanCard>
